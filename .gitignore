@@ -97,6 +97,11 @@ processor*
 *.lot
 *.ttt
 
+# Images #
+*.jpg
+*.bmp
+*.mp4
+
 testcases/build
 *.OpenFOAM
 Singularity.*
