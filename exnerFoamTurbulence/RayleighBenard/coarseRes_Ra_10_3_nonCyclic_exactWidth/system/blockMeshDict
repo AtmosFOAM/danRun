@@ -17,45 +17,81 @@ FoamFile
     local           "";
 
     class           dictionary;
-    object          controlDict;
+    object          blockMeshDict;
 }
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-application buoyantFoam;
+convertToMeters 0.1;
 
-//startFrom       startTime;
-startFrom       latestTime;
+vertices
+(
+    (  0 1  0)
+    ( 100.8 1  0)
+    ( 100.8 1 10)
+    (  0 1 10)
+    (  0 0  0)
+    ( 100.8 0  0)
+    ( 100.8 0 10)
+    (  0 0 10)
+);
 
-startTime       0;
+blocks
+(
+    hex (0 1 2 3 4 5 6 7) (100 10 1) simpleGrading (1 1 1)
+);
 
-stopAt          endTime;
+edges
+(
+);
 
-endTime         50;
+boundary
+(
+    ground
+    {
+        type wall;
+        faces
+        (
+            (1 5 4 0)
+        );
+    }
+    top
+    {
+        type wall;
+        faces
+        (
+            (3 7 6 2)
+        );
+    }
+    left
+    {
+        type wall;
+        faces
+        (
+            (0 4 7 3)
+        );
+    }
+    right
+    {
+        type wall;
+        faces
+        (
+            (2 6 5 1)
+        );
+    }
+    frontAndBack
+    {
+        type empty;
+        faces
+        (
+            (0 3 2 1)
+            (4 5 6 7)
+        );
+    }
+);
 
-deltaT          1e-04;
-
-writeControl    runTime;
-
-writeInterval   0.1;
-
-purgeWrite      0;
-
-writeFormat     binary;
-
-writePrecision  6;
-
-writeCompression uncompressed;
-
-timeFormat      general;
-
-timePrecision   6;
-
-runTimeModifiable no;
-
-adjustTimeStep yes;
-maxCo          0.5;
-
-libs            ("libExnerTheta.so" "libfiniteVolumeAtmos.so" "libfiniteVolumeAtmosFOAMtools.so");
+mergePatchPairs
+(
+);
 
 // ************************************************************************* //

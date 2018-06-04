@@ -1,41 +1,45 @@
 /*--------------------------------*- C++ -*----------------------------------*\
 | =========                 |                                                 |
 | \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
-|  \\    /   O peration     | Version:  dev                                   |
-|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|  \\    /   O peration     | Version:  1.5                                   |
+|   \\  /    A nd           | Web:      http://www.OpenFOAM.org               |
 |    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
 FoamFile
 {
     version     2.0;
     format      ascii;
-    class       volScalarField;
-    object      p_rgh;
+    class       surfaceVectorField;
+    object      Uf;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [0 2 -2 0 0 0 0];
+dimensions      [0 1 -1 0 0 0 0];
 
-internalField   uniform 0;
+internalField   uniform (0 0 0);
 
 boundaryField
 {
-    wall
+    ground
     {
-        type            fixedFluxPressure;
-        rho             rhok;
-        value           $internalField;
+        type            calculated;
+        value           uniform (0 0 0);
+    }
+    top
+    {
+        type            calculated;
+        value           uniform (0 0 0);
     }
     left
     {
-        type            cyclic;
+        type            calculated;
+        value           uniform (0 0 0);
     }
     right
     {
-        type            cyclic;
+        type            calculated;
+        value           uniform (0 0 0);
     }
-
-    #includeEtc "caseDicts/setConstraintTypes"
 }
 
 // ************************************************************************* //

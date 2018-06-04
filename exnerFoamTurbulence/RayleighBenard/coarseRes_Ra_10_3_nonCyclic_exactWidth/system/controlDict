@@ -24,8 +24,8 @@ FoamFile
 
 application buoyantFoam;
 
-//startFrom       startTime;
-startFrom       latestTime;
+startFrom       startTime;
+//startFrom       latestTime;
 
 startTime       0;
 
