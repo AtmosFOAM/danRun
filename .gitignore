@@ -18,6 +18,9 @@
 *.gif
 *.dat
 *.png
+*.jpg
+*.bmp
+*.mp4
 
 # Build directories
 ###################
@@ -83,7 +86,6 @@ processor*
 *.C?*
 *.H?*
 
-
 # Latex generated files #
 #########################
 *.aux
@@ -96,11 +98,6 @@ processor*
 *.lof
 *.lot
 *.ttt
-
-# Images #
-*.jpg
-*.bmp
-*.mp4
 
 testcases/build
 *.OpenFOAM
