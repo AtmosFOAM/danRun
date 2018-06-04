@@ -55,4 +55,20 @@ is worth checking out.
 
 # Current status
 
-This case is static (as of 31/05/18) to allow the error to be reproduced.
+This case is a version of the static case *coarseRes_Ra_10_3_OLD*, slightly 
+modified to be run with the standard OpenFOAM solver *buoyantPimpleFoam*.
+
+Changes are:
+  - solvers and PIMPLE dict. entry added to fvSolution
+  - changed rho to "rho.*" in fvSolution.solvers
+  - changed 'type' from hePsiThermo to heRhoThermo in *constant/thermophysicalProperties*
+  - changed 'energy' from sensibleInternalEnergy to sensibleEnthalpy in *constant/thermophysicalProperties*
+  - added the file 'g' to *constant* directory
+  - added file 'p_rgh' to *init\_0*, copied from *buoyantBoussinesqPimpleFoam/benardCells* tutorial (because solver requires dynamic pressure). Dimensions changed from [0 2 -2 0 0 0 0] to [1 -1 -2 0 0 0 0] for consistency.
+  - in *system/fvSchemes*, default for snGradSchemes changed from 'none' to 'corrected' so buoyantPimpleFoam can calculate snGrad(p_rgh)
+  - in *system/fvSchemes*, default for gradSchemes changed from 'none' to 'Gauss linear' so buoyantPimpleFoam can calculate grad(p_rgh)
+  - in *system/fvSchemes*, added div(phi,K) = Gauss linear to divSchemes
+  - in *system/fvSchemes*, added div(phi,h) = Gauss upwind to divSchemes
+  - added the file 'T' to *init\_0*, as the solver needs this (with non-calculated BCs). Copied directly from init_0/theta.
+  - in system/controlDict, changed adjustTimeStep to 'no'
+  

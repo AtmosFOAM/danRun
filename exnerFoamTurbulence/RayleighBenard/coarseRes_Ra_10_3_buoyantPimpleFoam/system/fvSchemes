@@ -31,7 +31,7 @@ SIgravityWaves false;
 
 gradSchemes
 {
-    default         none;
+    default         Gauss linear;
     linearUpwind    Gauss linear;
     grad(U)         Gauss linear;
 }
@@ -44,6 +44,8 @@ divSchemes
     div(phi,U)   Gauss linearUpwind linearUpwind;
     div(phi,theta)   Gauss linearUpwind linearUpwind;
     div(((rho*nuEff)*dev2(T(grad(U))))) Gauss linear;
+    div(phi,K)      Gauss linear;
+    div(phi,h)      Gauss upwind;
 }
 
 laplacianSchemes
@@ -58,7 +60,7 @@ interpolationSchemes
 
 snGradSchemes
 {
-    default         none;
+    default         corrected;
     snGrad(Exner)   uncorrected;
 }
 

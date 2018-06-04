@@ -16,7 +16,8 @@ FoamFile
 
 solvers
 {
-    rho
+    //rho
+    "rho.*"
     {
         solver           PCG;
         preconditioner   DIC;

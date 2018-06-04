@@ -27,13 +27,13 @@ T0       T0 [0 0  0 1 0 0 0] 300;
 
 thermoType
 {
-    type hePsiThermo;
-    energy sensibleInternalEnergy;
-    specie specie;
+    type            heRhoThermo;
+    energy          sensibleEnthalpy;
+    specie          specie;
     equationOfState perfectGas;
-    thermo hConst;
-    transport const;
-    mixture pureMixture;
+    thermo          hConst;
+    transport       const;
+    mixture         pureMixture;
 }
 
 mixture//  air 1 28.9 1000 0 1.8e-05 0.7;

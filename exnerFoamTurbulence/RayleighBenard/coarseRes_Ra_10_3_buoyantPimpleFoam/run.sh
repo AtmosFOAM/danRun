@@ -8,19 +8,15 @@ blockMesh
 #gmtFoam mesh -constant
 #evince constant/mesh.pdf &
 
-# set linear theta profile
 rm -rf [0-9]* core
 mkdir 0
 cp -r init_0/* 0
+# set linear theta profile
 #setInitialTracerField
-#mv 0/T 0/theta
 
 # hydrostatically balanced initial conditions
 setExnerBalanced    # also writes p
-setTfromTheta       # writes T from theta, Exner
-
-# change Exner BC from fixedValue to fixedFluxBuoyantExner
-sed -i 's/fixedValue;/fixedFluxBuoyantExner; gradient uniform 0;/g' 0/Exner
+# WRITE A NEW UTILITY TO SET HYDROSTATICALLY BALANCED PRESSURE!
 
 # Plot initial potential temperature
 #gmtFoam theta
