@@ -38,7 +38,7 @@ Representative Ra, nu pairings:
   1000    4.429e-02
   1708    3.389e-02     // RaCrit for no-slip BCs
   1e+04   1.401e-02
-  1e+08   1.568e-05   // laminar viscosity of dry air at 300 K
+  8e+09   1.568e-05     // laminar viscosity of dry air at 300 K
 ...and so on.
            
 The critical Rayleigh number for heat transfer in a fluid confined between two 
