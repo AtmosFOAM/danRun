@@ -1,0 +1,107 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  1.5                                   |
+|   \\  /    A nd           | Web:      http://www.OpenFOAM.org               |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      fvSolution;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+solvers
+{
+    //rho
+    "rho.*"
+    {
+        solver           PCG;
+        preconditioner   DIC;
+        tolerance        0;
+        relTol           0;
+    };
+    Exner
+    {
+        solver PCG;
+        preconditioner DIC;
+        tolerance        1e-10;
+        relTol           0.001;
+    }
+
+    ExnerFinal
+    {
+        $Exner;
+        tolerance        1e-10;
+        relTol           0;
+    }
+    
+    theta
+    {
+        solver           PBiCGStab;
+        preconditioner   DIC;
+        tolerance        1e-8;
+        relTol           0;
+    }
+    
+// Additional solvers for buoyantPimpleFoam (taken from fvSolution for the 
+// tutorial case $FOAM_TUTORIALS/heatTransfer/buoyantPimpleFoam/hotRoom)
+    
+    p_rgh
+    {
+        solver          PCG;
+        preconditioner  DIC;
+        tolerance       1e-8;
+        relTol          0.01;
+    }
+
+    p_rghFinal
+    {
+        $p_rgh;
+        relTol          0;
+    }
+    
+    "(U|h|e|k|epsilon|R)"
+    {
+        solver          PBiCGStab;
+        preconditioner  DILU;
+        tolerance       1e-6;
+        relTol          0.1;
+    }
+
+    "(U|h|e|k|epsilon|R)Final"
+    {
+        $U;
+        relTol          0;
+    }
+}
+
+iterations
+{
+    nOuterCorrectors 2;
+    nCorrectors      2;
+    nNonOrthogonalCorrectors 0;
+}
+
+initialisation
+{
+    maxIters 50;
+    BCiters  3;
+    BCtol    1e-6;
+}
+
+// PIMPLE required for buoyantPimpleFoam (taken from fvSolution for the 
+// tutorial case $FOAM_TUTORIALS/heatTransfer/buoyantPimpleFoam/hotRoom)
+
+PIMPLE
+{
+    momentumPredictor yes;
+    nOuterCorrectors 1;
+    nCorrectors     2;
+    nNonOrthogonalCorrectors 0;
+}
+
+// ************************************************************************* //
