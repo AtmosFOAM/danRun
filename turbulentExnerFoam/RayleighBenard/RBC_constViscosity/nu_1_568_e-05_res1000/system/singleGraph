@@ -1,0 +1,15 @@
+start   ( 0 0.1 0.5);
+end     (10 0.1 0.5);
+fields  (U);
+ 
+// Sampling and I/O settings
+#includeEtc "caseDicts/postProcessing/graphs/sampleDict.cfg"
+ 
+// Override settings here, e.g.
+setConfig { type midPoint; }    // calc. at midpoint of every cell
+
+// Must be last entry
+
+#includeEtc "caseDicts/postProcessing/graphs/graph.cfg"
+ 
+// ************************************************************************* //
