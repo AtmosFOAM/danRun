@@ -17,60 +17,43 @@ FoamFile
     local           "";
 
     class           dictionary;
-    object          controlDict;
+    object          thermophysicalProperties;
 }
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-application     turbulentExnerFoam;
 
-//startFrom       startTime;
-startFrom       latestTime;
+T0        300;
 
-startTime       0;
-
-stopAt          endTime;
-
-endTime         100;
-
-deltaT          0.002;  // 0.0025 probably fine
-
-writeControl    runTime;
-
-writeInterval   0.1;
-
-purgeWrite      0;
-
-writeFormat     binary;
-
-writePrecision  6;
-
-writeCompression uncompressed;
-
-timeFormat      general;
-
-timePrecision   6;
-
-runTimeModifiable no;
-
-adjustTimeStep no;
-maxCo          0.5;
-
-functions
+thermoType
 {
-    #includeFunc  singleGraph
-    #includeFunc  grad(theta)
-    writeRho
+    type            heRhoThermo;
+    energy          sensibleEnthalpy;
+    specie          specie;
+    equationOfState perfectGas;
+    thermo          hConst;
+    transport       const;
+    mixture         pureMixture;
+}
+
+mixture//  dry air: 1 28.97 1005 0 1.846e-05 0.707;
+{
+    specie
     {
-        type                    writeObjects;
-        libs                    ("libutilityFunctionObjects.so");
-        writeControl            runTime;
-        writeInterval           0.1;
-        objects
-        ("rho");
+        molWeight       28.97;
+    }
+    thermodynamics
+    {
+        Cp              1005;
+        Hf              0;  // reference latent heat of fusion
+    }
+    transport
+    {
+        mu              1.846e-05;
+        Pr              0.707;
     }
 }
 
-libs            ("libExnerTheta.so" "libfiniteVolumeAtmos.so" "libfiniteVolumeAtmosFOAMtools.so");
+pRef      100000;
 
 // ************************************************************************* //
