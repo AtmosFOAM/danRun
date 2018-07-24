@@ -22,7 +22,7 @@ The fixed parameters of the case are as follows:
 The only free parameter is then the laminar viscosity, nu, so we choose this
 to get the desired Rayleigh number, defined by:
 
-    Ra = (Tb - Tt) * g * H^3 / Tref . (nu^2 / Pr),
+    $Ra = (Tb - Tt) * g * H^3 / Tref . (nu^2 / Pr)$,
 
 so, inverting for nu we get:
 
