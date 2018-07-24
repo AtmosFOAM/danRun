@@ -22,7 +22,7 @@ The fixed parameters of the case are as follows:
 The only free parameter is then the laminar viscosity, nu, so we choose this
 to get the desired Rayleigh number, defined by:
 
-    $Ra = (Tb - Tt) * g * H^3 / Tref . (nu^2 / Pr)$,
+    Ra = (Tb - Tt) * g * H^3 / Tref . (nu^2 / Pr),
 
 so, inverting for nu we get:
 
@@ -45,10 +45,10 @@ Representative Ra, nu (, mu) pairings:
   1         | 1.178e+00     | 1.387e+00
   10        | 3.724e-01     | 4.386e-01
   100       | 1.178e-01     | 1.387e-01
-  658       | 4.591e-02     | 5.407e-02      // RaCrit for free-slip BCs
+  658       | 4.591e-02     | 5.407e-02      (RaCrit for free-slip BCs)
   1000      | 3.724e-02     | 4.386e-02
   1600      | 2.944e-02     | 3.468e-02
-  1708      | 2.850e-02     | 3.356e-02      // RaCrit for no-slip BCs
+  1708      | 2.850e-02     | 3.356e-02      (RaCrit for no-slip BCs)
   1800      | 2.776e-02     | 3.269e-02
   2000      | 2.634e-02     | 3.101e-02
   1e+04     | 1.178e-02     | 1.387e-02
@@ -57,7 +57,7 @@ Representative Ra, nu (, mu) pairings:
   1e+07     | 3.724e-04     | 4.386e-04
   1e+08     | 1.178e-04     | 1.387e-04
   1e+09     | 3.724e-05     | 4.386e-05
-  ~8e+09    | 1.568e-05     | 1.846e-05      // laminar viscosity of dry air at 300 K
+  ~8e+09    | 1.568e-05     | 1.846e-05      (laminar viscosity of dry air at 300 K)
   1e+10     | 1.178e-05     | 1.387e-05
 ...and so on.
            
