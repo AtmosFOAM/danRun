@@ -1,0 +1,30 @@
+inputFiles=(0/theta.dat 3600/theta.dat 7200/theta.dat 10800/theta.dat
+            14400/theta.dat 18000/theta.dat 21600/theta.dat 
+            25200/theta.dat 28800/theta.dat 32400/theta.dat)
+outFile=plots/theta.eps
+colx=4
+col=3
+legends=("initial conditions" "1 hour" "2 hours" "3 hours" "4 hours" "5 hours"
+         "6 hours" "7 hours" "8 hours" "9 hours")
+pens=("1,black" "1.5,black,5_5:" "1.5,black,2_4_10_4:"
+      "1,blue," "1.5,blue,5_5:5" "1.5,blue,2_4_10_4:4"
+      "1.5,red,5_5:2" "1.5,red,2_4_10_4:6"
+      "1.5,cyan,2_2:3" "1.5,cyan,2_4_6_4:1")
+ylabel="z (m)"
+xlabel="Potential Temperature (K)"
+xmin=262.5
+xmax=268
+dx=1
+ddx=1
+dxg=0
+ymin=0
+ymax=400
+dy=50
+ddy=50
+dyg=0
+xscale=/1
+yscale=*1
+legPos=x10/10
+nSkip=0
+projection=X15c/10c
+gv=1

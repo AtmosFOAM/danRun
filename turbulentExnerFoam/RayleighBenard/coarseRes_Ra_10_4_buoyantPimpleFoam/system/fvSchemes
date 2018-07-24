@@ -1,0 +1,86 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  1.4                                   |
+|   \\  /    A nd           | Web:      http://www.openfoam.org               |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+
+FoamFile
+{
+    version         2.0;
+    format          ascii;
+
+    root            "";
+    case            "";
+    instance        "";
+    local           "";
+
+    class           dictionary;
+    object          fvSchemes;
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+ddtSchemes
+{
+    default         CrankNicolson 0.5;
+    ddt(rho,U)_CN   0.5;
+    ddt(rho,epsilon) Euler;
+    ddt(rho,k) Euler;
+}
+
+SIgravityWaves false;
+
+gradSchemes
+{
+    default         Gauss linear;
+}
+/*
+divSchemes
+{
+    default none;
+    div(U,theta)        Gauss cubic;
+    div(U,u)            Gauss cubic;
+    div(phi,U)          Gauss cubic;
+    div(phi,theta)      Gauss cubic;
+    div(((rho*nuEff)*dev2(T(grad(U))))) Gauss cubic;
+    div(phi,K)          Gauss cubic;
+    div(phi,h)          Gauss cubic;
+}*/
+
+divSchemes
+{
+    default none;
+    div(U,theta)        Gauss linear;
+    div(U,u)            Gauss linear;
+    div(phi,U)          Gauss linear;
+    div(phi,theta)      Gauss linear;
+    div(((rho*nuEff)*dev2(T(grad(U))))) Gauss linear;
+    div(phi,K)          Gauss linear;
+    div(phi,h)          Gauss linear;
+}
+
+laplacianSchemes
+{
+    default         Gauss midPoint uncorrected;
+}
+
+interpolationSchemes
+{
+    default        midPoint;
+}
+
+snGradSchemes
+{
+    default         corrected;
+}
+
+fluxRequired
+{
+    default         no;
+    Exner;
+}
+
+
+// ************************************************************************* //

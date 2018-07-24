@@ -1,0 +1,30 @@
+inputFiles=(0/p_rgh.dat 3600/p_rgh.dat 7200/p_rgh.dat 10800/p_rgh.dat
+            14400/p_rgh.dat 18000/p_rgh.dat 21600/p_rgh.dat 
+            25200/p_rgh.dat 28800/p_rgh.dat 32400/p_rgh.dat)
+outFile=plots/p_rgh.eps
+colx=4
+col=3
+legends=("initial conditions" "1 hour" "2 hours" "3 hours" "4 hours" "5 hours"
+         "6 hours" "7 hours" "8 hours" "9 hours")
+pens=("1,black" "1.5,black,5_5:" "1.5,black,2_4_10_4:"
+      "1,blue," "1.5,blue,5_5:5" "1.5,blue,2_4_10_4:4"
+      "1.5,red,5_5:2" "1.5,red,2_4_10_4:6"
+      "1.5,cyan,2_2:3" "1.5,cyan,2_4_6_4:1")
+ylabel="z (m)"
+xlabel="Pressure (Pa)"
+xmin=1.012e5
+xmax=1.014e5
+dx=20
+ddx=1e4
+dxg=0
+ymin=0
+ymax=400
+dy=50
+ddy=50
+dyg=0
+xscale=/1
+yscale=*1
+legPos=x10/10
+nSkip=0
+projection=X15c/10c
+gv=1

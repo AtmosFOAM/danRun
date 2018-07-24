@@ -1,0 +1,91 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  1.4                                   |
+|   \\  /    A nd           | Web:      http://www.openfoam.org               |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+
+FoamFile
+{
+    version         2.0;
+    format          ascii;
+
+    root            "";
+    case            "";
+    instance        "";
+    local           "";
+
+    class           dictionary;
+    object          fvSchemes;
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+ddtSchemes
+{
+    default         CrankNicolson 0.5;
+    ddt(rho,U)_CN   0.5;
+    ddt(rho,epsilon) Euler;
+    ddt(rho,k) Euler;
+}
+
+gradSchemes
+{
+    default         none;
+    linearUpwind    Gauss linear;
+    grad(U)         Gauss linear;
+}
+
+
+divSchemes
+{
+    default none;
+    div(U,theta)   Gauss linearUpwind linearUpwind;
+    div(U,u)   Gauss linearUpwind linearUpwind;
+    div(phi,U)   Gauss linearUpwind linearUpwind;
+    div(phi,theta)   Gauss linearUpwind linearUpwind;
+    div(((rho*nuEff)*dev2(T(grad(U))))) Gauss linear;
+    div(phi,K)          Gauss linear;
+    div(phi,h)          Gauss linear;
+}
+
+/*
+// less diffusive schemes
+divSchemes
+{
+    default none;
+    div(U,theta)        Gauss cubic;
+    div(U,u)            Gauss cubic;
+    div(phi,U)          Gauss cubic;
+    div(phi,theta)      Gauss cubic;
+    div(((rho*nuEff)*dev2(T(grad(U))))) Gauss cubic;
+    div(phi,K)          Gauss cubic;
+    div(phi,h)          Gauss cubic;
+}
+*/
+
+laplacianSchemes
+{
+    default         Gauss midPoint uncorrected;
+}
+
+interpolationSchemes
+{
+    default        midPoint;
+}
+
+snGradSchemes
+{
+    default         none;
+    snGrad(Exner)   uncorrected;
+}
+
+fluxRequired
+{
+    default         no;
+    Exner;
+}
+
+
+// ************************************************************************* //

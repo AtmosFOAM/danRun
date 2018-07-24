@@ -1,0 +1,54 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  dev                                   |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    object      nut;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 2 -1 0 0 0 0];
+
+internalField   uniform 1.568e-05;
+// laminar kinematic viscosity of dry air
+
+boundaryField
+{
+    ground
+    {
+        type            nutkWallFunction;
+        value           $internalField;
+    }
+    
+    top
+    {
+        type            nutkWallFunction;
+        value           $internalField;
+    }
+    
+    left
+    {
+        type            nutkWallFunction;
+        value           $internalField;
+    }
+    
+    right
+    {
+        type            nutkWallFunction;
+        value           $internalField;
+    }
+    
+    frontAndBack
+    {
+        type            empty;
+    }
+}
+
+// ************************************************************************* //

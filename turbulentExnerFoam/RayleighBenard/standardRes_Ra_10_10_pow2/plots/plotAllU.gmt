@@ -1,0 +1,30 @@
+inputFiles=(0/U.dat 3600/U.dat 7200/U.dat 10800/U.dat
+            14400/U.dat 18000/U.dat 21600/U.dat 
+            25200/U.dat 28800/U.dat 32400/U.dat)
+outFile=plots/u.eps
+colx=4
+col=3
+legends=("initial conditions" "1 hour" "2 hours" "3 hours" "4 hours" "5 hours"
+         "6 hours" "7 hours" "8 hours" "9 hours")
+pens=("1,black" "1.5,black,5_5:" "1.5,black,2_4_10_4:"
+      "1,blue," "1.5,blue,5_5:5" "1.5,blue,2_4_10_4:4"
+      "1.5,red,5_5:2" "1.5,red,2_4_10_4:6"
+      "1.5,cyan,2_2:3" "1.5,cyan,2_4_6_4:1")
+ylabel="z (m)"
+xlabel="Velocity (m/s)"
+xmin=0
+xmax=10
+dx=2
+ddx=1
+dxg=0
+ymin=0
+ymax=400
+dy=50
+ddy=50
+dyg=0
+xscale=/1
+yscale=*1
+legPos=x2/10
+nSkip=0
+projection=X15c/10c
+gv=1

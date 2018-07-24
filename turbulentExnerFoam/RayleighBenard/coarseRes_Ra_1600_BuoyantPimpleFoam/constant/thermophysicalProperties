@@ -1,0 +1,60 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  1.4                                   |
+|   \\  /    A nd           | Web:      http://www.openfoam.org               |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+
+FoamFile
+{
+    version         2.0;
+    format          ascii;
+
+    root            "";
+    case            "";
+    instance        "";
+    local           "";
+
+    class           dictionary;
+    object          thermophysicalProperties;
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+
+T0        300;
+
+thermoType
+{
+    type            heRhoThermo;
+    energy          sensibleEnthalpy;
+    specie          specie;
+    equationOfState perfectGas;
+    thermo          hConst;
+    transport       const;
+    mixture         pureMixture;
+}
+
+mixture//  air 1 28.9 1000 0 1.8e-05 0.7;
+{
+    specie
+    {
+        molWeight       28.9;
+    }
+    thermodynamics
+    {
+        Cp              1005;
+        Hf              0;
+    }
+    transport
+    {
+        mu              3.503e-02;  //Ra = 1600
+        Pr              1.0;
+    }
+}
+
+pRef      100000;
+
+
+// ************************************************************************* //
