@@ -40,26 +40,26 @@ OpenFOAM needs mu, not nu, as input; to get this we must multiply by a reference
        
 Representative Ra, nu (, mu) pairings:
 
-  Ra        | nu            | mu
-  ----------|---------------|-------------
-  1         | 1.178e+00     | 1.387e+00
-  10        | 3.724e-01     | 4.386e-01
-  100       | 1.178e-01     | 1.387e-01
-  658       | 4.591e-02     | 5.407e-02      (RaCrit for free-slip BCs)
-  1000      | 3.724e-02     | 4.386e-02
-  1600      | 2.944e-02     | 3.468e-02
-  1708      | 2.850e-02     | 3.356e-02      (RaCrit for no-slip BCs)
-  1800      | 2.776e-02     | 3.269e-02
-  2000      | 2.634e-02     | 3.101e-02
-  1e+04     | 1.178e-02     | 1.387e-02
-  1e+05     | 3.724e-03     | 4.386e-03
-  1e+06     | 1.178e-03     | 1.387e-03
-  1e+07     | 3.724e-04     | 4.386e-04
-  1e+08     | 1.178e-04     | 1.387e-04
-  1e+09     | 3.724e-05     | 4.386e-05
-  ~8e+09    | 1.568e-05     | 1.846e-05      (laminar viscosity of dry air at 300 K)
-  1e+10     | 1.178e-05     | 1.387e-05
-...and so on.
+  Ra        | nu            | mu            |Re
+  ----------|---------------|---------------|---------------
+  1         | 1.178e+00     | 1.387e+00     |0
+  10        | 3.724e-01     | 4.386e-01     |0
+  100       | 1.178e-01     | 1.387e-01     |0
+  658       | 4.591e-02     | 5.407e-02     |0              (RaCrit for free-slip BCs)
+  1000      | 3.724e-02     | 4.386e-02     |0
+  1600      | 2.944e-02     | 3.468e-02     |0
+  1708      | 2.850e-02     | 3.356e-02     |0              (RaCrit for no-slip BCs)
+  1800      | 2.776e-02     | 3.269e-02     |36
+  2000      | 2.634e-02     | 3.101e-02     |38
+  1e+04     | 1.178e-02     | 1.387e-02     |85
+  1e+05     | 3.724e-03     | 4.386e-03     |270
+  1e+06     | 1.178e-03     | 1.387e-03     |850
+  1e+07     | 3.724e-04     | 4.386e-04     |2700
+  1e+08     | 1.178e-04     | 1.387e-04     |8500
+  1e+09     | 3.724e-05     | 4.386e-05     |2.7e+04
+  5.6e+09   | 1.568e-05     | 1.846e-05     |6.4e+04        (laminar viscosity of dry air at 300 K)
+  1e+10     | 1.178e-05     | 1.387e-05     |8.5e+04
+...and so on. The final column is a pre-calculation _estimate_ of the expected Reynolds number for the flow in question, based on the viscosity nu and the estimates U ~ 1 m s^-1, L ~ 1 m.
            
 The critical Rayleigh number for heat transfer in a fluid confined between two 
 no-slip vertical boundaries is Rac = 1708; if the boundaries are free-slip, this
@@ -72,6 +72,30 @@ expect a purely diffusive solution for all time (i.e. the linear temperature pro
 Above the critical Rayleigh number the system is linearly unstable, and convective cells appear. For modest reduced Rayleigh number (:= Ra/Ra_crit), the resulting convective motions should be steady, i.e. the streamlines should not change with time, after an initial transition period from the stationary initial condition.
 
 For very high Rayleigh number, we expect the motions to become turbulent, and the convective cells will no longer be steady in time. Exactly when the transition to turbulence is expected depends on the Reynolds number rather than the Rayleigh number.
+
+Each experiment is integrated for a total of at least 70 seconds.
+
+Say something about the Kolmogorov microscale; this is only a true(?) DNS up to about Re ~ 100, which is depressingly low. But not unexpected.
+
+### List of experiments
+#### Resolution = 1000 * 100:
+ Ra         |viscosity  |status     |regime     |Re(guess)  |Re(calc)   |Nu         |max mag(U)
+ -----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------
+ 5.6e+09    |1.568e-05  |73.8s      |turbulent  |6.4e+04    |7.0e+04    |80.6       |1.1e+00
+ 
+#### Resolution = 500 * 50: 
+ Ra         |viscosity  |status     |regime     |Re(guess)  |Re(calc)   |Nu         |max mag(U)
+ -----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------
+ 1e+03      |3.724e-02  |85.7s      |diffusive  |0          |8.1e-05    |0.99       |3.0e-06
+ 2e+03      |2.634e-02  |100s       |diffusive  |0          |3.4e-04    |0.99       |8.9e-06
+ 1e+04      |1.178e-02  |100s       |steady     |85         |52         |2.62       |6.1e-01
+ 1e+05      |3.724e-03  |100s       |steady     |270        |220        |5.18       |8.1e-01
+ 1e+06      |1.178e-03  |100s       |steady     |850        |730        |8.09       |8.6e-01
+ 1e+07      |3.724e-04  |100s       |turbulent  |2700       |2700       |17.5       |1.0e+00
+ 1e+08      |1.178e-04  |100s       |turbulent  |8500       |1.0e+04    |30.1       |1.2e+00
+ 1e+09      |3.724e-05  |100s       |turbulent  |2.7e+04    |2.4e+04    |52.8       |8.9e-01
+ 5.6e+09    |1.568e-05  |100s       |turbulent  |6.4e+04    |4.0e+04    |46.2       |6.2e-01
+ 1e+10      |1.178e-05  |100s       |turbulent  |8.5e+04    |4.6e+04    |40.6       |5.4e-01
 
 ## Note on numerics
 Be mindful of the requirement to keep the diffusion term stable: 

@@ -1,0 +1,59 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  1.4                                   |
+|   \\  /    A nd           | Web:      http://www.openfoam.org               |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+
+FoamFile
+{
+    version         2.0;
+    format          ascii;
+
+    root            "";
+    case            "";
+    instance        "";
+    local           "";
+
+    class           dictionary;
+    object          thermophysicalProperties;
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+
+T0        300;
+
+thermoType
+{
+    type            heRhoThermo;
+    energy          sensibleEnthalpy;
+    specie          specie;
+    equationOfState perfectGas;
+    thermo          hConst;
+    transport       const;
+    mixture         pureMixture;
+}
+
+mixture//  dry air: 1 28.97 1005 0 1.846e-05 0.707;
+{
+    specie
+    {
+        molWeight       28.97;
+    }
+    thermodynamics
+    {
+        Cp              1005;
+        Hf              0;  // reference latent heat of fusion
+    }
+    transport
+    {
+        mu              1.178e-02;
+        Pr              0.707;
+    }
+}
+
+pRef      100000;
+
+// ************************************************************************* //

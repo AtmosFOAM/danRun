@@ -1,0 +1,35 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  dev                                   |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      transportProperties;
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+transportModel Newtonian;
+
+// Laminar viscosity (of dry air at 300K)
+nu              [0 2 -1 0 0 0 0] 1.568e-05;
+
+// Thermal expansion coefficient (of dry air at 300K)
+beta            [0 0 0 -1 0 0 0] 3.4e-03;
+
+// Reference temperature
+TRef            [0 0 0 1 0 0 0] 300;
+
+// Laminar Prandtl number (of dry air at 300K)
+Pr              [0 0 0 0 0 0 0] 0.71;
+
+// Turbulent Prandtl number
+Prt             [0 0 0 0 0 0 0] 1.0;
+
+// ************************************************************************* //
