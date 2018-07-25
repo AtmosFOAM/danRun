@@ -120,3 +120,13 @@ The CFL criterion requires
     
 This requires analytically estimating typical values of u before simulation based on physical considerations, or an adaptive-timestep numerical method (or a very lucky guess).
 
+## To-do:
+ - Change time-stepping scheme to be second-order accurate (0.5 --> 1.0) in fvSchemes and run with zero viscosity to see if this causes instability (CN should be unstable unless there's some other hidden damping).
+ - run the above also with coarser resolution
+ - Re-run lower velocity cases at higher resolution to get more representative heat flux and Nu
+ - write script to determine max mag(U) over the temporal averaging range
+ - modify heat flux script to work one step up the directory tree, so only one copy of the program needs to be kept
+ - modify heat flux script to take command line input
+ - modify FFT scripts to offer the same flexibility as the heat flux script
+ - calculate TKE spectra & analyse
+
