@@ -12,8 +12,6 @@ blockMesh
 rm -rf [0-9]* core
 mkdir 0
 cp -r init_0/* 0
-# set linear theta profile
-setAnalyticTracerField -name theta -tracerDict theta_tracerFieldDict
 
 # hydrostatically balanced initial conditions (ExnerFoam)
 setExnerBalanced    # also writes p
@@ -21,8 +19,6 @@ setExnerBalanced    # also writes p
 sed -i 's/fixedValue;/fixedFluxBuoyantExner; gradient uniform 0;/g' 0/Exner
 # hydrostatically balanced initial conditions (buoyantPimpleFoam)
 #setHydroStaticPressure
-# Fix the top boundary conditions
-#sed -i 's/fixedValue;/hydrostatic_p_rgh;\n        gradient uniform 0;/g' 0/p_rgh
 
 # add Gaussian random noise to theta field (is it consistent to only do this for this field?)
 postProcess -func randomise -time 0
@@ -36,6 +32,9 @@ postProcess -time 0 -func TfromThetaExner   # writes T from theta, Exner
 
 # Solve Euler equations (ExnerFoam)
 turbulentExnerFoam >& log & sleep 0.01; tail -f log
+
+# Plot energy as a function of time
+gmtPlot constant/gmtDicts/plotEnergy.gmt
 
 # Solve Euler equations (buoyantPimpleFoam)
 buoyantPimpleFoam >& log & sleep 0.01; tail -f log

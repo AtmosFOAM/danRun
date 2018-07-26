@@ -17,61 +17,60 @@ FoamFile
     local           "";
 
     class           dictionary;
-    object          fvSchemes;
+    object          controlDict;
 }
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-ddtSchemes
+application     turbulentExnerFoam;
+
+//startFrom       startTime;
+startFrom       latestTime;
+
+startTime       0;
+
+stopAt          endTime;
+
+endTime         100;
+
+deltaT          0.01;
+
+writeControl    runTime;
+
+writeInterval   0.1;
+
+purgeWrite      0;
+
+writeFormat     binary;
+
+writePrecision  6;
+
+writeCompression uncompressed;
+
+timeFormat      general;
+
+timePrecision   6;
+
+runTimeModifiable no;
+
+adjustTimeStep no;
+maxCo          0.5;
+
+functions
 {
-    default         CrankNicolson 1;
-    ddt(rho,U)_CN   1;
-    ddt(rho,epsilon) Euler;
-    ddt(rho,k) Euler;
+    #includeFunc  singleGraph
+    #includeFunc  grad(theta)
+    writeRho
+    {
+        type                    writeObjects;
+        libs                    ("libutilityFunctionObjects.so");
+        writeControl            runTime;
+        writeInterval           0.1;
+        objects
+        ("rho");
+    }
 }
 
-SIgravityWaves false;
-
-gradSchemes
-{
-    default         none;
-    linearUpwind    Gauss linear;
-    grad(U)         Gauss linear;
-    curl(U)         Gauss linear;
-    grad(theta)     Gauss linear;
-}
-
-divSchemes
-{
-    default none;
-    div(U,theta)   Gauss linear;
-    div(U,u)   Gauss linear;
-    div(phi,U)   Gauss linear;
-    div(phi,theta)   Gauss linear;
-    div(((rho*nuEff)*dev2(T(grad(U))))) Gauss linear;
-}
-
-laplacianSchemes
-{
-    default         Gauss midPoint uncorrected;
-}
-
-interpolationSchemes
-{
-    default        midPoint;
-}
-
-snGradSchemes
-{
-    default         none;
-    snGrad(Exner)   uncorrected;
-}
-
-fluxRequired
-{
-    default         no;
-    Exner;
-}
-
+libs            ("libExnerTheta.so" "libfiniteVolumeAtmos.so" "libfiniteVolumeAtmosFOAMtools.so");
 
 // ************************************************************************* //
