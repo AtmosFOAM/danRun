@@ -23,12 +23,12 @@ boundaryField
 {
     ground
     {
-        type            fixedValue;
+        type            fixedUniformInternalValue;
         value           uniform 330;
     }
     top
     {
-        type            fixedValue;
+        type            fixedUniformInternalValue;
         value           uniform 270;
     }
     left
