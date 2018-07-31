@@ -17,43 +17,12 @@ FoamFile
     local           "";
 
     class           dictionary;
-    object          thermophysicalProperties;
+    object          environmentalProperties;
 }
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-
-T0        300;
-
-thermoType
-{
-    type            heRhoThermo;
-    energy          sensibleEnthalpy;
-    specie          specie;
-    equationOfState perfectGas;
-    thermo          hConst;
-    transport       const;
-    mixture         pureMixture;
-}
-
-mixture//  dry air: 1 28.97 1005 0 1.846e-05 0.707;
-{
-    specie
-    {
-        molWeight       28.97;
-    }
-    thermodynamics
-    {
-        Cp              1005;
-        Hf              0;  // reference latent heat of fusion
-    }
-    transport
-    {
-        mu              1.387e-05;
-        Pr              0.707;
-    }
-}
-
-pRef      100000;
+g               g [0 1 -2 0 0 0 0] (0 0 -9.81);
+Omega           Omega [0 0 -1 0 0 0 0] (0 0 0);
 
 // ************************************************************************* //

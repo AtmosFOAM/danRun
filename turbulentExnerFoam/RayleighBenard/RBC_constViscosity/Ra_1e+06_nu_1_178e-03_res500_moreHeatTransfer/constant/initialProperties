@@ -3,7 +3,8 @@
 | \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
 |  \\    /   O peration     | Version:  1.4                                   |
 |   \\  /    A nd           | Web:      http://www.openfoam.org               |
-|    \\/     M anipulation  |                                                 |
+|    \\/     M anipulation  |             
+                                    |
 \*---------------------------------------------------------------------------*/
 
 FoamFile
@@ -17,43 +18,14 @@ FoamFile
     local           "";
 
     class           dictionary;
-    object          thermophysicalProperties;
+    object          environmentalProperties;
 }
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-
-T0        300;
-
-thermoType
-{
-    type            heRhoThermo;
-    energy          sensibleEnthalpy;
-    specie          specie;
-    equationOfState perfectGas;
-    thermo          hConst;
-    transport       const;
-    mixture         pureMixture;
-}
-
-mixture//  dry air: 1 28.97 1005 0 1.846e-05 0.707;
-{
-    specie
-    {
-        molWeight       28.97;
-    }
-    thermodynamics
-    {
-        Cp              1005;
-        Hf              0;  // reference latent heat of fusion
-    }
-    transport
-    {
-        mu              1.387e-05;
-        Pr              0.707;
-    }
-}
-
-pRef      100000;
+// inputs for makeHotBubble
+thetaPrime thetaPrime [0 0  0 1 0 0 0] 2;
+bubbleCentre (0 500 4.5e3);
+bubbleRadii  (2000 1 2000);
 
 // ************************************************************************* //

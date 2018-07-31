@@ -17,43 +17,61 @@ FoamFile
     local           "";
 
     class           dictionary;
-    object          thermophysicalProperties;
+    object          fvSchemes;
 }
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-
-T0        300;
-
-thermoType
+ddtSchemes
 {
-    type            heRhoThermo;
-    energy          sensibleEnthalpy;
-    specie          specie;
-    equationOfState perfectGas;
-    thermo          hConst;
-    transport       const;
-    mixture         pureMixture;
+    default         CrankNicolson 0.5;
+    ddt(rho,U)_CN   0.5;
+    ddt(rho,epsilon) Euler;
+    ddt(rho,k) Euler;
 }
 
-mixture//  dry air: 1 28.97 1005 0 1.846e-05 0.707;
+SIgravityWaves false;
+
+gradSchemes
 {
-    specie
-    {
-        molWeight       28.97;
-    }
-    thermodynamics
-    {
-        Cp              1005;
-        Hf              0;  // reference latent heat of fusion
-    }
-    transport
-    {
-        mu              1.387e-05;
-        Pr              0.707;
-    }
+    default         none;
+    linearUpwind    Gauss linear;
+    grad(U)         Gauss linear;
+    curl(U)         Gauss linear;
+    grad(theta)     Gauss linear;
 }
 
-pRef      100000;
+divSchemes
+{
+    default none;
+    div(U,theta)   Gauss linear;
+    div(U,u)   Gauss linear;
+    div(phi,U)   Gauss linear;
+    div(phi,theta)   Gauss linear;
+    div(((rho*nuEff)*dev2(T(grad(U))))) Gauss linear;
+}
+
+laplacianSchemes
+{
+    default         Gauss midPoint uncorrected;
+}
+
+interpolationSchemes
+{
+    default        midPoint;
+}
+
+snGradSchemes
+{
+    default         none;
+    snGrad(Exner)   uncorrected;
+}
+
+fluxRequired
+{
+    default         no;
+    Exner;
+}
+
 
 // ************************************************************************* //
