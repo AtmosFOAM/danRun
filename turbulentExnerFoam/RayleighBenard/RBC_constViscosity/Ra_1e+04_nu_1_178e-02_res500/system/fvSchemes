@@ -24,18 +24,13 @@ FoamFile
 
 ddtSchemes
 {
-    default         CrankNicolson 0.5;
-    ddt(rho,U)_CN   0.5;
-    ddt(rho,epsilon) Euler;
-    ddt(rho,k) Euler;
+    default         CrankNicolson 0.9;
+    ddt(rho,U)_CN   0.9;
 }
-
-SIgravityWaves false;
 
 gradSchemes
 {
     default         none;
-    linearUpwind    Gauss linear;
     grad(U)         Gauss linear;
     curl(U)         Gauss linear;
     grad(theta)     Gauss linear;
@@ -44,8 +39,6 @@ gradSchemes
 divSchemes
 {
     default none;
-    div(U,theta)   Gauss linear;
-    div(U,u)   Gauss linear;
     div(phi,U)   Gauss linear;
     div(phi,theta)   Gauss linear;
     div(((rho*nuEff)*dev2(T(grad(U))))) Gauss linear;
@@ -53,12 +46,12 @@ divSchemes
 
 laplacianSchemes
 {
-    default         Gauss midPoint uncorrected;
+    default         Gauss linear uncorrected;
 }
 
 interpolationSchemes
 {
-    default        midPoint;
+    default        linear;
 }
 
 snGradSchemes
