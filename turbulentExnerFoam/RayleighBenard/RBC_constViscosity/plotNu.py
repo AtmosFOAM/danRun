@@ -24,9 +24,10 @@ def main():
     plt.loglog(Ra,Nu)
     plt.xlabel(r"Rayleigh number, Ra")
     plt.ylabel(r"Nusselt number, Nu")
+    plt.savefig("NuvsRa.png")
     plt.show()
-    plt.savefig("NuvsRa.pdf")
     plt.close()
+    
     return 0
 
 # run main function
