@@ -96,6 +96,20 @@ Say something about the Kolmogorov microscale; this is only a true(?) DNS up to 
  1e+09      |3.724e-05  |100s       |turbulent  |2.7e+04    |2.4e+04    |52.8       |8.9e-01
  5.6e+09    |1.568e-05  |100s       |turbulent  |6.4e+04    |4.0e+04    |46.2       |6.2e-01
  1e+10      |1.178e-05  |100s       |turbulent  |8.5e+04    |4.6e+04    |40.6       |5.4e-01
+ 
+#### Resolution = 500 * 50 (with ad-hoc wall fn. for extra heat transfer): 
+ Ra         |viscosity  |status     |regime     |Re(guess)  |Re(calc)   |Nu         |max mag(U)
+ -----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------
+ 1e+03      |3.724e-02  |           |diffusive  |0          |           |           |
+ 2e+03      |2.634e-02  |           |diffusive  |0          |           |           |
+ 1e+04      |1.178e-02  |           |steady     |85         |           |           |
+ 1e+05      |3.724e-03  |           |steady     |270        |           |           |
+ 1e+06      |1.178e-03  |           |steady     |850        |           |           |
+ 1e+07      |3.724e-04  |           |turbulent  |2700       |           |           |
+ 1e+08      |1.178e-04  |           |turbulent  |8500       |           |           |
+ 1e+09      |3.724e-05  |           |turbulent  |2.7e+04    |           |           |
+ 5.6e+09    |1.568e-05  |           |turbulent  |6.4e+04    |           |           |
+ 1e+10      |1.178e-05  |           |turbulent  |8.5e+04    |           |           |
 
 ## Note on numerics
 Be mindful of the requirement to keep the diffusion term stable: 

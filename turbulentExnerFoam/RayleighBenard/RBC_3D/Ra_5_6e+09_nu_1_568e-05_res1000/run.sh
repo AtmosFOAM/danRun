@@ -26,7 +26,7 @@ mv 0/theta 0/thetaInit
 mv 0/thetaRandom 0/theta
 postProcess -time 0 -func TfromThetaExner   # writes T from theta, Exner
 
-# set field values near to boudnaries (for ad-hoc wall fucntion)
+# set field values near to boundaries (for ad-hoc wall fucntion)
 setFields
 
 # Plot initial potential temperature

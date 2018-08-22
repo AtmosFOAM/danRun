@@ -26,8 +26,6 @@ ddtSchemes
 {
     default         CrankNicolson 1;
     ddt(rho,U)_CN   1;
-    ddt(rho,epsilon) Euler;
-    ddt(rho,k) Euler;
 }
 
 SIgravityWaves false;
@@ -44,11 +42,11 @@ gradSchemes
 divSchemes
 {
     default none;
-    div(U,theta)   Gauss linear;
-    div(U,u)   Gauss linear;
-    div(phi,U)   Gauss linear;
-    div(phi,theta)   Gauss linear;
-    div(((rho*nuEff)*dev2(T(grad(U))))) Gauss linear;
+    div(U,theta)                            Gauss linear;
+    div(U,u)                                Gauss linear;
+    div(phi,U)                              Gauss linear;
+    div(phi,theta)                          Gauss linear;
+    div(((rho*nuEff)*dev2(T(grad(U)))))     Gauss linear;
 }
 
 laplacianSchemes
@@ -58,7 +56,7 @@ laplacianSchemes
 
 interpolationSchemes
 {
-    default        midPoint;
+    default        linear;
 }
 
 snGradSchemes
