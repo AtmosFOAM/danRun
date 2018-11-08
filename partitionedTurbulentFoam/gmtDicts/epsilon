@@ -1,0 +1,34 @@
+FoamFile
+{
+    version         2.3;
+    format          ascii;
+
+    root            "";
+    case            "";
+    instance        "constant";
+    local           "";
+
+    class           dictionary;
+    object          gmtDict;
+}
+
+// How to plot
+// Compulsory inputs
+projection "X12c/12c";
+projection2D XZ;
+
+FieldsToPlot
+(
+    [epsilon    filledContours 0 0 0 "$GMTU/colours/white_blue_red.cpt"]
+    [epsilon.stable    filledContours 0 0 0 "$GMTU/colours/white_grey.cpt"]
+    [epsilon.buoyant   colouredContours 0 0 0 "$GMTU/colours/white_blue_red.cpt"]
+    [Uf.buoyant vectors 200 1 "red"]
+    [Uf.stable vectors  200 1 "black"]
+    [Uf vectors  500 5 "black"]
+);
+
+separateLegend true;
+region "0/5e3/0/5e3";
+annotate "minMax 500 -400";
+boundaryMarks "500/500";
+plotBoundaryDots false;

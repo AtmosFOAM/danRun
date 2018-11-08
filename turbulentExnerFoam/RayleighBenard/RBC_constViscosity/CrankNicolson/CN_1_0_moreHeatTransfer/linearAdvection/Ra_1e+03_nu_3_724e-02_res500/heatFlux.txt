@@ -1,0 +1,11 @@
+Purely diffusive heat flux 3738.153177
+Time =  60
+
+Traceback (most recent call last):
+  File "calcHeatFlux.py", line 173, in <module>
+    main()
+  File "calcHeatFlux.py", line 75, in main
+    data = np.loadtxt(u_fName)
+  File "/home/daniel/.local/lib/python2.7/site-packages/numpy/lib/npyio.py", line 896, in loadtxt
+    fh = iter(open(fname, 'U'))
+IOError: [Errno 2] No such file or directory: 'U.xyz'
