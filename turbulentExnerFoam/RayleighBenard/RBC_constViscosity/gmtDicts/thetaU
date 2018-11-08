@@ -20,6 +20,8 @@ projection2D XZ;
 FieldsToPlot
 (
     [theta filledContours 269 331 2 "$GMTU/colours/red_white_blue.cpt"]
+//    [theta filledContours 270.0 330.0 2.5 "$HOME/cmaps/CETperceptual_GMT/CET-D4.cpt"]
+    [U vectors 0.05 3 "grey"]
 );
 
 separateLegend true;
