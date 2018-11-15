@@ -31,5 +31,7 @@ wTransfer false;
 thetaTransfer false;
 thetaTransferDiffusivity thetaTransferDiffusivity [0 2 -1 0 0] 0;
 minSigma 1e-9;
+thetatMin 0;
+thetatMax 0;
 
 // ************************************************************************* //
