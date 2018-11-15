@@ -15,16 +15,16 @@ setAnalyticTracerField -name theta -tracerDict theta_tracerFieldDict
 
 # hydrostatically balanced initial conditions
 setExnerBalancedH
+# add Gaussian random noise to theta fields (is it consistent to only do this for this field?)
+postProcess -func randomise -time 0
+mv 0/theta 0/theta_init
+mv 0/thetaRandom 0/theta
 cp 0/theta 0/theta.buoyant
 cp 0/theta 0/theta.stable
 
 # change Exner BC from fixedValue to hydroStaticExner
 sed -i 's/fixedFluxBuoyantExner/partitionedHydrostaticExner/g' 0/Exner
 
-# add Gaussian random noise to theta fields (is it consistent to only do this for this field?)
-#postProcess -func randomise -time 0
-#mv 0/theta 0/thetaInit
-#mv 0/thetaRandom 0/theta
 #postProcess -time 0 -func TfromThetaExner   # writes T from theta, Exner
 
 # Warm bubble only in the buoyant partition
@@ -34,6 +34,7 @@ for var in Uf u; do
     rm -f 0/$var
 done
 rm 0/thetaf
+rm 0/theta
 
 # Plot initial conditions
 time=0

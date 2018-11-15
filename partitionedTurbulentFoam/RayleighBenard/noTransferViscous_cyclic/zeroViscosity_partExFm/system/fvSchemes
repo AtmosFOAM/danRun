@@ -25,19 +25,16 @@ FoamFile
 ddtSchemes
 {
     default         none;
-    ddt(Psi,Exner)  CrankNicolson 1;
+    ddt(Psi,Exner)  CrankNicolson 0;
 
-    volFlux_CN      1;
-    ddt(theta.stable)     CrankNicolson 1;
-    ddt(theta.buoyant)    CrankNicolson 1;
-    ddt(u.stable)         CrankNicolson 1;
-    ddt(u.buoyant)        CrankNicolson 1;
-    
-    ddt(sigma.stable,rho.stable,epsilon.stable) Euler;
-    ddt(sigma.buoyant,rho.buoyant,epsilon.buoyant) Euler;
-    ddt(sigma.stable,rho.stable,k.stable) Euler;
-    ddt(sigma.buoyant,rho.buoyant,k.buoyant) Euler;
+    volFlux_CN      0;
+    ddt(theta.stable)     CrankNicolson 0;
+    ddt(theta.buoyant)    CrankNicolson 0;
+    ddt(u.stable)         CrankNicolson 0;
+    ddt(u.buoyant)        CrankNicolson 0;
 }
+// for partitionedExnerFoamAdv
+offCentre 0;
 
 gradSchemes
 {
@@ -47,19 +44,12 @@ gradSchemes
 divSchemes
 {
     default none;
-    sigmaRho Gauss vanLeer;
-    theta Gauss vanLeer;
-    u Gauss linearUpwind linearUpwind;
-
-    // for partitionedTurbulentFoam
-    div(volFlux.sigmaRhof.stable,epsilon.stable) Gauss upwind;
-    div(volFlux.sigmaRhof.buoyant,epsilon.buoyant) Gauss upwind;
-    div(volFlux.sigmaRhof.stable,k.stable) Gauss upwind;
-    div(volFlux.sigmaRhof.buoyant,k.buoyant) Gauss upwind;
+    sigmaRho        Gauss vanLeer;
+    theta           Gauss vanLeer;
+    u               Gauss linearUpwind linearUpwind;
 
     div((((sigma.stable*rho.stable)*nuEff.stable)*dev2(T(grad(u.stable))))) Gauss linear;
     div((((sigma.buoyant*rho.buoyant)*nuEff.buoyant)*dev2(T(grad(u.buoyant))))) Gauss linear;
-    
 }
 
 laplacianSchemes

@@ -1,3 +1,4 @@
+
 /*--------------------------------*- C++ -*----------------------------------*\
 | =========                 |                                                 |
 | \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
@@ -9,35 +10,16 @@ FoamFile
 {
     version     2.0;
     format      ascii;
-    class       volScalarField;
-    location    "0";
-    object      buoyant.sigma;
+    class       dictionary;
+    location    "system";
+    object      theta_tracerFieldDict;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [0 0 0 0 0 0 0];
 
-internalField   uniform 0.5;
+type        polynomial;
+a_const     330;
+a_z         -60;
+polyMin     260;
+polyMax     340;
 
-boundaryField
-{
-    ground
-    {
-        type            zeroGradient;
-    }
-    top
-    {
-        type            zeroGradient;
-    }
-    left
-    {
-        type            cyclic;
-    }
-    right
-    {
-        type            cyclic;
-    }
-}
-
-
-// ************************************************************************* //

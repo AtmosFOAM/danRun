@@ -22,14 +22,7 @@ FoamFile
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-cloudRadiusMax     cloudRadiusMax [0 1 0 0 0] 1;
-cloudRadiusMin     cloudRadiusMin [0 1 0 0 0] 1;
-dragCoeff       0;
-Ksigma Ksigma [0 2 -1 0 0] 0;
-divTransfer false;
-wTransfer false;
-thetaTransfer false;
-thetaTransferDiffusivity thetaTransferDiffusivity [0 2 -1 0 0] 0;
-minSigma 0;
+g               g [0 1 -2 0 0 0 0] (0 0 -9.81);
+Omega           Omega [0 0 -1 0 0 0 0] (0 0 0);
 
 // ************************************************************************* //
