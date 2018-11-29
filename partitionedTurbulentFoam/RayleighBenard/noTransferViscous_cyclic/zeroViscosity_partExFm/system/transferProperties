@@ -17,7 +17,7 @@ FoamFile
     local           "";
 
     class           dictionary;
-    object          environmentalProperties;
+    object          transferProperties;
 }
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
@@ -26,10 +26,16 @@ cloudRadiusMax     cloudRadiusMax [0 1 0 0 0] 1;
 cloudRadiusMin     cloudRadiusMin [0 1 0 0 0] 1;
 dragCoeff       0;
 Ksigma Ksigma [0 2 -1 0 0] 0;
-divTransfer false;
+minSigma  1e-9;
+// Transfer between partitions based on horizontal divergence
 wTransfer false;
+divTransfer false;
+// Transfer between partitions based on laplacian(theta)
 thetaTransfer false;
-thetaTransferDiffusivity thetaTransferDiffusivity [0 2 -1 0 0] 0;
-minSigma 1e-9;
+thetaTransferDiffusivity thetaTransferDiffusivity  [0 2 -1 0 0] 0;
+
+// Temperature perturbation for the transferred fluid
+thetatMin 0.5; //0;
+thetatMax 0.5; //10;
 
 // ************************************************************************* //
