@@ -78,7 +78,7 @@ boundary
         neighbourPatch left;
         faces
         (
-            (2 6 5 1)
+            (1 2 6 5)
         );
     }
     front

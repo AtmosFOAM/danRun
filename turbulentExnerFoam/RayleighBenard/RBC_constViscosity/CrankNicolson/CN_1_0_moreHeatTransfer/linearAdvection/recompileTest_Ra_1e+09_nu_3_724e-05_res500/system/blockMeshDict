@@ -91,10 +91,9 @@ boundary
         type cyclic;
         neighbourPatch left;
         faces
-        (
-            (2 6 5 1)
-            (2 6 14 15)
+            (1 2 6 5)
             (5 1 11 10)
+            (2 6 14 15)
         );
     }
     frontAndBack
