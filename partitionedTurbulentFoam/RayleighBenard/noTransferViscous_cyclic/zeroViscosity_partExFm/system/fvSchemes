@@ -24,17 +24,10 @@ FoamFile
 
 ddtSchemes
 {
-    default         none;
-    ddt(Psi,Exner)  CrankNicolson 0;
-
-    volFlux_CN      0;
-    ddt(theta.stable)     CrankNicolson 0;
-    ddt(theta.buoyant)    CrankNicolson 0;
-    ddt(u.stable)         CrankNicolson 0;
-    ddt(u.buoyant)        CrankNicolson 0;
+    default         Euler;
 }
 // for partitionedExnerFoamAdv
-offCentre 0;
+offCentre 0.5;
 
 gradSchemes
 {
