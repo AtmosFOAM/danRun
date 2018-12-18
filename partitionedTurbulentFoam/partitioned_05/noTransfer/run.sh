@@ -20,15 +20,15 @@ cp 0/theta 0/theta_init
 makeHotBubble
 
 # Warm bubble only in the buoyant partition
-mv 0/theta 0/buoyant.theta
-cp init_0/theta 0/stable.theta
-mv 0/Uf 0/stable.Uf
-cp 0/stable.Uf 0/buoyant.Uf
+mv 0/theta 0/theta.buoyant
+cp init_0/theta 0/theta.stable
+mv 0/Uf 0/Uf.buoyant
+cp 0/Uf.buoyant 0/Uf.stable
 rm 0/thetaf
 
 # create initial sigma field
 setFields
-sumFields 0 stable.sigma init_0 stable.sigma 0 buoyant.sigma -scale1 -1
+sumFields 0 sigma.stable init_0 sigma.stable 0 sigma.buoyant -scale1 -1
 
 # Plot initial conditions
 time=0
