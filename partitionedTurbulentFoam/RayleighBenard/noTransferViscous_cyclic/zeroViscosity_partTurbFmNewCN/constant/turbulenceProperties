@@ -9,42 +9,19 @@ FoamFile
 {
     version     2.0;
     format      ascii;
-    class       surfaceScalarField;
+    class       dictionary;
     location    "constant";
-    object      thetaStat;
+    object      turbulenceProperties;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [0 0 0 1 0 0 0];
+simulationType  laminar;
 
-// all values are placeholders that are overwritten by setTheta
-// _init files are used to establish the type of boundary conditions
-
-internalField   uniform 300;
-
-boundaryField
+/*
+laminar
 {
-    ground
-    {
-        type            fixedValue;
-        value           uniform 300;
-    }
-    top
-    {
-        type            fixedValue;
-        value           uniform 300;
-    }
-    left
-    {
-        type            cyclic;
-        value           uniform 300;
-    }
-    right
-    {
-        type            cyclic;
-        value           uniform 300;
-    }
+    laminarModel Stokes;
 }
-
+*/
 
 // ************************************************************************* //
