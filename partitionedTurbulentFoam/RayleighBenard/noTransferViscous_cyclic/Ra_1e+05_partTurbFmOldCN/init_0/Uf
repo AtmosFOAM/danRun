@@ -9,56 +9,37 @@ FoamFile
 {
     version     2.0;
     format      ascii;
-    class       dictionary;
-    object      fvSolution;
+    class       surfaceVectorField;
+    object      Uf;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-solvers
-{
-    "(rho.sigma.stable|rho.sigma.buoyant)"
-    {
-        solver PCG;
-        preconditioner   DIC;
-        tolerance        0;
-        relTol           0;
-    }
-    Exner
-    {
-        solver PCG;
-        preconditioner DIC;
-        tolerance        1e-6;
-        relTol           0.1;
-    }
+dimensions      [0 1 -1 0 0 0 0];
 
-    ExnerFinal
-    {
-        $Exner;
-        tolerance        1e-6;
-        relTol           0;
-    }
-    
-    "(k.stable|k.buoyant|epsilon.stable|epsilon.buoyant|theta.stable|theta.buoyant|u.stable|u.buoyant)"
-    {
-        solver          PBiCGStab;
-        preconditioner  DILU;
-        tolerance       1e-6;
-        relTol           0;
-    }
-}
+internalField   uniform (0 0 0);
 
-iterations
+boundaryField
 {
-    nOuterCorrectors 10;
-    nCorrectors      2;
-    nNonOrthogonalCorrectors 0;
-}
-
-initialisation
-{
-    maxIters 50;
-    BCiters  3;
-    BCtol    1e-6;
+    ground
+    {
+        type            calculated;
+        value           uniform (0 0 0);
+    }
+    top
+    {
+        type            calculated;
+        value           uniform (0 0 0);
+    }
+    left
+    {
+        type            cyclic;
+        value           uniform (0 0 0);
+    }
+    right
+    {
+        type            cyclic;
+        value           uniform (0 0 0);
+    }
 }
 
 // ************************************************************************* //

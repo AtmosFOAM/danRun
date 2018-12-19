@@ -17,7 +17,7 @@ setAnalyticTracerField -name theta -tracerDict theta_tracerFieldDict
 setExnerBalancedH
 # add Gaussian random noise to theta fields (is it consistent to only do this for this field?)
 postProcess -func randomise -time 0
-mv 0/theta 0/thetaInit
+mv 0/theta 0/theta_init
 mv 0/thetaRandom 0/theta
 cp 0/theta 0/theta.buoyant
 cp 0/theta 0/theta.stable
@@ -37,12 +37,12 @@ rm 0/thetaf
 rm 0/theta
 
 # Plot initial conditions
-time=0
-gmtFoam sigmaTheta -time $time
-evince $time/sigmaTheta.pdf &
+#time=0
+#gmtFoam sigmaTheta -time $time
+#evince $time/sigmaTheta.pdf &
 
 # Solve Euler equations
-partitionedTurbulentFoam >& log & sleep 0.01; tail -f log
+partitionedTurbulentFoamAdv_oldCN >& log & sleep 0.01; tail -f log
 
 # calculate heat flux over last 10 secs of simulation
 postProcess -func "grad(theta)" -time "60:"
