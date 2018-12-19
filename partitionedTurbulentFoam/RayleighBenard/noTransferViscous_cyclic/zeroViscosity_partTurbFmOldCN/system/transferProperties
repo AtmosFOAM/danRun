@@ -34,7 +34,7 @@ divTransfer false;
 thetaTransfer false;
 thetaTransferDiffusivity thetaTransferDiffusivity  [0 2 -1 0 0] 0;
 // Temperature perturbation for the transferred fluid
-thetatMin 0.5; //0;
-thetatMax 0.5; //10;
+thetatMin 0;
+thetatMax 0;
 
 // ************************************************************************* //

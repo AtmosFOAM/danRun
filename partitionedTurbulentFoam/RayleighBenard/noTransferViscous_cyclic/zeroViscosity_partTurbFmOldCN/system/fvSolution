@@ -34,7 +34,6 @@ solvers
     ExnerFinal
     {
         $Exner;
-        tolerance        1e-6;
         relTol           0;
     }
     

@@ -42,7 +42,7 @@ rm 0/theta
 #evince $time/sigmaTheta.pdf &
 
 # Solve Euler equations
-partitionedTurbulentFoamAdv >& log & sleep 0.01; tail -f log
+partitionedTurbulentFoamAdv_oldCN >& log & sleep 0.01; tail -f log
 
 # calculate heat flux over last 10 secs of simulation
 postProcess -func "grad(theta)" -time "60:"
