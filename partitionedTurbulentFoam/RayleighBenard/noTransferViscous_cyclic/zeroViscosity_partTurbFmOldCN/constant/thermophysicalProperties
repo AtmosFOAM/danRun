@@ -39,7 +39,7 @@ mixture//  air 1 28.9 1000 0 1.8e-05 0.7;
     }
     transport
     {
-        mu              0;
+        mu              1;
         Pr              0.707;
     }
 }

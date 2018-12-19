@@ -37,12 +37,12 @@ rm 0/thetaf
 rm 0/theta
 
 # Plot initial conditions
-time=0
-gmtFoam sigmaTheta -time $time
-evince $time/sigmaTheta.pdf &
+#time=0
+#gmtFoam sigmaTheta -time $time
+#evince $time/sigmaTheta.pdf &
 
 # Solve Euler equations
-partitionedExnerFoamAdv >& log & sleep 0.01; tail -f log
+partitionedTurbulentFoamAdv >& log & sleep 0.01; tail -f log
 
 # calculate heat flux over last 10 secs of simulation
 postProcess -func "grad(theta)" -time "60:"
