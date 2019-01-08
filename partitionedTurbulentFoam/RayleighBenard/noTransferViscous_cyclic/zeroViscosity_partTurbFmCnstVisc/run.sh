@@ -19,15 +19,11 @@ setExnerBalancedH
 postProcess -func randomise -time 0
 mv 0/theta 0/theta_init
 mv 0/thetaRandom 0/theta
+# set theta close to boundaries (writes to 0/theta) (for ad-hoc wall function)
+setFields
+# Copy into both partitions
 cp 0/theta 0/theta.buoyant
 cp 0/theta 0/theta.stable
-
-# change Exner BC from fixedValue to hydroStaticExner
-sed -i 's/fixedFluxBuoyantExner/partitionedHydrostaticExner/g' 0/Exner
-
-#postProcess -time 0 -func TfromThetaExner   # writes T from theta, Exner
-
-# Warm bubble only in the buoyant partition
 for var in Uf u; do
     cp init_0/$var 0/$var.buoyant
     cp init_0/$var 0/$var.stable
@@ -36,10 +32,15 @@ done
 rm 0/thetaf
 rm 0/theta
 
+# change Exner BC from fixedValue to hydroStaticExner
+sed -i 's/fixedFluxBuoyantExner/partitionedHydrostaticExner/g' 0/Exner
+
+#postProcess -time 0 -func TfromThetaExner   # writes T from theta, Exner
+
 # Plot initial conditions
-time=0
-gmtFoam sigmaTheta -time $time
-evince $time/sigmaTheta.pdf &
+#time=0
+#gmtFoam sigmaTheta -time $time
+#evince $time/sigmaTheta.pdf &
 
 # Solve Euler equations
 partitionedTurbulentFoam >& log & sleep 0.01; tail -f log
