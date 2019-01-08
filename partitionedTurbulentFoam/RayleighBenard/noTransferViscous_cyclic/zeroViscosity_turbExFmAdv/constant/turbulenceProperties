@@ -9,35 +9,55 @@ FoamFile
 {
     version     2.0;
     format      ascii;
-    class       volScalarField;
+    class       dictionary;
     location    "constant";
-    object      theta;
+    object      turbulenceProperties;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [0 0 0 1 0 0 0];
+simulationType      laminar;
 
-internalField   uniform 300;
-
-boundaryField
+LES
 {
-    ground
+    LESModel        Smagorinsky;
+
+    turbulence      on;
+
+    printCoeffs     on;
+
+    delta           cubeRootVol;
+
+    cubeRootVolCoeffs
     {
-        type            fixedUniformInternalValue;
-        value           uniform 330;
+        deltaCoeff      1;
     }
-    top
+
+    PrandtlCoeffs
     {
-        type            fixedUniformInternalValue;
-        value           uniform 270;
+        delta           cubeRootVol;
+        cubeRootVolCoeffs
+        {
+            deltaCoeff      1;
+        }
+
+        smoothCoeffs
+        {
+            delta           cubeRootVol;
+            cubeRootVolCoeffs
+            {
+                deltaCoeff      1;
+            }
+
+            maxDeltaRatio   1.1;
+        }
+
+        Cdelta          0.158;
     }
-    left
+
+    SmagorinskyCoeffs   // default Ck = 0.094, Ce = 1.048
     {
-        type            cyclic;
-    }
-    right
-    {
-        type            cyclic;
+        Ck                  0.094;
+        Ce                  1.048;
     }
 }
 

@@ -16,10 +16,10 @@ FoamFile
 
 solvers
 {
-    "(rho.sigma.stable|rho.sigma.buoyant)"
+    rho
     {
         solver PCG;
-        preconditioner   DIC;
+        preconditioner   DILU;
         tolerance        0;
         relTol           0;
     }
@@ -31,14 +31,23 @@ solvers
         tolerance        1e-6;
         relTol           0.1;
     }
+    
+    U
+    {
+        solver          PBiCGStab;
+        preconditioner  DILU;
+        tolerance       1e-6;
+        relTol          0.1;
+}
 
     ExnerFinal
     {
         $Exner;
+        tolerance        1e-6;
         relTol           0;
     }
     
-    "(k.stable|k.buoyant|epsilon.stable|epsilon.buoyant|theta.stable|theta.buoyant|u.stable|u.buoyant)"
+    theta
     {
         solver           PBiCGStab;
         preconditioner   DILU;

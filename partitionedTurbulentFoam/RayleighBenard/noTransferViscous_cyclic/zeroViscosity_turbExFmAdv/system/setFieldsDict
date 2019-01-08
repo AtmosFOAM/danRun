@@ -9,37 +9,31 @@ FoamFile
 {
     version     2.0;
     format      ascii;
-    class       volScalarField;
-    location    "constant";
-    object      theta;
+    class       dictionary;
+    object      setFieldsDict;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [0 0 0 1 0 0 0];
+regions
+(
+    // Set cell values near boundaries
+    boxToCell
+    {
+        box (0 0 -0.02) (10 1 0);
+        fieldValues
+        (
+            volScalarFieldValue theta 330
+        );
+    }
 
-internalField   uniform 300;
-
-boundaryField
-{
-    ground
+    boxToCell
     {
-        type            fixedUniformInternalValue;
-        value           uniform 330;
+        box (0 0 1) (10 1 1.02);
+        fieldValues
+        (
+            volScalarFieldValue theta 270
+        );
     }
-    top
-    {
-        type            fixedUniformInternalValue;
-        value           uniform 270;
-    }
-    left
-    {
-        type            cyclic;
-    }
-    right
-    {
-        type            cyclic;
-    }
-}
-
+);
 
 // ************************************************************************* //

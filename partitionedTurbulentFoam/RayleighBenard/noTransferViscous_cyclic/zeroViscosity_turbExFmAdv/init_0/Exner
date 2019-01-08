@@ -11,25 +11,26 @@ FoamFile
     format      ascii;
     class       volScalarField;
     location    "constant";
-    object      theta;
+    object      Exner;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [0 0 0 1 0 0 0];
+dimensions      [0 0 0 0 0 0 0];
 
-internalField   uniform 300;
+internalField   uniform 1;
 
 boundaryField
 {
     ground
     {
-        type            fixedUniformInternalValue;
-        value           uniform 330;
+        type            fixedFluxBuoyantExner;
+        gradient        uniform 0;
+        value           uniform 1;
     }
     top
     {
-        type            fixedUniformInternalValue;
-        value           uniform 270;
+        type            fixedValue;
+        value           uniform 0.999967;
     }
     left
     {
