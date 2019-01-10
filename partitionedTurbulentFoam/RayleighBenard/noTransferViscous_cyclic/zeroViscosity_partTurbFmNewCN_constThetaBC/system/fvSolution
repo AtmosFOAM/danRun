@@ -28,13 +28,8 @@ solvers
     {
         solver PCG;
         preconditioner DIC;
-<<<<<<< HEAD
-        tolerance        1e-9;
-        relTol           0.001;
-=======
-        tolerance        1e-8;
-        relTol           0.01;
->>>>>>> 6b4a9f6553a711f77e6e0b8f8250a3de7e4d0750
+        tolerance        1e-6;
+        relTol           0.1;
     }
 
     ExnerFinal
@@ -47,14 +42,14 @@ solvers
     {
         solver           PBiCGStab;
         preconditioner   DILU;
-        tolerance        1e-8;
+        tolerance        1e-6;
         relTol           0;
     }
 }
 
 iterations
 {
-    nOuterCorrectors 4;
+    nOuterCorrectors 2;
     nCorrectors      2;
     nNonOrthogonalCorrectors 0;
 }
@@ -63,7 +58,7 @@ initialisation
 {
     maxIters 50;
     BCiters  3;
-    BCtol    1e-8;
+    BCtol    1e-6;
 }
 
 // ************************************************************************* //

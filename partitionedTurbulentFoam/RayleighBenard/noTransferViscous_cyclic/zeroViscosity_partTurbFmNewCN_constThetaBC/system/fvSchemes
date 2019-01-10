@@ -1,0 +1,94 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  1.4                                   |
+|   \\  /    A nd           | Web:      http://www.openfoam.org               |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+
+FoamFile
+{
+    version         2.0;
+    format          ascii;
+
+    root            "";
+    case            "";
+    instance        "";
+    local           "";
+
+    class           dictionary;
+    object          fvSchemes;
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+ddtSchemes
+{
+    default         none;
+    ddt(Psi,Exner)  CrankNicolson 1;
+
+    volFlux_CN      1;
+    ddt(theta.stable)     CrankNicolson 1;
+    ddt(theta.buoyant)    CrankNicolson 1;
+    ddt(u.stable)         CrankNicolson 1;
+    ddt(u.buoyant)        CrankNicolson 1;
+}
+
+gradSchemes
+{
+    default                   Gauss linear;
+}
+
+divSchemes
+{
+    default none;
+    sigmaRho        Gauss vanLeer;
+    theta           Gauss vanLeer;
+    u               Gauss linearUpwind linearUpwind;
+
+    div((((sigma.stable*rho.stable)*nuEff.stable)*dev2(T(grad(u.stable))))) Gauss linear;
+    div((((sigma.buoyant*rho.buoyant)*nuEff.buoyant)*dev2(T(grad(u.buoyant))))) Gauss linear;
+}
+
+laplacianSchemes
+{
+    default         Gauss linear uncorrected;
+}
+
+interpolationSchemes
+{
+    default        linear;
+    // For initialisation
+    interpolate(theta) linear;
+    
+    // for partitionedExnerFoamAdv
+    convection      linear;
+    Uf              linear;
+    rho             linear;
+    sigma           linear;
+    sigmaRho        linear;
+    theta           linear;
+    massTransfer    linear;
+    
+    // for partitionedTurbulentFoam
+    interpolate(rho.stable)    linear;
+    interpolate(rho.buoyant)   linear;
+    interpolate(theta.stable)  linear;
+    interpolate(theta.buoyant) linear;
+    interpolate(u.stable)      linear;
+    interpolate(u.buoyant)     linear;
+}
+
+snGradSchemes
+{
+    default         uncorrected;
+}
+
+fluxRequired
+{
+    default         no;
+    Exner;
+}
+
+
+// ************************************************************************* //
