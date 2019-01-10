@@ -28,8 +28,8 @@ solvers
     {
         solver PCG;
         preconditioner DIC;
-        tolerance        1e-6;
-        relTol           0.1;
+        tolerance        1e-9;
+        relTol           0.001;
     }
 
     ExnerFinal
@@ -49,7 +49,7 @@ solvers
 
 iterations
 {
-    nOuterCorrectors 2;
+    nOuterCorrectors 4;
     nCorrectors      2;
     nNonOrthogonalCorrectors 0;
 }
