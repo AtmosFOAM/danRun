@@ -42,10 +42,10 @@ gradSchemes
 divSchemes
 {
     default none;
-    div(U,theta)                            Gauss linear;
-    div(U,u)                                Gauss linear;
-    div(volFlux,U)                          Gauss linear;
-    div(volFlux,theta)                      Gauss linear;
+    div(U,theta)                            Gauss vanLeer;
+    div(U,u)                                Gauss linearUpwind linearUpwind;
+    div(volFlux,U)                          Gauss linearUpwind linearUpwind;
+    div(volFlux,theta)                      Gauss vanLeer;
     div(((rho*nuEff)*dev2(T(grad(U)))))     Gauss linear;
 }
 
