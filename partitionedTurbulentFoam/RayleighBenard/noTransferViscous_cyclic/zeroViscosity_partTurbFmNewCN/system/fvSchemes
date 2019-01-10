@@ -25,7 +25,7 @@ FoamFile
 ddtSchemes
 {
     default         none;
-    ddt(Psi,Exner)  CrankNicolson 1;
+    ddt(Psi.sum,Exner)  CrankNicolson 1;
 
     volFlux_CN      1;
     ddt(theta.stable)     CrankNicolson 1;

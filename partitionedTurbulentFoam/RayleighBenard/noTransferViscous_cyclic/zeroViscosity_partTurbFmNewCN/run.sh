@@ -11,7 +11,7 @@ rm -rf [0-9]* core
 mkdir 0
 cp -r init_0/* 0
 # set linear theta profile in both partitions
-setAnalyticTracerField -name theta -tracerDict theta_tracerFieldDict
+#setAnalyticTracerField -name theta -tracerDict theta_tracerFieldDict
 
 # hydrostatically balanced initial conditions
 setExnerBalancedH

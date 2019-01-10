@@ -28,8 +28,13 @@ solvers
     {
         solver PCG;
         preconditioner DIC;
+<<<<<<< HEAD
+        tolerance        1e-9;
+        relTol           0.001;
+=======
         tolerance        1e-8;
         relTol           0.01;
+>>>>>>> 6b4a9f6553a711f77e6e0b8f8250a3de7e4d0750
     }
 
     ExnerFinal
