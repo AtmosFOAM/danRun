@@ -19,7 +19,7 @@ regions
     // Set cell values near boundaries
     boxToCell
     {
-        box (0 0 -0.02) (10 1 0);
+        box (0 0 -1) (10 1 0);
         fieldValues
         (
             volScalarFieldValue theta 330
@@ -28,7 +28,7 @@ regions
 
     boxToCell
     {
-        box (0 0 1) (10 1 1.02);
+        box (0 0 1) (10 1 2);
         fieldValues
         (
             volScalarFieldValue theta 270

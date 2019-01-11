@@ -6,34 +6,33 @@ rm -rf [0-9]* constant/polyMesh core log
 # create mesh
 blockMesh
 
-# hydrostatically balanced initial conditions
+# Initial conditions
 rm -rf [0-9]* core
 mkdir 0
 cp -r init_0/* 0
 # set linear theta profile in both partitions
 #setAnalyticTracerField -name theta -tracerDict theta_tracerFieldDict
 
-# hydrostatically balanced initial conditions
-setExnerBalancedH
 # add Gaussian random noise to theta fields (is it consistent to only do this for this field?)
 postProcess -func randomise -time 0
 mv 0/theta 0/theta_init
 mv 0/thetaRandom 0/theta
 # set theta close to boundaries (writes to 0/theta) (for ad-hoc wall function)
 setFields
+
+# hydrostatically balanced initial conditions
+setExnerBalancedH
+# change Exner BC from fixedValue to hydroStaticExner
+sed -i 's/fixedFluxBuoyantExner/partitionedHydrostaticExner/g' 0/Exner
+
 # Copy into both partitions
 cp 0/theta 0/theta.buoyant
 cp 0/theta 0/theta.stable
 for var in Uf u; do
     cp init_0/$var 0/$var.buoyant
     cp init_0/$var 0/$var.stable
-    rm -f 0/$var
 done
-rm 0/thetaf
 rm 0/theta
-
-# change Exner BC from fixedValue to hydroStaticExner
-sed -i 's/fixedFluxBuoyantExner/partitionedHydrostaticExner/g' 0/Exner
 
 #postProcess -time 0 -func TfromThetaExner   # writes T from theta, Exner
 
