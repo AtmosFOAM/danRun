@@ -34,8 +34,6 @@ for var in Uf u; do
 done
 rm 0/theta
 
-#postProcess -time 0 -func TfromThetaExner   # writes T from theta, Exner
-
 # Plot initial conditions
 #time=0
 #gmtFoam sigmaTheta -time $time
@@ -58,31 +56,31 @@ gmtPlot ../../plots/plotCo.gmt
 gmtPlot ../../plots/plotEnergy.gmt
 
 # Differences between partitions
-time=200
-for var in theta k epsilon Uf; do
+time=100
+for var in theta Uf; do
     sumFields $time $var.diff $time $var.stable $time $var.buoyant -scale1 -1
 done
-for var in theta k epsilon; do
+for var in theta ; do
     gmtFoam -time $time ${var}Diff
-    gv $time/${var}Diff.pdf &
+    evince $time/${var}Diff.pdf &
 done
 
 # More diagnostics
-for var in k epsilon sigmaTheta; do
+for var in sigmaTheta; do
     gmtFoam -time $time ${var}Zoom
-    gv $time/${var}Zoom.pdf &
+    evince $time/${var}Zoom.pdf &
 done
 
 # Plot theta and sigma
-for time in 100 1000; do
+for time in {0..100..2}; do
     gmtFoam sigmaTheta -time $time
-    gv $time/sigmaTheta.pdf &
+    evince $time/sigmaTheta.pdf &
 done
 
 # animate the results
 for field in sigmaTheta; do
     gmtFoam $field
-    eps2gif $field.gif 0/$field.pdf ???/$field.pdf ????/$field.pdf
+    eps2gif $field.gif ?/$field.pdf ??/$field.pdf ???/$field.pdf
 done
 
 # Make links for animategraphics

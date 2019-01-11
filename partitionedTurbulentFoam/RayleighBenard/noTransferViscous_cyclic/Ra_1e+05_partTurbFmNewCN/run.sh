@@ -6,36 +6,33 @@ rm -rf [0-9]* constant/polyMesh core log
 # create mesh
 blockMesh
 
-# hydrostatically balanced initial conditions
+# Initial conditions
 rm -rf [0-9]* core
 mkdir 0
 cp -r init_0/* 0
 # set linear theta profile in both partitions
-setAnalyticTracerField -name theta -tracerDict theta_tracerFieldDict
+#setAnalyticTracerField -name theta -tracerDict theta_tracerFieldDict
 
-# hydrostatically balanced initial conditions
-setExnerBalancedH
 # add Gaussian random noise to theta fields (is it consistent to only do this for this field?)
 postProcess -func randomise -time 0
 mv 0/theta 0/theta_init
 mv 0/thetaRandom 0/theta
 # set theta close to boundaries (writes to 0/theta) (for ad-hoc wall function)
 setFields
+
+# hydrostatically balanced initial conditions
+setExnerBalancedH
+# change Exner BC from fixedValue to hydroStaticExner
+sed -i 's/fixedFluxBuoyantExner/partitionedHydrostaticExner/g' 0/Exner
+
 # Copy into both partitions
 cp 0/theta 0/theta.buoyant
 cp 0/theta 0/theta.stable
 for var in Uf u; do
     cp init_0/$var 0/$var.buoyant
     cp init_0/$var 0/$var.stable
-    rm -f 0/$var
 done
-rm 0/thetaf
 rm 0/theta
-
-# change Exner BC from fixedValue to hydroStaticExner
-sed -i 's/fixedFluxBuoyantExner/partitionedHydrostaticExner/g' 0/Exner
-
-#postProcess -time 0 -func TfromThetaExner   # writes T from theta, Exner
 
 # Plot initial conditions
 #time=0
@@ -59,31 +56,31 @@ gmtPlot ../../plots/plotCo.gmt
 gmtPlot ../../plots/plotEnergy.gmt
 
 # Differences between partitions
-time=200
-for var in theta k epsilon Uf; do
+time=100
+for var in theta Uf; do
     sumFields $time $var.diff $time $var.stable $time $var.buoyant -scale1 -1
 done
-for var in theta k epsilon; do
+for var in theta ; do
     gmtFoam -time $time ${var}Diff
-    gv $time/${var}Diff.pdf &
+    evince $time/${var}Diff.pdf &
 done
 
 # More diagnostics
-for var in k epsilon sigmaTheta; do
+for var in sigmaTheta; do
     gmtFoam -time $time ${var}Zoom
-    gv $time/${var}Zoom.pdf &
+    evince $time/${var}Zoom.pdf &
 done
 
 # Plot theta and sigma
-for time in 100 1000; do
+for time in {0..100..2}; do
     gmtFoam sigmaTheta -time $time
-    gv $time/sigmaTheta.pdf &
+    evince $time/sigmaTheta.pdf &
 done
 
 # animate the results
 for field in sigmaTheta; do
     gmtFoam $field
-    eps2gif $field.gif 0/$field.pdf ???/$field.pdf ????/$field.pdf
+    eps2gif $field.gif ?/$field.pdf ??/$field.pdf ???/$field.pdf
 done
 
 # Make links for animategraphics

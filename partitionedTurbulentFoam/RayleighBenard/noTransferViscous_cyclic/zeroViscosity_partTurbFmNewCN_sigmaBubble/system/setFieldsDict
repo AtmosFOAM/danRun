@@ -1,0 +1,58 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  dev                                   |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      setFieldsDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+defaultFieldValues
+(
+    volScalarFieldValue sigma.buoyant 0.1
+);
+
+regions
+(
+    // Set theta values in cells near boundaries
+    boxToCell
+    {
+        box (0 0 -1) (10 1 0);
+        fieldValues
+        (
+            volScalarFieldValue theta 330
+        );
+    }
+
+    boxToCell
+    {
+        box (0 0 1) (10 1 2);
+        fieldValues
+        (
+            volScalarFieldValue theta 270
+        );
+    }
+    
+    // bubble of nonzero sigma
+    // Set cell values
+    // (does zerogradient on boundaries)
+    sphereToCell
+    {
+        centre (5 0 0.5);
+        radius 0.25;
+
+        fieldValues
+        (
+            volScalarFieldValue sigma.buoyant 0.9
+        );
+    }
+);
+
+// ************************************************************************* //

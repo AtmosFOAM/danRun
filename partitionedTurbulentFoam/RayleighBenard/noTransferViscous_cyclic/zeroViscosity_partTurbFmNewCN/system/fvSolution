@@ -42,7 +42,7 @@ solvers
     {
         solver           PBiCGStab;
         preconditioner   DILU;
-        tolerance        1e-8;
+        tolerance        1e-6;
         relTol           0;
     }
 }
@@ -58,7 +58,7 @@ initialisation
 {
     maxIters 50;
     BCiters  3;
-    BCtol    1e-8;
+    BCtol    1e-6;
 }
 
 // ************************************************************************* //
