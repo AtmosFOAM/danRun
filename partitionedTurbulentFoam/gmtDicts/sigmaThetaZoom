@@ -14,7 +14,7 @@ FoamFile
 
 // How to plot
 // Compulsory inputs
-projection "X6c/6c";
+projection "X27c/9c";
 projection2D XZ;
 
 FieldsToPlot
@@ -27,7 +27,7 @@ FieldsToPlot
 );
 
 separateLegend true;
-region "-2500/2500/0/5e3";
+//region "-2500/2500/0/5e3";
 //annotate "minMax -4.7e3 400";
-boundaryMarks "2500/2500";
+boundaryMarks "1/0.5";
 plotBoundaryDots false;
