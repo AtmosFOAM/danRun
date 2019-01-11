@@ -15,19 +15,17 @@ cp -r init_0/* 0
 # set linear theta profile
 #setAnalyticTracerField -name theta -tracerDict theta_tracerFieldDict
 
-# hydrostatically balanced initial conditions (ExnerFoam)
-setExnerBalanced    # also writes p
-# change Exner BC from fixedValue to fixedFluxBuoyantExner
-sed -i 's/fixedValue;/fixedFluxBuoyantExner; gradient uniform 0;/g' 0/Exner
-
 # add Gaussian random noise to theta field (is it consistent to only do this for this field?)
 postProcess -func randomise -time 0
 mv 0/theta 0/thetaInit
 mv 0/thetaRandom 0/theta
-postProcess -time 0 -func TfromThetaExner   # writes T from theta, Exner
-
 # set fields close to boundaries (for ad-hoc wall function)
 setFields
+
+# hydrostatically balanced initial conditions
+setExnerBalanced
+# change Exner BC from fixedValue to fixedFluxBuoyantExner
+sed -i 's/fixedValue;/fixedFluxBuoyantExner; gradient uniform 0;/g' 0/Exner
 
 # Plot initial potential temperature
 #gmtFoam theta
