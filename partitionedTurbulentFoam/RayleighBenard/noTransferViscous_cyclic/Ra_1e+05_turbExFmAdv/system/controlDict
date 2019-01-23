@@ -22,10 +22,10 @@ FoamFile
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-application     partitionedTurbulentFoam_newCN;
+application     turbulentExnerFoamAdvective;
 
-//startFrom       startTime;
-startFrom       latestTime;
+startFrom       startTime;
+//startFrom       latestTime;
 
 startTime       0;
 

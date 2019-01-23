@@ -24,8 +24,8 @@ FoamFile
 
 application     partitionedTurbulentFoam_newCN;
 
-//startFrom       startTime;
-startFrom       latestTime;
+startFrom       startTime;
+//startFrom       latestTime;
 
 startTime       0;
 
@@ -74,7 +74,6 @@ maxCo          0.5;
 libs
 (
     "libExnerTheta.so"
-    "libfiniteVolumeAtmos.so"
     "libfiniteVolumeAtmosFOAMtools.so"
     "libcompressibleTurbulenceModels.so"
     "libatmosphericModels.so"
