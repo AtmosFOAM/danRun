@@ -9,7 +9,7 @@ blockMesh
 # Initial conditions
 rm -rf [0-9]* core
 mkdir 0
-cp -r init_0/* 0
+cp -L init_0/* 0
 # set linear theta profile in both partitions
 setAnalyticTracerField -name b -tracerDict b_tracerFieldDict
 
@@ -31,7 +31,7 @@ for var in Uf u; do
     cp init_0/$var 0/$var.stable
 done
 
-# Solve partitioned Navier-Stokes equations
+# Solve partitioned Boussinesq equations
 multiFluidBoussinesqFoam >& log & sleep 0.01; tail -f log
 
 # calculate heat flux over last 10 secs of simulation

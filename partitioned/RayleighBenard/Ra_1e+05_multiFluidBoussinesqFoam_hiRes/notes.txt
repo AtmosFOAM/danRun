@@ -1,0 +1,18 @@
+I'm still having problems with mutliFluidBoussinesqFoam. There are two problems which I think are unrelated. First, using the following test case
+
+danRun/partitioned/RayleighBenard/Ra_1e+05_multiFluidBoussinesqFoam_hiRes
+
+the boundary conditions on the velocity change from "noSlip" to "calculated" after running multiFluidBoussinesqFoam (it's definitely not an initialisation problem, the fields remain "noSlip" until the solver is called). Even the u fields in the 0 directory are overwritten. I can't see obviously where this would happen in the code, because in my second test case
+
+danRun/partitioned/RayleighBenard/Ra_1e+05_multiFluidBoussinesqFoam_hiRes_lowB
+
+the boundary conditions don't change after running the solver. The initialisation is the same except that the "lowB" test case uses values for the initial fields and buoyancy forcing which are more in line with the Boussinesq approximation (i.e. b ~ 0.03, rather than ~ 1). The two cases have the same Rayleigh number.
+
+The second problem is common to both test cases above. After 1 time step, the velocity jumps to about 0.65m/s. This occurs at the bottom of the horizontal boundaries. Similar anomalies are seen in the P field. I'm stuck as to why this would be happening at the boundary, especially as you've been running test cases with periodic boundaries and presumably haven't come across this issue.
+
+I'm presuming the latter is an initialisation problem, as the residuals for both P and Pi are huge, and convergence for the P solver is very slow.
+
+The above test cases are at danRun, commit id: 7d22f5b023ce930b53769910c41282deb8546dcc
+
+I have been using the version of multiFluidBoussinesqFoam from the latest AtmosFOAM-multifluid commit, id: b3b9d6e7f07996b911a7ae8574b379b9b7a108c3
+
