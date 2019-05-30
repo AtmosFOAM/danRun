@@ -21,7 +21,7 @@ FieldsToPlot
 (
     [theta filledContours 269 331 2 "$GMTU/colours/red_white_blue.cpt"]
 //    [theta filledContours 270.0 330.0 2.5 "$HOME/cmaps/CETperceptual_GMT/CET-D4.cpt"]
-    [Uf vectors 0.05 70 "black"]
+    [Uf vectors 0.1 70 "black"]
 );
 
 separateLegend true;

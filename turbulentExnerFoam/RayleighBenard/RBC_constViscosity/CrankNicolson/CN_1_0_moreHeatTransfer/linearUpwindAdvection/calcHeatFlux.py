@@ -17,45 +17,50 @@ plt.rcParams["font.family"] = "serif"
 plt.rcParams["figure.dpi"] = 250 
 
 def main():
-    """
-    times = [180,180.5,181,181.5,182,182.5,183,183.5,184,184.5,
-             185,185.5,186,186.5,187,187.5,188,188.5,189,189.5,
-             190,190.5,191,191.5,192,192.5,193,193.5,194,194.5,
-             195,195.5,196,196.5,197,197.5,198,198.5,199,199.5,
-             200]
-    """
-    times = [80,80.5,81,81.5,82,82.5,83,83.5,84,84.5,
-             85,85.5,86,86.5,87,87.5,88,88.5,89,89.5,
-             90,90.5,91,91.5,92,92.5,93,93.5,94,94.5,
-             95,95.5,96,96.5,97,97.5,98,98.5,99,99.5,
-             100]
+    times = np.arange(230,251,1)
     
     # working directory
-    workDir = "Ra_1e+10_nu_1_178e-05_res500"
+    workDir = "Ra_1e+08_nu_1_178e-04_res1000"
     
     os.chdir(workDir)
     
     # model geometry
-    nx = 500   # cells in x-dir.
-    nz = 50    # cells in z-dir.
+    nx = 1000   # cells in x-dir.
+    nz = 100    # cells in z-dir.
     Lx = 10.0   # length in x-dir.
     Lz = 1.00    # length in z-dir.
+    z = np.linspace(Lz/(2*nz),Lz-Lz/(2*nz),nz,endpoint=True)
+    print(z)
     
     # physical constants (for dry air at reference T, p given below) 
     pRef        = 1e+05     # reference pressure
     Tref        = 300       # reference temperature
+    thetaB      = 330       # temperature at bottom plate
     Pr          = 0.707     # Prandtl number
-    nu_mol      = 1.178e-05 # molecular kinematic viscosity
+    nu_mol      = 1.568e-05 # molecular kinematic viscosity
     cP          = 1005      # specific heat capacity at constant pressure
     R           = 287       # specific gas constant
+    kappa       = R/cP
     rhoRef      = 1.177     # reference density
-    deltaTheta  = 60        # temp difference Tbottom - Ttop
+    deltaTheta  = 60        # temp. difference Tbottom - Ttop
+    g           = 9.81      # gravitational accelration
     
     # calculate thermal diffusivity
     alpha_mol   = nu_mol/Pr
     
+    # reference hydrostatic density profile
+    thetaHyd = thetaB - (deltaTheta/Lz)*z
+    print(thetaHyd)
+    ExnerHyd = 1 + ( (g*Lz) / (cP*deltaTheta) ) * np.log(1 - (deltaTheta/thetaB)*(z/Lz))
+    print(ExnerHyd)
+    rhoHyd = ( pRef*np.power(ExnerHyd, (1-kappa)/kappa) ) / (R*thetaHyd)
+    print(rhoHyd)
+    # for testing analytic hydrostatic profile
+    #pHyd = pRef*np.power(ExnerHyd, 1/kappa)
+    
     # purely diffusive heat flux
-    heatFlux_0  = cP * rhoRef * alpha_mol * (deltaTheta / Lz)
+    heatFlux_0  = cP * rhoHyd * alpha_mol * (deltaTheta / Lz)
+    #heatFlux_0  = cP * rhoRef * alpha_mol * (deltaTheta / Lz)
     print("Purely diffusive heat flux (at reference density)", heatFlux_0)
     
     # loop over times
@@ -106,8 +111,8 @@ def main():
         # memory management
         del data
         
-        print("Max. density: ", rho.max(), "Min. density: ", rho.min())
-        print()
+        #print("Max. density: ", rho.max(), "Min. density: ", rho.min())
+        #print()
         
         # calculate heat flux
         heatFlux = cP * rho * (w*theta - alpha_mol * gradTheta_z)
@@ -118,8 +123,8 @@ def main():
         
         print("Horizontally averaged heat flux profile: ", heatFlux_domAv)
         print("Ratio of heat flux : diffusive heat flux", heatFlux_domAv/heatFlux_0)
-        print("Max. ratio: ", heatFlux_domAv.max() / heatFlux_0,
-              "Min. ratio: ", heatFlux_domAv.min() / heatFlux_0)
+        print("Max. ratio: ", (heatFlux_domAv / heatFlux_0).max() ,
+              "Min. ratio: ", (heatFlux_domAv / heatFlux_0).min() )
         print()
         
         # time average
@@ -141,18 +146,18 @@ def main():
     
     # calc z-integrated heat flux
     heatFlux_domAv_timeAv_zInt = np.sum(heatFlux_domAv_timeAv) / nz
+    localNu = heatFlux_domAv_timeAv / heatFlux_0
     
     print("z-integrated heat flux: ", heatFlux_domAv_timeAv_zInt)
-    print("Domain-averaged Nusselt number: ", heatFlux_domAv_timeAv_zInt / heatFlux_0)
-    print("Max. Nusselt number: ", heatFlux_domAv_timeAv.max() / heatFlux_0,
-          "Min. Nusselt number: ", heatFlux_domAv_timeAv.min() / heatFlux_0)
+    print("Domain-averaged Nusselt number: ", np.sum(localNu) / nz)
+    print("Max. Nusselt number: ", localNu.max(),
+          "Min. Nusselt number: ", localNu.min())
     
     with open('heatFlux.txt', 'w') as f:
         print("z-integrated heat flux: ", heatFlux_domAv_timeAv_zInt, file=f)
-        print("Domain-averaged Nusselt number: ", heatFlux_domAv_timeAv_zInt 
-              / heatFlux_0, file=f)
-        print("Max. Nusselt number: ", heatFlux_domAv_timeAv.max() / heatFlux_0,
-              "Min. Nusselt number: ", heatFlux_domAv_timeAv.min() / heatFlux_0,
+        print("Domain-averaged Nusselt number: ", np.sum(localNu) / nz, file=f)
+        print("Max. Nusselt number: ", localNu.max(),
+              "Min. Nusselt number: ", localNu.min(),
               file=f)
     
     return 0

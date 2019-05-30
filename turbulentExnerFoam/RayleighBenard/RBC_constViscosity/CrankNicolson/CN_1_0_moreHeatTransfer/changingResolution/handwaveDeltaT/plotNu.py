@@ -17,18 +17,21 @@ plt.rcParams["font.family"] = "serif"
 plt.rcParams["figure.dpi"] = 250 
 
 def main():
-    xRes_fixedAspect = [20,30,50,100,250,300,400,500]
-    xRes_fixedZres = [10,25,50,100,200,250,300,400,500]
-    Nu_fixedAspect = np.array( [1.91,2.68,3.95,5.78,5.50,5.65,5.75,5.72] )
-    Nu_fixedZres = np.array( [29.8,19.5,14.6,6.09,5.59,5.63,5.80,5.72,5.72] )
-    Re_fixedAspect = np.array( [105,183,207,250,218,255,239,236] )
-    Re_fixedZres = np.array( [725,376,218,231,226,267,236,244,236] )
-    
+    critWavelength = 2.016  # critical wavelength
+    xRes_fixedAspect = np.array( [0.01,0.02,0.04,0.1,0.2,0.4,0.5] )
+    xRes_fixedZres50 = np.array( [0.01,0.02,0.04,0.1,0.2,0.4,2./3.,10./13.,1,4./3.,2,6.67,10,50,100] )
+    xRes_fixedZres25 = np.array( [0.04,0.1,0.4,2./3.,10./13.,1,4./3.,2,5,10] )
+    #Nu_fixedAspect = np.array( [] )
+    Nu_fixedZres50 = np.array( [5.18,5.17,5.11,4.85,4.51,3.78,3.37,3.54,5.80,2.89,4.56,1.33,1.28,0.987,0.988] )
+    #Nu_fixedZres50 = np.array( [] )
+    #Re_fixedAspect = np.array( [] )
+    Re_fixedZres50 = np.array( [725,376,218,231,226,267,236,244,236] )
+    #Re_fixedZres25 = np.array( [] )
+    """
     plt.figure()
-    plt.loglog(xRes_fixedAspect,Nu_fixedAspect, label="cell aspect ratio fixed")
-    plt.loglog(xRes_fixedZres, Nu_fixedZres, label="vertical res. fixed")
-    plt.gca().invert_xaxis()
-    plt.xlabel(r"Number of horizontal gridpoints, $n_x$")
+    #plt.loglog(xRes_fixedAspect,Nu_fixedAspect, label="cell aspect ratio fixed")
+    plt.loglog(xRes_fixedZres50, Nu_fixedZres50, label="vertical res. fixed")
+    plt.xlabel(r"Horizontal resolution, $\Delta x$")
     plt.ylabel(r"Nusselt number, Nu")
     plt.legend(loc="best")
     plt.savefig("NuCoarseBoth.png")
@@ -42,16 +45,14 @@ def main():
     plt.legend(loc="best")
     plt.savefig("NuCoarseFixedAspect.png")
     plt.show()
-    
+    """
     plt.figure()
-    plt.loglog(xRes_fixedZres, Nu_fixedZres, label="vertical res. fixed")
-    plt.gca().invert_xaxis()
-    plt.xlabel(r"Number of horizontal gridpoints, $n_x$")
+    plt.loglog(xRes_fixedZres50/critWavelength, Nu_fixedZres50)
+    plt.xlabel(r"Horizontal resolution, $\Delta x / \lambda_{crit}$")
     plt.ylabel(r"Nusselt number, Nu")
-    plt.legend(loc="best")
-    plt.savefig("NuCoarseFixedZres.png")
+    plt.savefig("NuCoarseFixedZres50.png")
     plt.show()
-    
+    """
     plt.figure()
     plt.loglog(xRes_fixedAspect, Re_fixedAspect, label="cell aspect ratio fixed")
     plt.gca().invert_xaxis()
@@ -79,6 +80,7 @@ def main():
     plt.legend(loc="best")
     plt.savefig("ReCoarseFixedZres.png")
     plt.show()
+    """
     
     plt.close()
     

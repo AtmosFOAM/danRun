@@ -1,0 +1,30 @@
+
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  dev                                   |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      theta_tracerFieldDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+
+type        sinusoidal;
+mag         1;
+a_z         0.5;
+b_z         -0.5;
+k_x         100;
+k_z         1;
+L_x         20;
+L_z         1;
+phi_x       3.14159265359/2;
+funcMax     1;
+funcMin     -1;

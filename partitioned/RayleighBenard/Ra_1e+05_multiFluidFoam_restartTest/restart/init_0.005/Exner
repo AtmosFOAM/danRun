@@ -1,0 +1,51 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  dev
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    location    "0.005";
+    object      Exner;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 0 0 0 0 0 0];
+
+internalField   nonuniform List<scalar> 8(0.999991865657193557 0.999991865657207768 0.9999918656572091 0.999991865657203105 0.999975597000479222 0.999975597000491101 0.999975597000491767 0.999975597000487326);
+
+boundaryField
+{
+    ground
+    {
+        type            partitionedHydrostaticExner;
+        gradient        uniform 3.25373134328358214e-05;
+        value           nonuniform List<scalar> 4(0.99999999998555178 0.99999999998556599 0.999999999985567323 0.999999999985561328);
+    }
+    top
+    {
+        type            partitionedHydrostaticExner;
+        gradient        uniform -3.25373134328358214e-05;
+        value           nonuniform List<scalar> 4(0.999967462672120999 0.999967462672132879 0.999967462672133545 0.999967462672129104);
+    }
+    left
+    {
+        type            cyclic;
+    }
+    right
+    {
+        type            cyclic;
+    }
+    frontAndBack
+    {
+        type            empty;
+    }
+}
+
+
+// ************************************************************************* //

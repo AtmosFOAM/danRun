@@ -19,12 +19,12 @@ projection2D XZ;
 
 FieldsToPlot
 (
-    [magSqrGradU filledContours 0 5e-5 2.5e-6 "$GMTU/colours/white_blue_red.cpt"]
-    [uDiff vectors  40 1 "black"]
+//    [magSqrGradU filledContours 0 5e-5 2.5e-6 "$GMTU/colours/white_blue_red.cpt"]
+    [u.diff vectors  40 1 "black"]
 );
 
-separateLegend true;
-region "0/5e3/0/5e3";
-//annotate "minMax 500 -400";
+//separateLegend true;
+//region "0/5e3/0/5e3";
+//annotate "minMax -1.2e3 400";
 boundaryMarks "500/500";
 plotBoundaryDots false;

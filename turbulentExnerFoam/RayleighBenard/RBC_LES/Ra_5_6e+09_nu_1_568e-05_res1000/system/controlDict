@@ -31,9 +31,9 @@ startTime       0;
 
 stopAt          endTime;
 
-endTime         100;
+endTime         150;
 
-deltaT          0.005;
+deltaT          0.003125;
 
 writeControl    runTime;
 
@@ -58,7 +58,6 @@ maxCo          0.5;
 
 functions
 {
-    #includeFunc  singleGraph
     #includeFunc  grad(theta)
     writeRho
     {
@@ -68,6 +67,48 @@ functions
         writeInterval           0.1;
         objects
         ("rho");
+    }
+    
+    minMaxMagU
+    {
+        type        fieldMinMax;
+        libs        ("libfieldFunctionObjects.so");
+        write       yes;
+        log         yes;
+        location    yes;
+        mode        magnitude;
+        fields
+        (
+            U
+        );
+    }
+    
+    minMaxNut
+    {
+        type        fieldMinMax;
+        libs        ("libfieldFunctionObjects.so");
+        write       yes;
+        log         yes;
+        location    yes;
+        mode        magnitude;
+        fields
+        (
+            nut
+        );
+    }
+    
+    minMaxAlphat
+    {
+        type        fieldMinMax;
+        libs        ("libfieldFunctionObjects.so");
+        write       yes;
+        log         yes;
+        location    yes;
+        mode        magnitude;
+        fields
+        (
+            alphat
+        );
     }
 }
 

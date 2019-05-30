@@ -14,7 +14,7 @@ FoamFile
 
 // How to plot
 // Compulsory inputs
-projection "X12c/12c";
+projection "X27c/9c";
 projection2D XZ;
 
 FieldsToPlot
@@ -22,15 +22,15 @@ FieldsToPlot
 //    [theta  filledContours 300 302 0.2 "$GMTU/colours/white_blue_red.cpt"]
 
 //    [sigma.buoyant filledContours 0 1 0.1 "$GMTU/colours/white_grey.cpt"]
-    [theta.stable  colouredContours 300 302 0.2 "$GMTU/colours/white_blue_red.cpt"]
-//    [theta.buoyant  colouredContours 300 302 0.21 "$GMTU/colours/white_grey.cpt"]
-    [Uf.buoyant vectors 50 26 "red"]
-    [Uf.stable vectors  50 26 "black"]
+    [theta.stable  colouredContours 270 330 1 "$GMTU/colours/white_blue_red.cpt"]
+//    [theta.buoyant  colouredContours 270 330 1 "$GMTU/colours/white_grey.cpt"]
+    [Uf.buoyant vectors 0.5 11 "red"]
+    [Uf.stable vectors  0.5 11 "blue"]
 //    [Uf vectors  50 26 "black"]
 );
 
 separateLegend true;
-region "-5000/5000/0/1e4";
-//annotate "minMax -4.7e3 400";
-boundaryMarks "2500/2500";
+//region "-5000/5000/0/1e4";
+//annotate "minMax 2.5 -0.01";
+boundaryMarks "1/0.5";
 plotBoundaryDots false;

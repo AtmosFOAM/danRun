@@ -17,36 +17,24 @@ plt.rcParams["font.family"] = "serif"
 plt.rcParams["figure.dpi"] = 250 
 
 def main():
-    """
-    times = [180,180.5,181,181.5,182,182.5,183,183.5,184,184.5,
-             185,185.5,186,186.5,187,187.5,188,188.5,189,189.5,
-             190,190.5,191,191.5,192,192.5,193,193.5,194,194.5,
-             195,195.5,196,196.5,197,197.5,198,198.5,199,199.5,
-             200]
-    """
-    times = [80,80.5,81,81.5,82,82.5,83,83.5,84,84.5,
-             85,85.5,86,86.5,87,87.5,88,88.5,89,89.5,
-             90,90.5,91,91.5,92,92.5,93,93.5,94,94.5,
-             95,95.5,96,96.5,97,97.5,98,98.5,99,99.5,
-             100]
-    #"""
+    times = np.arange(160,201,1)
+    print(times)
     
     # working directory
-    workDir = "Ra_1e+05_nu_3_724e-03_resX10_resY50"
+    workDir = "Ra_1e+05_nu_3_724e-03_AR1000_resX10_Y50"
     
     os.chdir(workDir)
     
     # model geometry
     nx = 10   # cells in x-dir.
     nz = 50    # cells in z-dir.
-    Lx = 10.0   # length in x-dir.
+    Lx = 1000.0   # length in x-dir.
     Lz = 1.00    # length in z-dir.
     
     # physical constants (for dry air at reference T, p given below) 
     pRef        = 1e+05     # reference pressure
     Tref        = 300       # reference temperature
     Pr          = 0.707     # Prandtl number
-    #Pr = 10
     nu_mol      = 3.724e-03 # molecular kinematic viscosity
     cP          = 1005      # specific heat capacity at constant pressure
     R           = 287       # specific gas constant
@@ -72,7 +60,7 @@ def main():
         
         # read in theta, grad(theta).z, U.z , rho
         # file names
-        u_fName             = "U.xyz"
+        u_fName             = "u.xyz"
         theta_fName         = "theta.xyz"
         gradTheta_fName     = "grad(theta).xyz"
         rho_fName           = "rho.xyz"

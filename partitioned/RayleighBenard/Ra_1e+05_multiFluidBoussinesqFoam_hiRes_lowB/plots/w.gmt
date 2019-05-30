@@ -1,0 +1,31 @@
+inputFiles=(TIME/horizontalMean_falling_rho_uz.dat
+            TIME/horizontalMean_falling_rho_uz.dat
+            TIME/horizontalMean_falling_rho_uz.dat
+            TIME/horizontalMean_falling_rho_uz.dat
+            TIME/horizontalMean_falling_rho_uz.dat
+            TIME/horizontalMean_rising_rho_uz.dat
+            TIME/horizontalMean_rising_rho_uz.dat
+            TIME/horizontalMean_rising_rho_uz.dat
+            TIME/horizontalMean_rising_rho_uz.dat
+            TIME/horizontalMean_rising_rho_uz.dat)
+outFile=TIME/wMean.eps
+colx=(4 5 6 7 8 4 5 6 7 8)
+col=1
+legends=("falling" "+/- one std dev" "" "min/max" ""
+         "rising" "+/- one std dev" "" "min/max" "")
+pens=("2,blue" "1,blue" "1,blue" "1,blue,5_5:" "1,blue,5_5:"
+      "2,red" "1,red" "1,red" "1,red,5_5:" "1,red,5_5:")
+xlabel='Vertical velocity (m s@+-1@+)'
+#ylabel='Height (m)'
+xmin=-1.5
+xmax=1.5
+dx=0.5
+ymin=0
+ymax=1
+dy=0.2
+xscale=*1
+yscale=*1
+legPos=x11/7
+nSkip=1
+projection=X15c/10c
+gv=1

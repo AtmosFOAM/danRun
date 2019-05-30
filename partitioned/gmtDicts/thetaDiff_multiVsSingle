@@ -19,7 +19,7 @@ projection2D XZ;
 
 FieldsToPlot
 (
-    [thetaDiff_multiVsSingle  filledContours 0 0 0 "$GMTU/colours/red_white_blue.cpt"]
+    [theta.diff  filledContours 0 0 0 "$GMTU/colours/red_white_blue.cpt"]
 );
 
 //separateLegend true;

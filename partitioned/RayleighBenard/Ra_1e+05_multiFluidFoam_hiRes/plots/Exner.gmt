@@ -1,0 +1,31 @@
+inputFiles=(TIME/horizontalMean_falling_rho_Exner.dat
+            TIME/horizontalMean_falling_rho_Exner.dat
+            TIME/horizontalMean_falling_rho_Exner.dat
+            TIME/horizontalMean_falling_rho_Exner.dat
+            TIME/horizontalMean_falling_rho_Exner.dat
+            TIME/horizontalMean_rising_rho_Exner.dat
+            TIME/horizontalMean_rising_rho_Exner.dat
+            TIME/horizontalMean_rising_rho_Exner.dat
+            TIME/horizontalMean_rising_rho_Exner.dat
+            TIME/horizontalMean_rising_rho_Exner.dat)
+outFile=TIME/ExnerMean.eps
+colx=(4 4 4 7 8 4 4 4 7 8)
+col=1
+legends=("falling" "+/- one std dev" "" "min/max" ""
+         "rising" "+/- one std dev" "" "min/max" "")
+pens=("2,blue" "1,blue" "1,blue" "1,blue,5_5:" "1,blue,5_5:"
+      "2,red" "1,red" "1,red" "1,red,5_5:" "1,red,5_5:")
+xlabel='Exner pressure (dimless)'
+#ylabel='Height (m)'
+xmin=1.0004
+xmax=1.0006
+dx=0.00005
+ymin=0
+ymax=1
+dy=0.2
+xscale=*1
+yscale=*1
+legPos=x10/7
+nSkip=1
+projection=X15c/10c
+gv=1

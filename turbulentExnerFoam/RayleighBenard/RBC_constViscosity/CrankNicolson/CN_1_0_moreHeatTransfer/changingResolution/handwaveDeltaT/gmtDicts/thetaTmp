@@ -1,0 +1,32 @@
+FoamFile
+{
+    version         2.3;
+    format          ascii;
+
+    root            "";
+    case            "";
+    instance        "constant";
+    local           "";
+
+    class           dictionary;
+    object          gmtDict;
+}
+
+// How to plot
+// Compulsory inputs
+projection "X27c/9c";
+projection2D XZ;
+
+FieldsToPlot
+(
+    [theta rawValues 270 330 2 "$GMTU/colours/red_white_blue.cpt"]
+//    [theta rawValues 270.0 330.0 2.5 "$HOME/cmaps/CETperceptual_GMT/CET-D4.cpt"]
+    [Uf vectors 0.3 8.5 "black"]
+);
+
+separateLegend true;
+//region "-5000/5000/0/1.25e4";
+annotate "minMax 2.5 -0.1";
+boundaryMarks "100/0.5";
+plotBoundaryDots false;
+

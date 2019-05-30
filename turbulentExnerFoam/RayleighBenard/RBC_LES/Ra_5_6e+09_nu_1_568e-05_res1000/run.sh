@@ -40,13 +40,11 @@ buoyantPimpleFoam >& log & sleep 0.01; tail -f log
 ./diff.sh
 
 # calculate heat flux over last 10 secs of simulation
-postProcess -func "grad(theta)" -time "60:70"
-writeCellDataxyz U -time "60:70"
-writeCellDataxyz theta -time "60:70"
-writeCellDataxyz "grad(theta)" -time "60:70"
-writeCellDataxyz p -time "60:70"
-writeCellDataxyz T -time "60:70"
-writeCellDataxyz rho -time "60:70"
+postProcess -func "grad(theta)" -time "130:150"
+writeCellDataxyz U -time "130:150"
+writeCellDataxyz theta -time "130:150"
+writeCellDataxyz "grad(theta)" -time "130:150"
+writeCellDataxyz rho -time "130:150"
 gedit calcHeatFlux.py &   # change domain geometry
 python calcHeatFlux.py >& heatFlux.txt & sleep 0.01; tail -f heatFlux.txt
 
@@ -72,4 +70,13 @@ for var in theta p Exner U alphat nut; do
     gmtPlot ../plots/plot$var.gmt
     rm */$var.dat */$var.xyz
 done
+
+for time in {130..150..1}; do
+    cp $time/alphat $time/alphat_zeroGradient
+    sed -n '/ground/{p;:a;N;/top/!ba;s/.*\n/{\ttype\tzeroGradient;\n\t}\n/};p' alphat_zeroGradient
+    sed -n '/top/{p;:a;N;/left/!ba;s/.*\n/{\ttype\tzeroGradient;\n\t}\n/};p' alphat_zeroGradient
+done
+
+# add 0*alphat to alphat, giving a new alphat with "calculated" BCs 
+sumFields $time alphat_newBC $time alphat $time alphat -scale1 0
 

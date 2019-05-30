@@ -19,7 +19,7 @@ projection2D XZ;
 
 FieldsToPlot
 (
-    [Exner filledContours 0 0 0 "$GMTU/colours/red_white_blue.cpt"]
+    [Exner filledContours -1e-9 1e-9 0 "$GMTU/colours/red_white_blue.cpt"]
 );
 
 //separateLegend true;

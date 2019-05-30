@@ -1,0 +1,52 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  dev
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       surfaceScalarField;
+    location    "0.005";
+    object      volFlux.sigmaRhof.buoyant;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [1 0 -1 0 0 0 0];
+
+internalField   nonuniform List<scalar> 10(-4.94446102638990193e-14 -1.79161675924407907e-13 -4.69278211719977662e-15 1.49002143734441091e-14 2.08839369165725947e-14 7.86154692109593783e-14 -5.37271654359898675e-14 -4.1699699909580989e-14 -2.15039693909718119e-15 1.56027410276259403e-14);
+
+boundaryField
+{
+    ground
+    {
+        type            fixedValue;
+        value           uniform 0;
+    }
+    top
+    {
+        type            fixedValue;
+        value           uniform 0;
+    }
+    left
+    {
+        type            cyclic;
+        value           nonuniform List<scalar> 2(-3.32534554645262218e-14 -2.82473558210522323e-14);
+    }
+    right
+    {
+        type            cyclic;
+        value           nonuniform List<scalar> 2(3.32534554645262407e-14 2.82473558210522323e-14);
+    }
+    frontAndBack
+    {
+        type            empty;
+        value           nonuniform 0();
+    }
+}
+
+
+// ************************************************************************* //

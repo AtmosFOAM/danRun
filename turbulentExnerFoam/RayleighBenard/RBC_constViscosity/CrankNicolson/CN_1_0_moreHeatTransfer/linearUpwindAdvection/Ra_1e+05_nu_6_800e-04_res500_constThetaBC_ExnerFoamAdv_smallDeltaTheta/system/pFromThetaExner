@@ -1,0 +1,21 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     |
+    \\  /    A nd           | Web:      www.OpenFOAM.org
+     \\/     M anipulation  |
+-------------------------------------------------------------------------------
+Description
+    Calculates p from Exner.
+
+\*---------------------------------------------------------------------------*/
+
+type            pFromThetaExner;
+libs            ("libAtmosFoamFieldFunctionObjects.so");
+
+fields           (Exner);
+
+executeControl  writeTime;
+writeControl    writeTime;
+
+// ************************************************************************* //

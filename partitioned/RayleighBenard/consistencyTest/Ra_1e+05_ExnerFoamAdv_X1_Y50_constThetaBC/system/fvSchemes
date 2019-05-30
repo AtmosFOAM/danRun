@@ -1,0 +1,95 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  1.4                                   |
+|   \\  /    A nd           | Web:      http://www.openfoam.org               |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+
+FoamFile
+{
+    version         2.0;
+    format          ascii;
+
+    root            "";
+    case            "";
+    instance        "";
+    local           "";
+
+    class           dictionary;
+    object          fvSchemes;
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+ddtSchemes
+{
+    default Euler;
+}
+offCentre 0.5;
+
+/*ddtSchemes
+{
+    default         CrankNicolson 1;
+    ddt(U)_CN       1;
+    ddt(rho,U)_CN   1;
+}*/
+
+gradSchemes
+{
+    default                   Gauss linear;
+}
+
+divSchemes
+{
+    default none;
+    theta           Gauss vanLeer;
+    u               Gauss linearUpwind linearUpwind;
+    
+    div(volFlux,theta)  Gauss vanLeer;
+    div(volFlux,U)      Gauss linearUpwind linearUpwind;
+    div(phi,theta)  Gauss vanLeer;
+    div(phi,U)      Gauss linearUpwind linearUpwind;
+    
+    div(((rho*nuEff)*dev2(T(grad(U)))))     Gauss linear;
+}
+
+laplacianSchemes
+{
+    default         Gauss linear uncorrected;
+}
+
+interpolationSchemes
+{
+    default        linear;
+    // For initialisation
+    interpolate(theta) linear;
+    
+    // for partitionedExnerFoamAdv
+    convection      linear;
+    Uf              linear;
+    rho             linear;
+    theta           linear;
+    
+    // for partitionedTurbulentFoam
+    interpolate(rho.stable)    linear;
+    interpolate(rho.buoyant)   linear;
+    interpolate(theta.stable)  linear;
+    interpolate(theta.buoyant) linear;
+    interpolate(u.stable)      linear;
+    interpolate(u.buoyant)     linear;
+}
+
+snGradSchemes
+{
+    default         uncorrected;
+}
+
+fluxRequired
+{
+    default         no;
+    Exner;
+}
+
+
+// ************************************************************************* //
