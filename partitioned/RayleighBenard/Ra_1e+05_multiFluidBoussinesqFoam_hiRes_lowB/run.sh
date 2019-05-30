@@ -26,7 +26,7 @@ sumFields 0 sigma.sum 0 sigma.stable 0 sigma.buoyant
 # Copy into both partitions
 cp 0/b 0/b.buoyant
 cp 0/b 0/b.stable
-for var in Uf u; do
+for var in u; do
     cp init_0/$var 0/$var.buoyant
     cp init_0/$var 0/$var.stable
 done

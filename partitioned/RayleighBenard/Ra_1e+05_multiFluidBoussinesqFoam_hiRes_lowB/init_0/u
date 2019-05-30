@@ -31,12 +31,10 @@ boundaryField
     left
     {
         type            cyclic;
-        value           uniform (0 0 0);
     }
     right
     {
         type            cyclic;
-        value           uniform (0 0 0);
     }
 }
 

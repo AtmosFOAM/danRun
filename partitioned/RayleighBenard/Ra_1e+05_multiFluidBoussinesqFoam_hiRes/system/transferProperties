@@ -32,7 +32,7 @@ wTransfer false;
 divTransfer 0;
 // Transfer between partitions based on laplacian(theta)
 buoyancyTransfer false;
-bTransferDiffusivity thetaTransferDiffusivity  [0 2 -1 0 0] 0;
+bTransferDiffusivity bTransferDiffusivity  [0 2 -1 0 0] 0;
 transferTimeScale transferTimeScale [0 0 1 0 0] 1e9;
 transferAnomalies false;
 
