@@ -11,11 +11,11 @@ FoamFile
     format      ascii;
     class       volScalarField;
     location    "constant";
-    object      theta;
+    object      b.buoyant;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [0 0 0 1 0 0 0];
+dimensions      [0 1 -2 0 0 0 0];
 
 internalField   nonuniform List<scalar> 50
 (

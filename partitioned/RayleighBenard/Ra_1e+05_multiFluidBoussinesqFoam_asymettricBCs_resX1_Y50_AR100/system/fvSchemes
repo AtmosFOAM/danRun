@@ -35,10 +35,10 @@ gradSchemes
 
 divSchemes
 {
-    default none;
-    sigmaRho        Gauss vanLeer;
-    theta           Gauss vanLeer;
-    u               Gauss linearUpwind linearUpwind;
+    default     none;
+    sigma       Gauss vanLeer;
+    b           Gauss vanLeer;
+    u           Gauss linearUpwind linearUpwind;
 }
 
 laplacianSchemes
@@ -48,26 +48,18 @@ laplacianSchemes
 
 interpolationSchemes
 {
-    default        linear;
-    // For initialisation
-    interpolate(theta) linear;
+    default         none;
     
     // for partitionedExnerFoamAdv
-    convection      linear;
-    Uf              linear;
-    rho             linear;
-    sigma           linear;
-    sigmaRho        linear;
-    theta           linear;
-    massTransfer    linear;
-    
-    // for partitionedTurbulentFoam
-    interpolate(rho.stable)    linear;
-    interpolate(rho.buoyant)   linear;
-    interpolate(theta.stable)  linear;
-    interpolate(theta.buoyant) linear;
-    interpolate(u.stable)      linear;
-    interpolate(u.buoyant)     linear;
+    convection                      linear;
+    sigma                           linear;
+    b                               linear;
+    massTransfer                    linear;
+    interpolate(sigma.stable)       linear;
+    interpolate(sigma.buoyant)      linear;
+    interpolate(sigma.stable_0)     vanLeer volFlux.stable;
+    interpolate(sigma.buoyant_0)    vanLeer volFlux.buoyant;
+    transfer                        linear;
 }
 
 snGradSchemes
@@ -78,7 +70,7 @@ snGradSchemes
 fluxRequired
 {
     default         no;
-    Exner;
+    P;
 }
 
 

@@ -18,8 +18,8 @@ FoamFile
 
 
 type        polynomial;
-a_const     0.981;
-a_z         -1.962;
-polyMin     -1;
-polyMax     1;
+a_const     0.0327;
+a_z         -0.0654;
+polyMin     -0.035;
+polyMax     0.035;
 

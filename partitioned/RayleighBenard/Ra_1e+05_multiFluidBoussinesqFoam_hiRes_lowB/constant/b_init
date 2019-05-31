@@ -10,7 +10,7 @@ FoamFile
     version     2.0;
     format      ascii;
     class       volScalarField;
-    location    "constant";
+    location    "init_0";
     object      b;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
@@ -24,12 +24,12 @@ boundaryField
     ground
     {
         type            fixedValue;
-        value           uniform 0.981;
+        value           uniform 0.0327;
     }
     top
     {
         type            fixedValue;
-        value           uniform -0.981;
+        value           uniform -0.0327;
     }
     left
     {
@@ -40,5 +40,6 @@ boundaryField
         type            cyclic;
     }
 }
+
 
 // ************************************************************************* //

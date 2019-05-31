@@ -20,10 +20,10 @@ sed -i 's/REPLACE/'"$values"'/g' 0/sigma.stable
 values=`awk '{if(NR>1)print $2}' $FROM/horizontalMean_rising_none_P.dat | paste -s`
 sed -i 's/REPLACE/'"$values"'/g' 0/sigma.buoyant
 
-values=`awk '{if(NR>1)print $4}' $FROM/horizontalMean_falling_none_b.dat | paste -s`
+values=`awk '{print $4}' $FROM/horizontalMean_falling_none_b.dat | paste -s`
 sed -i 's/REPLACE/'"$values"'/g' 0/b.stable
 
-values=`awk '{if(NR>1)print $4}' $FROM/horizontalMean_rising_none_b.dat | paste -s`
+values=`awk '{print $4}' $FROM/horizontalMean_rising_none_b.dat | paste -s`
 sed -i 's/REPLACE/'"$values"'/g' 0/b.buoyant
 
 values=`awk '{if(NR>1)print "("0, 0, $4")"}' $FROM/horizontalMean_falling_none_uz.dat | paste -s`
