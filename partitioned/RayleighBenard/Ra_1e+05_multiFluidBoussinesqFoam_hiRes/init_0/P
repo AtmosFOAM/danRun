@@ -23,11 +23,19 @@ boundaryField
 {
     ground
     {
-        type            zeroGradient;
+        type            hydrostatic;
+        value           uniform 0;
+        gradient        uniform 0;
+        gradPcoeffName  gradPcoeff;
+        buoyancyName    bf.sum;
     }
     top
     {
-        type            zeroGradient;
+        type            hydrostatic;
+        value           uniform 0;
+        gradient        uniform 0;
+        gradPcoeffName  gradPcoeff;
+        buoyancyName    bf.sum;
     }
     left
     {

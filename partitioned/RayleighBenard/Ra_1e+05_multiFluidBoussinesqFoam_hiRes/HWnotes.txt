@@ -1,0 +1,20 @@
+Hilary's notes on test case
+partitioned/RayleighBenard/Ra_1e+05_multiFluidBoussinesqFoam_hiRes
+
+Problem: no slip boundary conditions are not maintained.
+~~~~~~~
+
+Run for just one time step and write out.
+
+For setting the initial conditions, copy file contents rather than links using:
+cp -L init_0/* 0
+
+That seems to fix the writing out problem, but does it fix the problem in the code? Try running for longer.
+
+Problem: Velocity and pressure jump at bottom corner in first time step
+~~~~~~~
+Need to use hydrostatic boundary condition for P rather than zero gradient.
+Yes, I have come across this issue. It took me ages to solve. I ended up creating the hydrostatic pressure boundary condition.
+
+
+
