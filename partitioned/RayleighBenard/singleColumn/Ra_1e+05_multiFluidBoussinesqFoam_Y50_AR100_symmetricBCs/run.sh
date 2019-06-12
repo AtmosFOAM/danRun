@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
 # clear out old stuff
-rm -rf [0-9]* constant/polyMesh core log legends diags.dat gmt.history *.gif heatFlux.txt
+rm -rf [0-9]* constant/polyMesh core log legends diags.dat gmt.history *.gif heatFlux.txt *.OpenFOAM
 
 # create mesh
 blockMesh

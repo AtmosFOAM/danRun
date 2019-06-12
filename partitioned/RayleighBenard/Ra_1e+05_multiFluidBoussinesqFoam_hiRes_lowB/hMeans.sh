@@ -21,14 +21,14 @@ horizontalMean -time $time
 #horizontalMean -time $time
 
 # Write out mean plus/minus one standard deviation of theta, Exner and w
-for var in theta uz Exner; do for set in rising falling; do
+for var in b uz P; do for set in rising falling; do
     awk '{print $1, $2, $3, $4, $4-$5, $4+$5, $6, $7}' \
-        $time/horizontalMean_${set}_rho_${var}.dat \
-        | sponge $time/horizontalMean_${set}_rho_${var}.dat
+        $time/horizontalMean_${set}_none_${var}.dat \
+        | sponge $time/horizontalMean_${set}_none_${var}.dat
 done; done
 
 ## plots
-for var in theta w  Exner; do
+for var in b w P; do
     sed 's/TIME/'$time'/g' plots/$var.gmt > plots/tmp.gmt
     gmtPlot plots/tmp.gmt
 done

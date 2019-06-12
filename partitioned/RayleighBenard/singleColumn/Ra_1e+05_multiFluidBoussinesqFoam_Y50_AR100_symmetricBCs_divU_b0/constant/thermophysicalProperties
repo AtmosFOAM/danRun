@@ -17,17 +17,43 @@ FoamFile
     local           "";
 
     class           dictionary;
-    object          environmentalProperties;
+    object          thermophysicalProperties;
 }
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-g               g [0 1 -2 0 0 0 0] (0 0 -9.81);
-Omega           Omega [0 0 -1 0 0 0 0] (0 0 0);
-Nsquared        Nsquared [0 0 -2 0 0] 0;
-gamma           gamma [0 2 -1 0 0] 1e-5;
-adjustQ         false;
-nu              nu [0 2 -1 0 0] 3.724e-03;
-alpha           alpha [0 2 -1 0 0] 5.267e-03;
+
+T0       300;
+pRef     100000;
+
+mixture//  air 1 28.9 1000 0 1.8e-05 0.7;
+{
+    specie
+    {
+        molWeight       28.9;
+    }
+    thermodynamics
+    {
+        Cp              1005;
+        Hf              0;
+    }
+    transport
+    {
+        nu              3.724e-03;
+        mu              4.383e-03;
+        Pr              0.707;
+    }
+}
+
+thermoType 
+{
+    type            heRhoThermo;
+    mixture         pureMixture;
+    transport       const;
+    thermo          hConst;
+    equationOfState perfectGas;
+    specie          specie;
+    energy          sensibleEnthalpy;
+}
 
 // ************************************************************************* //

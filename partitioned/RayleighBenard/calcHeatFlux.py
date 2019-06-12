@@ -17,10 +17,13 @@ plt.rcParams["font.family"] = "serif"
 plt.rcParams["figure.dpi"] = 250 
 
 def main():
-    times = np.arange(60,101,1)
+    times = np.arange(100,201,2)
     
     # working directory
-    workDir = "Ra_1e+05_multiFluidFoam_hiRes"
+    workDir = "Ra_1e+05_multiFluidBoussinesqFoam_hiRes"
+    
+    constDensity = True
+    buoyancy = True
     
     os.chdir(workDir)
     
@@ -34,11 +37,12 @@ def main():
     pRef        = 1e+05     # reference pressure
     Tref        = 300       # reference temperature
     Pr          = 0.707     # Prandtl number
-    nu_mol      = 3.724e-03 # molecular kinematic viscosity
+    nu_mol      = 6.799e-04 # molecular kinematic viscosity
     cP          = 1005      # specific heat capacity at constant pressure
     R           = 287       # specific gas constant
     rhoRef      = 1.177     # reference density
-    deltaTheta  = 60        # temp difference Tbottom - Ttop
+    deltaTheta  = 1.962     # temp difference Tbottom - Ttop
+    bRef        = 9.81
     
     # calculate thermal diffusivity
     alpha_mol   = nu_mol/Pr
@@ -60,8 +64,8 @@ def main():
         # read in theta, grad(theta).z, U.z , rho
         # file names
         u_fName             = "u.xyz"
-        theta_fName         = "theta.xyz"
-        gradTheta_fName     = "grad(theta).xyz"
+        theta_fName         = "b.xyz"
+        gradTheta_fName     = "grad(b).xyz"
         rho_fName           = "rho.xyz"
         
         # read data
@@ -85,20 +89,23 @@ def main():
         for i in xrange(0,nx):
             for j in xrange(0,nz):
                 theta[i,j] = data[j*nx + i, 3]
-                
+        if buoyancy == True:
+            theta = theta + bRef
         
         # get rho
-        data = np.loadtxt(rho_fName)
-        rho = np.zeros((nx,nz))
-        for i in xrange(0,nx):
-            for j in xrange(0,nz):
-                rho[i,j] = data[j*nx + i, 3]
+        if constDensity == True:
+            rho = rhoRef
+        else:
+            data = np.loadtxt(rho_fName)
+            rho = np.zeros((nx,nz))
+            for i in xrange(0,nx):
+                for j in xrange(0,nz):
+                    rho[i,j] = data[j*nx + i, 3]
+            print("Max. density: ", rho.max(), "Min. density: ", rho.min())
+            print()
         
         # memory management
         del data
-        
-        print("Max. density: ", rho.max(), "Min. density: ", rho.min())
-        print()
         
         # calculate heat flux
         heatFlux = cP * rho * (w*theta - alpha_mol * gradTheta_z)

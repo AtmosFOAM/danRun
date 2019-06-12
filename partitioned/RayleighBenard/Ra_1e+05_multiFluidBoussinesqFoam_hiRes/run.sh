@@ -39,11 +39,6 @@ postProcess -func "grad(b)" -time "60:"
 writeCellDataxyz u -time "60:"
 writeCellDataxyz b -time "60:"
 writeCellDataxyz "grad(b)" -time "60:"
-# compute total rho
-for time in {60..100..1}; do
-    sumFields $time rho $time rho.sigma.stable $time rho.sigma.buoyant
-done
-writeCellDataxyz rho -time "60:"
 gedit calcHeatFlux.py &   # change domain geometry
 python calcHeatFlux.py >& heatFlux.txt & sleep 0.01; tail -f heatFlux.txt
 
