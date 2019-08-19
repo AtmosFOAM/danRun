@@ -41,7 +41,7 @@ def main():
     cP          = 1005      # specific heat capacity at constant pressure
     R           = 287       # specific gas constant
     rhoRef      = 1.177     # reference density
-    deltaTheta  = 1.962     # temp difference Tbottom - Ttop
+    deltaTheta  = 2     # temp difference Tbottom - Ttop
     bRef        = 9.81
     
     # calculate thermal diffusivity

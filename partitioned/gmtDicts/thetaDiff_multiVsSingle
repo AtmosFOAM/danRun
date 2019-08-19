@@ -22,8 +22,8 @@ FieldsToPlot
     [theta.diff  filledContours 0 0 0 "$GMTU/colours/red_white_blue.cpt"]
 );
 
-//separateLegend true;
+separateLegend true;
 //region "-5000/5000/0/1e4";
 annotate "minMax -1.2e3 400";
-//boundaryMarks "2500/2500";
+boundaryMarks "1/0.5";
 plotBoundaryDots false;

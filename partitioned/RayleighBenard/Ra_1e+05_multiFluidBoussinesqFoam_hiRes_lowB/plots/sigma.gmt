@@ -1,4 +1,4 @@
-inputFiles=(TIME/horizontalMean_rising_theta.dat)
+inputFiles=(TIME/horizontalMean_rising_none_b.dat)
 outFile=TIME/sigmaMean.eps
 colx=2
 col=1

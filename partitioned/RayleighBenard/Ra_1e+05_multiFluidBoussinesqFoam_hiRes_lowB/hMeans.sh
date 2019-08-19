@@ -2,7 +2,7 @@
 
 # Calculate horizontal means conditioned on vertical velocity and plot
 
-time=100
+time=200
 ## Create cell sets "rising" and "falling" dependent on w
 writeuvw u -time $time
 topoSet -dict system/conditionalSamplingDict -time $time
@@ -21,14 +21,14 @@ horizontalMean -time $time
 #horizontalMean -time $time
 
 # Write out mean plus/minus one standard deviation of theta, Exner and w
-for var in b uz P; do for set in rising falling; do
+for var in b uz P; do for set in none rising_none falling_none; do
     awk '{print $1, $2, $3, $4, $4-$5, $4+$5, $6, $7}' \
-        $time/horizontalMean_${set}_none_${var}.dat \
-        | sponge $time/horizontalMean_${set}_none_${var}.dat
+        $time/horizontalMean_${set}_${var}.dat \
+        | sponge $time/horizontalMean_${set}_${var}.dat
 done; done
 
 ## plots
-for var in b w P; do
+for var in b w P sigma; do
     sed 's/TIME/'$time'/g' plots/$var.gmt > plots/tmp.gmt
     gmtPlot plots/tmp.gmt
 done

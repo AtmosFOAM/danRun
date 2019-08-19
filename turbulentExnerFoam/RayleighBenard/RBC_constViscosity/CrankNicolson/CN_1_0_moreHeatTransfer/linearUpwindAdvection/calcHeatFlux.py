@@ -37,7 +37,7 @@ def main():
     Tref        = 300       # reference temperature
     thetaB      = 330       # temperature at bottom plate
     Pr          = 0.707     # Prandtl number
-    nu_mol      = 1.568e-05 # molecular kinematic viscosity
+    nu_mol      = 1.178e-04 # molecular kinematic viscosity
     cP          = 1005      # specific heat capacity at constant pressure
     R           = 287       # specific gas constant
     kappa       = R/cP

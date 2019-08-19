@@ -1,0 +1,51 @@
+%% LyX 2.2.3 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english,12pt]{article}
+\usepackage{mathptmx}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{geometry}
+\geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=2cm,rmargin=2cm}
+\setlength{\parskip}{0pt}
+\setlength{\parindent}{0pt}
+\usepackage{graphicx}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+%% A simple dot to overcome graphicx limitations
+\newcommand{\lyxdot}{.}
+
+\newcommand{\TIME}{TIMEDIR}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+\thispagestyle{empty}
+
+$\sigma_{1}$\\
+\raisebox{\baselineskip}[2.5cm]{
+\includegraphics[width=1\linewidth]{\TIME/sigma}} \vspace{-30pt}
+
+$\overline{b}$ and $\overline{\mathbf{u}}$\\
+\raisebox{\baselineskip}[2.5cm]{
+\includegraphics[width=1\linewidth]{\TIME/b}} \vspace{-30pt}
+
+$b_{0}$ and $\mathbf{u}_0$\\
+\raisebox{\baselineskip}[2.5cm]{
+\includegraphics[width=1\linewidth]{\TIME/b\lyxdot stable}} \vspace{-30pt}
+
+$b_{1}$ and $\mathbf{u}_1$\\
+\raisebox{\baselineskip}[2.5cm]{
+\includegraphics[width=1\linewidth]{\TIME/b\lyxdot buoyant}} \vspace{-30pt}
+
+$S_{01}$\\
+\raisebox{\baselineskip}[2.5cm]{
+\includegraphics[width=1\linewidth]{\TIME/S01}} \vspace{-30pt}
+
+$S_{10}$\\
+\raisebox{\baselineskip}[2.5cm]{
+\includegraphics[width=1\linewidth]{\TIME/S10}} \vspace{-30pt}
+
+\end{document}

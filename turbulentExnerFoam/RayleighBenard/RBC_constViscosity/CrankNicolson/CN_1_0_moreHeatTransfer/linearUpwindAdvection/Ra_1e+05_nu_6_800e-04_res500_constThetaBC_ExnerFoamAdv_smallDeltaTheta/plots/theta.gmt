@@ -1,21 +1,13 @@
 inputFiles=(TIME/horizontalMean_none_theta.dat
-            TIME/horizontalMean_falling_none_theta.dat
-            TIME/horizontalMean_falling_none_theta.dat
-            TIME/horizontalMean_falling_none_theta.dat
-            TIME/horizontalMean_falling_none_theta.dat
-            TIME/horizontalMean_falling_none_theta.dat
-            TIME/horizontalMean_rising_none_theta.dat
-            TIME/horizontalMean_rising_none_theta.dat
-            TIME/horizontalMean_rising_none_theta.dat
-            TIME/horizontalMean_rising_none_theta.dat
-            TIME/horizontalMean_rising_none_theta.dat)
+            TIME/horizontalMean_none_theta.dat
+            TIME/horizontalMean_none_theta.dat
+            TIME/horizontalMean_none_theta.dat
+            TIME/horizontalMean_none_theta.dat)
 outFile=TIME/thetaMean.eps
-colx=(4 4 5 6 7 8 4 5 6 7 8)
+colx=(4 5 6 7 8)
 col=1
-legends=("mean" "falling" "+/- one std dev" "" "min/max" ""
-         "rising" "+/- one std dev" "" "min/max" "")
-pens=("2,black" "2,blue" "1,blue" "1,blue" "1,blue,5_5:" "1,blue,5_5:"
-      "2,red" "1,red" "1,red" "1,red,5_5:" "1,red,5_5:")
+legends=("mean" "+/- one std dev" "" "min/max" "")
+pens=("2,black" "1,black" "1,black" "1,black,5_5:" "1,black,5_5:")
 xlabel='potential temperature (K)'
 #ylabel='Height (m)'
 xmin=299

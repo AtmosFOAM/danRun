@@ -25,7 +25,7 @@ def main():
     Nu_fixedZres50 = np.array( [5.18,5.17,5.11,4.85,4.51,3.78,3.37,3.54,5.80,2.89,4.56,1.33,1.28,0.987,0.988] )
     #Nu_fixedZres50 = np.array( [] )
     #Re_fixedAspect = np.array( [] )
-    Re_fixedZres50 = np.array( [725,376,218,231,226,267,236,244,236] )
+    Re_fixedZres50 = np.array( [218,216,196,188,187,155,111,105,113,104,107,83.5,16.1,3.43e-3,1.79e-3] )
     #Re_fixedZres25 = np.array( [] )
     """
     plt.figure()
@@ -51,6 +51,14 @@ def main():
     plt.xlabel(r"Horizontal resolution, $\Delta x / \lambda_{crit}$")
     plt.ylabel(r"Nusselt number, Nu")
     plt.savefig("NuCoarseFixedZres50.png")
+    plt.show()
+    
+    plt.figure()
+    plt.loglog(xRes_fixedZres50/critWavelength, Re_fixedZres50)
+    plt.xlabel(r"Horizontal resolution, $\Delta x / \lambda_{crit}$")
+    plt.ylabel(r"Reynolds number, Re")
+    plt.ylim([100,225])
+    plt.savefig("ReCoarseFixedZres50.png")
     plt.show()
     """
     plt.figure()

@@ -23,15 +23,21 @@ horizontalMean -time $time
 python buoyancyFromTheta.py
 
 # Write out mean plus/minus one standard deviation of theta, Exner, w, P, b
-for var in theta Exner uz P b; do for set in rising falling; do
+for var in theta Exner uz P b; do for set in none rising_none falling_none; do
     awk '{print $1, $2, $3, $4, $4-$5, $4+$5, $6, $7}' \
-        $time/horizontalMean_${set}_none_${var}.dat \
-        | sponge $time/horizontalMean_${set}_none_${var}.dat
+        $time/horizontalMean_${set}_${var}.dat \
+        | sponge $time/horizontalMean_${set}_${var}.dat
 done; done
 
 ## plots
 for var in theta b w P Exner; do
     sed 's/TIME/'$time'/g' plots/$var.gmt > plots/tmp.gmt
+    gmtPlot plots/tmp.gmt
+done
+rm plots/tmp.gmt
+
+for var in theta b w P Exner; do
+    sed 's/TIME/'$time'/g' plots/$var'_conditioned.gmt' > plots/tmp.gmt
     gmtPlot plots/tmp.gmt
 done
 rm plots/tmp.gmt
