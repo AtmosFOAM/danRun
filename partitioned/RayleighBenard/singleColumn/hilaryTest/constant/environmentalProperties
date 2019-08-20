@@ -17,28 +17,14 @@ FoamFile
     local           "";
 
     class           dictionary;
-    object          transferProperties;
+    object          environmentalProperties;
 }
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-noTransfers false;
-cloudRadiusMax     cloudRadiusMax [0 1 0 0 0] 1;
-cloudRadiusMin     cloudRadiusMin [0 1 0 0 0] 1;
-dragCoeff       0;
-Ksigma Ksigma [0 2 -1 0 0] 0;
-minSigma  1e-9;
-// Transfer between partitions based on horizontal divergence
-wTransfer false;
-divTransfer 0;
-// Transfer between partitions based on laplacian(theta)
-buoyancyTransfer false;
-bTransferDiffusivity bTransferDiffusivity  [0 2 -1 0 0] 0;
-transferTimeScale transferTimeScale [0 0 1 0 0] 1e9;
-transferAnomaliesLaplacian false;
-transferAnomaliesb0 false;
-transferAnomalies false;
-
-uniformSigma false;
+gamma           gamma [0 2 -1 0 0] 0; //0.01; //1e-3;
+adjustQ         false;
+nu              nu [0 2 -1 0 0] 0.01; //6.799e-04;
+alpha           alpha [0 2 -1 0 0] 9.617e-04;
 
 // ************************************************************************* //
