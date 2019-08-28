@@ -23,21 +23,19 @@ boundaryField
 {
     ground
     {
-        type            zeroGradient; /*
         type            hydrostatic;
         value           uniform 0;
         gradient        uniform 0;
         gradPcoeffName  gradPcoeff;
-        buoyancyName    bf.buoyant;*/
+        buoyancyName    bf.buoyant;
     }
     top
     {
-        type            zeroGradient; /*
         type            hydrostatic;
         value           uniform 0;
         gradient        uniform 0;
         gradPcoeffName  gradPcoeff;
-        buoyancyName    bf.buoyant;*/
+        buoyancyName    bf.buoyant;
     }
     left
     {
