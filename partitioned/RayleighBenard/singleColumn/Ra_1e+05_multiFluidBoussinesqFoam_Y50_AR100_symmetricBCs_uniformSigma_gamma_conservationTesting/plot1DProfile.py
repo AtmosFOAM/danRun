@@ -23,7 +23,7 @@ def main():
     workDir = "."
     
     # reference sim. directory
-    refDir = "/media/daniel/STORAGE/OpenFOAM-run/danRun/partitioned/RayleighBenard/Ra_1e+05_multiFluidBoussinesqFoam_hiRes_lowB/200"
+    refDir = "../../../Ra_1e+05_multiFluidBoussinesqFoam_hiRes_lowB/200"
     
     os.chdir(workDir)
     
