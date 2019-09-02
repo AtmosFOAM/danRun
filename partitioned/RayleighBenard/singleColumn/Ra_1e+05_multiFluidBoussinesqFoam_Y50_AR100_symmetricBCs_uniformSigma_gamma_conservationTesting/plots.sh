@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
 # Create ascii data files of all fields
-time=100
+time=$1
 for field in sigma.buoyant b b.stable b.buoyant Uf Uf.buoyant Uf.stable \
          massTransfer.buoyant.stable massTransfer.stable.buoyant \
          divu.stable divu.buoyant divu P Pi Pi.buoyant Pi.stable; do
@@ -14,5 +14,5 @@ for field in sigma.buoyant b b.stable b.buoyant Uf Uf.buoyant Uf.stable \
 done
 
 # Graphs of all fields
-python plot1DProfile.py
+python plot1DProfile.py $1
 

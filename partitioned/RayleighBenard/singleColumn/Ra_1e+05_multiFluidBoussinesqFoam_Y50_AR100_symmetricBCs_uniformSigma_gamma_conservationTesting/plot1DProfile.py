@@ -16,9 +16,11 @@ plt.rcParams["font.family"] = "serif"
 # Change default figure DPI; remove for lower DPI displays (default = 100dpi)
 plt.rcParams["figure.dpi"] = 250 
 
+# Get the time from the argument
+import sys
+time = sys.argv[1]
+
 def main():
-    times = np.arange(100,201,2)
-    
     # working directory
     workDir = "."
     
@@ -27,7 +29,7 @@ def main():
     
     os.chdir(workDir)
     
-    os.chdir("100")
+    os.chdir(str(time))
     
     plotBuoyancy(refDir)
     plotVerticalVelocity(refDir)
@@ -162,8 +164,8 @@ def plotPressurePerturbation(refDir):
     plt.figure()
     # means
     plt.plot(mean[:,1],mean[:,0],'k',label="total")
-    plt.plot(mean_rising[:,1],mean_rising[:,0],'r', label="rising")
-    plt.plot(mean_falling[:,1],mean_falling[:,0],'b', label="falling")
+    plt.plot(mean[:,1]+mean_rising[:,1],mean_rising[:,0],'r', label="rising")
+    plt.plot(mean[:,1]+mean_falling[:,1],mean_falling[:,0],'b', label="falling")
     # reference profiles & stddevs.
     plt.plot(mean_ref[:,1],mean_ref[:,0],'k--',alpha=0.5,label="total (ref.)")
     plt.plot(mean_rising_ref[:,1],mean_rising_ref[:,0],'r--',alpha=0.5,label="rising (ref.)")

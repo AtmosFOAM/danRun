@@ -20,7 +20,7 @@ solvers
     {
         solver PCG;
         preconditioner   DIC;
-        tolerance        1e-12;
+        tolerance        1e-6;
         relTol           0;
     }
 }
@@ -28,15 +28,9 @@ solvers
 iterations
 {
     nOuterCorrectors 2;
-    nCorrectors      2;
+    nCorrectors      1;
     nNonOrthogonalCorrectors 0;
 }
 
-initialisation
-{
-    maxIters 100;
-    BCiters  3;
-    BCtol    1e-10;
-}
 
 // ************************************************************************* //
