@@ -22,6 +22,11 @@ mv 0/bRandom 0/b
 boussinesqFoam >& log & sleep 0.01; tail -f log
 
 # Calculate difference between multi- and single-fluid simulations
+time=10
+for field in b u P; do
+    sumFields $time $field.diff $time $field ../multiFluidBoussinesqFoam/$time $field -scale1 -1
+done
 
 # plot results
-gmtFoam b
+gmtFoam bDiff_multiVsSingle -time $time
+gmtFoam PDiff_multiVsSingle -time $time
