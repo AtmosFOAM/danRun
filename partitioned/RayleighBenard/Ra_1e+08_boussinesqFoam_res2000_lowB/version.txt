@@ -1,0 +1,6 @@
+/home/daniel/OpenFOAM/daniel-dev/AtmosFOAM
+commit d95a4d12d72e07a2212b03698993fd4efe67dacb Author: Hilary Weller <h.weller@reading.ac.uk> Date: Fri Nov 1 16:04:32 2019 +0000 Updated README file with more complete instructions
+/home/daniel/OpenFOAM/daniel-dev/AtmosFOAM-tools
+commit dbc4d53dc4299416950afc32c6018a7d8a27cd60 Author: Hilary Weller <h.weller@reading.ac.uk> Date: Fri Nov 1 16:03:53 2019 +0000 Updated README file with more complete instructions
+/home/daniel/OpenFOAM/daniel-dev/AtmosFOAM-multiFluid
+commit d411ca156412f02d73905cd97107ecdcc5ec5291 Author: statisdisc <will.a.m@hotmail.co.uk> Date: Thu Oct 24 08:58:10 2019 +0100 Added wZero transfer option and re-added entrainment based transfer term.

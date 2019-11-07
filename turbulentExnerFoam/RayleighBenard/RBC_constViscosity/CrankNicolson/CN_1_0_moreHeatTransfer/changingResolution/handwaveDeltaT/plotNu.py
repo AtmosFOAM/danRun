@@ -18,6 +18,8 @@ plt.rcParams["figure.dpi"] = 250
 
 def main():
     critWavelength = 2.016  # critical wavelength
+    
+    # Ra = 10^5
     xRes_fixedAspect = np.array( [0.01,0.02,0.04,0.1,0.2,0.4,0.5] )
     xRes_fixedZres50 = np.array( [0.01,0.02,0.04,0.1,0.2,0.4,2./3.,10./13.,1,4./3.,2,6.67,10,50,100] )
     xRes_fixedZres25 = np.array( [0.04,0.1,0.4,2./3.,10./13.,1,4./3.,2,5,10] )
@@ -50,7 +52,7 @@ def main():
     plt.loglog(xRes_fixedZres50/critWavelength, Nu_fixedZres50)
     plt.xlabel(r"Horizontal resolution, $\Delta x / \lambda_{crit}$")
     plt.ylabel(r"Nusselt number, Nu")
-    plt.savefig("NuCoarseFixedZres50.png")
+    plt.savefig("Ra_1e+05_NuCoarseFixedZres50.png")
     plt.show()
     
     plt.figure()
@@ -58,7 +60,7 @@ def main():
     plt.xlabel(r"Horizontal resolution, $\Delta x / \lambda_{crit}$")
     plt.ylabel(r"Reynolds number, Re")
     plt.ylim([100,225])
-    plt.savefig("ReCoarseFixedZres50.png")
+    plt.savefig("Ra_1e+05_ReCoarseFixedZres50.png")
     plt.show()
     """
     plt.figure()
@@ -89,6 +91,18 @@ def main():
     plt.savefig("ReCoarseFixedZres.png")
     plt.show()
     """
+    
+    # Ra = 10^8
+    xRes_fixedZres50 = np.array( [0.01,0.02,0.04,0.1,0.2,0.4,2./3.,10./13.,1,2,5,50] )
+    Nu_fixedZres50 = np.array( [29.11,107.4,26.00,24.46,23.45,18.99,19.15,18.43,29.02,21.26,0.9976,0.9968] )
+    
+    plt.figure()
+    plt.loglog(xRes_fixedZres50/critWavelength, Nu_fixedZres50)
+    plt.xlabel(r"Horizontal resolution, $\Delta x / \lambda_{crit}$")
+    plt.ylabel(r"Nusselt number, Nu")
+    plt.savefig("Ra_1e+08_NuCoarseFixedZres50.png")
+    plt.show()
+    
     
     plt.close()
     
