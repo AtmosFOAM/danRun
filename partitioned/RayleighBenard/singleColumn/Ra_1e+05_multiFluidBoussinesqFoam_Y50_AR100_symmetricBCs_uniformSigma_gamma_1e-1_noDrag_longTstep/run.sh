@@ -12,7 +12,7 @@ mkdir 0
 cp -r init_0/* 0
 
 # Get initial conditions from hi-res. case
-FROM=/media/daniel/STORAGE/OpenFOAM-run/danRun/partitioned/RayleighBenard/Ra_1e+05_multiFluidBoussinesqFoam_hiRes_lowB/200
+FROM=../../Ra_1e+05_multiFluidBoussinesqFoam_hiRes_lowB/200
 
 values=`awk '{if(NR>1)print $2}' $FROM/horizontalMean_falling_none_P.dat | paste -s`
 sed -i 's/REPLACE/'"$values"'/g' 0/sigma.stable
