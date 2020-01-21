@@ -17,16 +17,16 @@ plt.rcParams["font.family"] = "serif"
 plt.rcParams["figure.dpi"] = 250 
 
 def main():
-    times = np.arange(180,201,1)
+    times = np.arange(257.0,263.5,0.1)
     
     # working directory
-    workDir = "Ra_1e+08_nu_1_178e-04_res500"
+    workDir = "Ra_1e+08_nu_1_178e-04_res2000"
     
     os.chdir(workDir)
     
     # model geometry
-    nx = 500   # cells in x-dir.
-    nz = 50    # cells in z-dir.
+    nx = 2000   # cells in x-dir.
+    nz = 200    # cells in z-dir.
     Lx = 10.0   # length in x-dir.
     Lz = 1.00    # length in z-dir.
     z = np.linspace(Lz/(2*nz),Lz-Lz/(2*nz),nz,endpoint=True)

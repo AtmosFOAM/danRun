@@ -16,7 +16,7 @@ cp -r init_250/* 250
 turbulentExnerFoam >& log & sleep 0.01; tail -f log
 
 # calculate heat flux over last 20 secs of simulation
-for time in {280..300..1}; do
+for time in {180..200..1}; do
     for var in U theta "grad(theta)" rho; do
         writeCellDataxyz U -time $time
         writeCellDataxyz theta -time $time
@@ -24,6 +24,12 @@ for time in {280..300..1}; do
         writeCellDataxyz rho -time $time
     done
 done
+
+writeCellDataxyz U -time "255.0:260.0"
+writeCellDataxyz theta -time "255.0:260.0"
+writeCellDataxyz rho -time "255.0:260.0"
+writeCellDataxyz "grad(theta)" -time "255.0:260.0"
+
 gedit calcHeatFlux.py &   # change domain geometry etc.
 python calcHeatFlux.py >& log_heatFlux.txt & sleep 0.01; tail -f log_heatFlux.txt
 
