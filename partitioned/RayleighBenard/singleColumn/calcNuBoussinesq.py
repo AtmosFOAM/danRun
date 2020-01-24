@@ -18,7 +18,7 @@ plt.rcParams["figure.dpi"] = 250
 
 def main():
     # working directory
-    workDir = "Ra_1e+05_multiFluidBoussinesqFoam_Y50_AR100_symmetricBCs_uniformSigma_gamma_buoyancyTransfer"
+    workDir = "Ra_1e+05_multiFluidBoussinesqFoam_Y50_AR100_symmetricBCs_uniformSigma_gamma_1e-2_noDrag_buoyancyAnomaly_0_3"
     os.chdir(workDir)
     
     # times to calculate Nu over

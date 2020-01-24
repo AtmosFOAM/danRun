@@ -17,7 +17,7 @@ plt.rcParams["font.family"] = "serif"
 plt.rcParams["figure.dpi"] = 250
 
 def main():
-    #times = np.arange(100,201,2)
+    times = np.arange(100,101,2)
     
     # working directory
     workDir = "."
@@ -27,12 +27,15 @@ def main():
     
     os.chdir(workDir)
     
-    os.chdir("100")
-    
-    plotBuoyancy(refDir)
-    plotVerticalVelocity(refDir)
-    plotPressurePerturbation(refDir)
-    plotSigma(refDir)
+    for time in times:
+        os.chdir(str(time))
+        
+        plotBuoyancy(refDir)
+        plotVerticalVelocity(refDir)
+        plotPressurePerturbation(refDir)
+        plotSigma(refDir)
+        
+        os.chdir("..")
     
     return 0
     
@@ -55,7 +58,7 @@ def plotSigma(refDir):
     plt.legend(loc="best")
     plt.xlim(0,1)
     plt.savefig("sigma_profile_conditioned.png")
-    plt.show()
+    #plt.show()
     plt.close()
     
     return 0
@@ -96,7 +99,7 @@ def plotBuoyancy(refDir):
     plt.ylabel(r"$z$ (m)")
     plt.legend(loc="best")
     plt.savefig("b_profile_conditioned.png")
-    plt.show()
+    #plt.show()
     plt.close()
     
     return 0
@@ -137,7 +140,7 @@ def plotVerticalVelocity(refDir):
     plt.ylabel(r"$z$ (m)")
     plt.legend(loc="best")
     plt.savefig("w_profile_conditioned.png")
-    plt.show()
+    #plt.show()
     plt.close()
     
     return 0
@@ -165,10 +168,10 @@ def plotPressurePerturbation(refDir):
     # conditioned figure
     plt.figure()
     # means
-    # add in sigma-weighting!
-    plt.plot(mean[:,1] + sigma_rising*mean_rising[:,1] + sigma_falling*mean_falling[:,1],mean[:,0],'k',label="total")
-    plt.plot(mean[:,1] + mean_rising[:,1],mean_rising[:,0],'r', label="rising")
-    plt.plot(mean[:,1] + mean_falling[:,1],mean_falling[:,0],'b', label="falling")
+    offset = 0.001  # pressure offset (because absolute pressure doesn't matter)
+    plt.plot(offset + mean[:,1] + sigma_rising*mean_rising[:,1] + sigma_falling*mean_falling[:,1],mean[:,0],'k',label="total")
+    plt.plot(offset + mean[:,1] + mean_rising[:,1],mean_rising[:,0],'r', label="rising")
+    plt.plot(offset + mean[:,1] + mean_falling[:,1],mean_falling[:,0],'b', label="falling")
     # reference profiles & stddevs.
     plt.plot(mean_ref[:,1],mean_ref[:,0],'k--',alpha=0.5,label="total (ref.)")
     plt.plot(mean_rising_ref[:,1],mean_rising_ref[:,0],'r--',alpha=0.5,label="rising (ref.)")
@@ -183,7 +186,7 @@ def plotPressurePerturbation(refDir):
     plt.ylabel(r"$z$ (m)")
     plt.legend(loc="best")
     plt.savefig("P_profile_conditioned.png")
-    plt.show()
+    #plt.show()
     plt.close()
     
     return 0

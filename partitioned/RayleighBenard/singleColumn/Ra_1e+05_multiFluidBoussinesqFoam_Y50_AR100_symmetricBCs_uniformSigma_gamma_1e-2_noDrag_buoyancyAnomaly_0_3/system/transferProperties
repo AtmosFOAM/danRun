@@ -36,7 +36,8 @@ divTransfer 0;
 // Transfer between partitions based on laplacian(buoyancy)
 buoyancyTransfer false;
 bTransferDiffusivity bTransferDiffusivity  [0 2 -1 0 0] 0;
-// Transfer buyancy different from mean buoyancy
+// Transfer buoyancy different from mean buoyancy
+noAnomalies false;
 transferAnomaliesLinComb true;
 bAnomalyLinearCoeff bAnomalyLinearCoeff [0 0 0 0 0] 0.3;
 transferAnomaliesLaplacian false;

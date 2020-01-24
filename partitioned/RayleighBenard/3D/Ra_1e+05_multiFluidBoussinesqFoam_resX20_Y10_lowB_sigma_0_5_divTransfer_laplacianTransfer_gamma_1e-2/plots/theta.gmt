@@ -1,0 +1,32 @@
+inputFiles=(TIME/horizontalMean_none_theta.dat
+            TIME/horizontalMean_falling_none_theta.dat
+            TIME/horizontalMean_falling_none_theta.dat
+            TIME/horizontalMean_falling_none_theta.dat
+            TIME/horizontalMean_falling_none_theta.dat
+            TIME/horizontalMean_falling_none_theta.dat
+            TIME/horizontalMean_rising_none_theta.dat
+            TIME/horizontalMean_rising_none_theta.dat
+            TIME/horizontalMean_rising_none_theta.dat
+            TIME/horizontalMean_rising_none_theta.dat
+            TIME/horizontalMean_rising_none_theta.dat)
+outFile=TIME/thetaMean.eps
+colx=(4 4 5 6 7 8 4 5 6 7 8)
+col=1
+legends=("mean" "falling" "+/- one std dev" "" "min/max" ""
+         "rising" "+/- one std dev" "" "min/max" "")
+pens=("2,black" "2,blue" "1,blue" "1,blue" "1,blue,5_5:" "1,blue,5_5:"
+      "2,red" "1,red" "1,red" "1,red,5_5:" "1,red,5_5:")
+xlabel='potential temperature (K)'
+#ylabel='Height (m)'
+xmin=299
+xmax=301
+dx=0.2
+ymin=0
+ymax=1
+dy=0.2
+xscale=*1
+yscale=*1
+legPos=x11/6
+nSkip=1
+projection=X15c/10c
+gv=1

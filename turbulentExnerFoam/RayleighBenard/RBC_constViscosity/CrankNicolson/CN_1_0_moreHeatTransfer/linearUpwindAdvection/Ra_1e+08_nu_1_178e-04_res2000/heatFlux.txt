@@ -1,0 +1,3 @@
+z-integrated heat flux:  312.937737623
+Domain-averaged Nusselt number:  26.8366458856
+Max. Nusselt number:  30.3426575007 Min. Nusselt number:  23.4178737012
