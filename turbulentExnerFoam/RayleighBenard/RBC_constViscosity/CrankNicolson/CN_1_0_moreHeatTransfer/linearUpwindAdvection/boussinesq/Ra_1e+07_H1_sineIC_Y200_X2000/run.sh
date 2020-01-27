@@ -30,9 +30,11 @@ mv 0/b 0/b_sinePert
 sumFields 0 b 0 b_init 0 b_sinePert
 
 # add Gaussian random noise to buoyancy fields
-#postProcess -func randomise -time 0
-#mv 0/b 0/b_init
-#mv 0/bRandom 0/b
+postProcess -func randomise -time 0
+mv 0/b 0/b_noRandom
+mv 0/bRandom 0/b
+sumFields 0 b_randomPert 0 b 0 b_noRandom -scale1 -1
+sumFields 0 b_sinePlusRandomPert 0 b_sinePert 0 b_randomPert
 
 # Solve Boussinesq equations
 boussinesqFoam >& log & sleep 0.01; tail -f log

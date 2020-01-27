@@ -24,15 +24,15 @@ FoamFile
 
 application     boussinesqFoam;
 
-startFrom       latestTime;
+startFrom       startTime;
 
-startTime       0;
+startTime       38;
 
 stopAt          endTime;
 
 endTime         200;
 
-deltaT          0.0078125;
+deltaT          0.004;
 
 writeControl    runTime;
 

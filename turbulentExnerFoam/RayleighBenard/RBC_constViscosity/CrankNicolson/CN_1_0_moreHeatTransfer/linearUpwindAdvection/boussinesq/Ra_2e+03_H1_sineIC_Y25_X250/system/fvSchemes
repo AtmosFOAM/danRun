@@ -52,6 +52,7 @@ interpolationSchemes
     convection                      linear;
     b                               linear;
     transfer                        linear;
+    interpolate(laplacian(u))       linear;
 }
 
 snGradSchemes
