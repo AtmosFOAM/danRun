@@ -1,0 +1,6 @@
+/home/daniel/OpenFOAM/daniel-7/AtmosFOAM
+commit d95a4d12d72e07a2212b03698993fd4efe67dacb Author: Hilary Weller <h.weller@reading.ac.uk> Date: Fri Nov 1 16:04:32 2019 +0000 Updated README file with more complete instructions
+/home/daniel/OpenFOAM/daniel-7/AtmosFOAM-tools
+commit dbc4d53dc4299416950afc32c6018a7d8a27cd60 Author: Hilary Weller <h.weller@reading.ac.uk> Date: Fri Nov 1 16:03:53 2019 +0000 Updated README file with more complete instructions
+/home/daniel/OpenFOAM/daniel-7/AtmosFOAM-multiFluid
+commit d9f8eea800156d9d86e3cfeaa07af8e646940241 Merge: 9328e01 29aa8f6 Author: d-shipley <d.shipley.1341@gmail.com> Date: Fri Nov 8 11:54:46 2019 +0000 Merge branch 'master' of https://github.com/AtmosFOAM/AtmosFOAM-multiFluid
