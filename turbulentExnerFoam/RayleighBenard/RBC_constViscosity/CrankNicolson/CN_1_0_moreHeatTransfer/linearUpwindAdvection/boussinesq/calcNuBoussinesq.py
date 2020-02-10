@@ -14,24 +14,24 @@ import operator
 plt.rcParams["font.family"] = "serif"
 
 # Change default figure DPI; remove for lower DPI displays (default = 100dpi)
-plt.rcParams["figure.dpi"] = 250 
+plt.rcParams["figure.dpi"] = 250
 
 def main():
     # working directory
-    workDir = "Ra_5e+04_H1_sineIC_Y50_X500"
+    workDir = "."
     os.chdir(workDir)
     
     # times to calculate Nu over
-    times = np.arange(300,401,2)
+    times = np.arange(180,191,1)
     
     # fluid and domain properties
-    kappa   = 9.618e-04 # thermal diffusivity
+    kappa   = 9.618e-05 # thermal diffusivity
     deltaB  = 0.0654    # buoyancy difference between bottom and top (m s^-2)
     H       = 1         # domain height (m)
     
     # numerics
-    nx = 500
-    nz = 50
+    nx = 2000
+    nz = 200
     
     # single- or multi-fluid?
     partitioned = False
@@ -53,7 +53,7 @@ def main():
         b_fname     = "b.xyz"
         dbdz_fname  = "grad(b).xyz"
     
-    for time in times:
+    for it, time in enumerate(times):
         os.chdir(str(time))
         
         if partitioned == True:
@@ -173,7 +173,14 @@ def main():
             
             # print horizontally averaged normalised heat flux to terminal
             print("Time = ", time)
-            print("Horizontally-averaged normalised heat flux = ", heatFlux_horAv)
+            print("Horizontally-averaged normalised heat flux: ", 
+                  heatFlux_horAv)
+            print("z-integrated horizontally averaged normalised heat flux: ", 
+                  np.mean(heatFlux_horAv))
+            print("z-integrated time-averaged horizontally-averaged normalised "
+                  "heat flux: ", 
+                  np.mean(len(times)*heatFlux_horAv_timeAv/len(times[0:it+1])))
+            print()
             
         # move back up directory tree
         os.chdir("..")

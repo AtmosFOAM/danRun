@@ -16,6 +16,6 @@ Description
 field           b;
 
 // Set the magnitude of the perturbation
-magPerturbation 0.000654;
+magPerturbation 0.000327;
 
 // ************************************************************************* //

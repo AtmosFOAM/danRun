@@ -24,15 +24,15 @@ def main():
                             [1e+03, 1.00000000003],         # need to run for longer
                             [1.6e+03, 1.00000547403],       # need to run for longer
                             [1.7e+03, 1.0001127747],        # need to run for longer
-                            [1.8e+03, 1.07683032145],       # need to run for longer
+                            [1.8e+03, 1.07751228697],       # need to run for longer
                             [2e+03, 1.20534814868],         # need to run for longer
                             [1e+04, 2.68954420853],         # need to rerun with new Laplacian discretisation
                             [5e+04, 4.27669539637],         # need to rerun with new Laplacian discretisation
-                            [1e+05, np.nan],                # need to rerun with new Laplacian discretisation
-                            [5e+05, np.nan],                # need to rerun with new Laplacian discretisation
-                            [1e+06, np.nan],                # need to rerun with new Laplacian discretisation
-                            [5e+06, np.nan],                # need to rerun with new Laplacian discretisation
-                            [1e+07, np.nan],                # need to rerun with new Laplacian discretisation
+                            [1e+05, 5.00748978872],         
+                            [5e+05, 7.57727785092],         # need to rerun with new Laplacian discretisation
+                            [1e+06, 9.05589877127],         # need to rerun with new Laplacian discretisation
+                            [5e+06, 13.8037830193],                # need to rerun with new Laplacian discretisation
+                            [1e+07, 16.5],#15.3217119436],                # need to rerun with wavenumber 5
                             [2e+07, np.nan],                # need to RUN!!
                             [1e+08, np.nan],                # need to rerun with new Laplacian discretisation
                             [1e+09, np.nan]] )              # need to RUN!!
