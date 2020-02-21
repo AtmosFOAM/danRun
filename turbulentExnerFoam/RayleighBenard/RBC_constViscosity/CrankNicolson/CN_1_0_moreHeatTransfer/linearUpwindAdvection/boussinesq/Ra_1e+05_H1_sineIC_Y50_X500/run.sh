@@ -36,3 +36,8 @@ sumFields 0 b 0 b_init 0 b_sinePert
 
 # Solve Boussinesq equations
 boussinesqFoam >& log & sleep 0.01; tail -f log
+
+# Difference between sine and random initial conditions
+for var in u b P Uf volFlux; do
+    sumFields 400 $var.diff 400 $var ../Ra_1e+05_H1_randIC_Y50_X500/400 $var -scale1 -1
+done
