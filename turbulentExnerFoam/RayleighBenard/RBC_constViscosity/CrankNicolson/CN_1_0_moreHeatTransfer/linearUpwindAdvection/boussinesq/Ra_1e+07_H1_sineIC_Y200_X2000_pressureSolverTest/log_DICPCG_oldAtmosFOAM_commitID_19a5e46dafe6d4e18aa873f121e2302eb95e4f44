@@ -1,0 +1,212 @@
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  7
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 7-1ff648926f77
+Exec   : boussinesqFoam
+Date   : Feb 21 2020
+Time   : 18:04:55
+Host   : "daniel-XPS-15-9560"
+PID    : 25150
+I/O    : uncollated
+Case   : /media/daniel/STORAGE/OpenFOAM-run/danRun/turbulentExnerFoam/RayleighBenard/RBC_constViscosity/CrankNicolson/CN_1_0_moreHeatTransfer/linearUpwindAdvection/boussinesq/Ra_1e+07_H1_sineIC_Y200_X2000_pressureSolverTest
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 0
+
+
+Reading environmentalProperties
+Reading field P
+
+Reading in buoyancy, b
+
+Reading in cell centre velocity, u
+
+Calculating the volume flux
+
+Storing necessary old times and rates of change
+
+
+Starting time loop
+
+Time = 0.008
+
+Courant Number mean: 0 max: 0
+DICPCG:  Solving for P, Initial residual = 1, Final residual = 0.00948075891022, No Iterations 624
+DICPCG:  Solving for P, Initial residual = 0.00459188964167, Final residual = 4.47009721208e-05, No Iterations 355
+DICPCG:  Solving for P, Initial residual = 0.00134994431702, Final residual = 1.32113101403e-05, No Iterations 568
+DICPCG:  Solving for P, Initial residual = 1.30067993602e-05, Final residual = 9.60490286129e-07, No Iterations 77
+ExecutionTime = 19.91 s  ClockTime = 20 s
+
+fieldMinMax minMaxMagUBP write:
+    min(mag(u)) = 0 in cell 0 at location (0.0025 0.01 0)
+    max(mag(u)) = 4.33084633663e-06 in cell 174580 at location (2.9025 0.01 0.4375)
+    min(b) = -0.0331713284725 in cell 399543 at location (7.7175 0.01 0.9975)
+    max(b) = 0.0331713446152 in cell 1803 at location (9.0175 0.01 0.0025)
+    min(P) = -0.000237133114265 in cell 1793 at location (8.9675 0.01 0)
+    max(P) = 0.00802605903357 in cell 202230 at location (1.1525 0.01 0.5075)
+
+Time = 0.016
+
+Courant Number mean: 2.86036508166e-06 max: 8.5055905771e-06
+DICPCG:  Solving for P, Initial residual = 0.0295750322257, Final residual = 0.000100358919798, No Iterations 3
+DICPCG:  Solving for P, Initial residual = 0.000104844003395, Final residual = 1.03441096713e-06, No Iterations 251
+DICPCG:  Solving for P, Initial residual = 0.00254522518348, Final residual = 1.67279589923e-05, No Iterations 2
+DICPCG:  Solving for P, Initial residual = 1.58657170728e-05, Final residual = 6.7036319796e-07, No Iterations 2
+ExecutionTime = 27.43 s  ClockTime = 28 s
+
+fieldMinMax minMaxMagUBP write:
+    min(mag(u)) = 0 in cell 0 at location (0.0025 0.01 0)
+    max(mag(u)) = 1.27020924154e-05 in cell 174580 at location (2.9025 0.01 0.4375)
+    min(b) = -0.0331345472319 in cell 399543 at location (7.7175 0.01 0.9975)
+    max(b) = 0.0331345786678 in cell 1803 at location (9.0175 0.01 0.0025)
+    min(P) = -0.000237192707574 in cell 1793 at location (8.9675 0.01 0)
+    max(P) = 0.00802594994187 in cell 202230 at location (1.1525 0.01 0.5075)
+
+Time = 0.024
+
+Courant Number mean: 8.36932590645e-06 max: 2.49904468498e-05
+DICPCG:  Solving for P, Initial residual = 0.0262061708488, Final residual = 9.95696793543e-05, No Iterations 3
+DICPCG:  Solving for P, Initial residual = 0.000103543539607, Final residual = 1.02328849265e-06, No Iterations 157
+DICPCG:  Solving for P, Initial residual = 0.00220513421118, Final residual = 1.51797568283e-05, No Iterations 2
+DICPCG:  Solving for P, Initial residual = 1.44159828234e-05, Final residual = 6.56947092564e-07, No Iterations 2
+ExecutionTime = 34.18 s  ClockTime = 35 s
+
+fieldMinMax minMaxMagUBP write:
+    min(mag(u)) = 0 in cell 0 at location (0.0025 0.01 0)
+    max(mag(u)) = 2.05217843282e-05 in cell 174580 at location (2.9025 0.01 0.4375)
+    min(b) = -0.0331008341928 in cell 399371 at location (6.8575 0.01 0.9975)
+    max(b) = 0.0331007429467 in cell 1803 at location (9.0175 0.01 0.0025)
+    min(P) = -0.000237015222066 in cell 1793 at location (8.9675 0.01 0)
+    max(P) = 0.00802576560309 in cell 202230 at location (1.1525 0.01 0.5075)
+
+Time = 0.032
+
+Courant Number mean: 1.34876858399e-05 max: 4.04777229424e-05
+DICPCG:  Solving for P, Initial residual = 0.0232823480906, Final residual = 9.87441935541e-05, No Iterations 3
+DICPCG:  Solving for P, Initial residual = 0.000102258307496, Final residual = 1.01023822565e-06, No Iterations 171
+DICPCG:  Solving for P, Initial residual = 0.00191860370209, Final residual = 1.38182148557e-05, No Iterations 2
+DICPCG:  Solving for P, Initial residual = 1.31395697974e-05, Final residual = 6.41482715109e-07, No Iterations 2
+ExecutionTime = 41.05 s  ClockTime = 42 s
+
+fieldMinMax minMaxMagUBP write:
+    min(mag(u)) = 0 in cell 0 at location (0.0025 0.01 0)
+    max(mag(u)) = 2.78452240135e-05 in cell 174580 at location (2.9025 0.01 0.4375)
+    min(b) = -0.0330697677913 in cell 399371 at location (6.8575 0.01 0.9975)
+    max(b) = 0.0330693573307 in cell 1803 at location (9.0175 0.01 0.0025)
+    min(P) = -0.000237070042126 in cell 1792 at location (8.9625 0.01 0)
+    max(P) = 0.00802580696888 in cell 202230 at location (1.1525 0.01 0.5075)
+
+Time = 0.04
+
+Courant Number mean: 1.82715154482e-05 max: 5.50716566096e-05
+DICPCG:  Solving for P, Initial residual = 0.0205946936405, Final residual = 9.70182863814e-05, No Iterations 3
+DICPCG:  Solving for P, Initial residual = 9.99457463201e-05, Final residual = 9.9612838868e-07, No Iterations 204
+DICPCG:  Solving for P, Initial residual = 0.00165967363111, Final residual = 1.25286996962e-05, No Iterations 2
+DICPCG:  Solving for P, Initial residual = 1.19304511742e-05, Final residual = 6.1938178096e-07, No Iterations 2
+ExecutionTime = 48.21 s  ClockTime = 49 s
+
+fieldMinMax minMaxMagUBP write:
+    min(mag(u)) = 0 in cell 0 at location (0.0025 0.01 0)
+    max(mag(u)) = 3.47211681609e-05 in cell 174580 at location (2.9025 0.01 0.4375)
+    min(b) = -0.0330410350335 in cell 399371 at location (6.8575 0.01 0.9975)
+    max(b) = 0.0330401322567 in cell 1803 at location (9.0175 0.01 0.0025)
+    min(P) = -0.000236919646518 in cell 1792 at location (8.9625 0.01 0)
+    max(P) = 0.00802557343387 in cell 202230 at location (1.1525 0.01 0.5075)
+
+Time = 0.048
+
+Courant Number mean: 2.2768157454e-05 max: 6.88636448301e-05
+DICPCG:  Solving for P, Initial residual = 0.0180996639868, Final residual = 9.49232283463e-05, No Iterations 3
+DICPCG:  Solving for P, Initial residual = 9.71531581766e-05, Final residual = 9.66630891131e-07, No Iterations 611
+DICPCG:  Solving for P, Initial residual = 0.00142512497773, Final residual = 1.1294000293e-05, No Iterations 2
+DICPCG:  Solving for P, Initial residual = 1.07698936082e-05, Final residual = 5.95422189416e-07, No Iterations 2
+ExecutionTime = 58.92 s  ClockTime = 60 s
+
+fieldMinMax minMaxMagUBP write:
+    min(mag(u)) = 0 in cell 0 at location (0.0025 0.01 0)
+    max(mag(u)) = 4.11931564498e-05 in cell 174580 at location (2.9025 0.01 0.4375)
+    min(b) = -0.0330143925417 in cell 399371 at location (6.8575 0.01 0.9975)
+    max(b) = 0.0330128325262 in cell 1803 at location (9.0175 0.01 0.0025)
+    min(P) = -0.000237886034278 in cell 1792 at location (8.9625 0.01 0)
+    max(P) = 0.00802472715123 in cell 202230 at location (1.1525 0.01 0.5075)
+
+Time = 0.056
+
+Courant Number mean: 2.70187399334e-05 max: 8.19351011166e-05
+DICPCG:  Solving for P, Initial residual = 0.015821641837, Final residual = 9.21429738006e-05, No Iterations 3
+DICPCG:  Solving for P, Initial residual = 9.38805860579e-05, Final residual = 9.97000741403e-07, No Iterations 475
+DICPCG:  Solving for P, Initial residual = 0.00122074095242, Final residual = 1.01490546908e-05, No Iterations 2
+DICPCG:  Solving for P, Initial residual = 9.6896766283e-06, Final residual = 5.99314714158e-07, No Iterations 2
+ExecutionTime = 68.37 s  ClockTime = 69 s
+
+fieldMinMax minMaxMagUBP write:
+    min(mag(u)) = 0 in cell 0 at location (0.0025 0.01 0)
+    max(mag(u)) = 4.72999604593e-05 in cell 174580 at location (2.9025 0.01 0.4375)
+    min(b) = -0.0329896331899 in cell 399371 at location (6.8575 0.01 0.9975)
+    max(b) = 0.0329872667196 in cell 1803 at location (9.0175 0.01 0.0025)
+    min(P) = -0.000236638727085 in cell 1792 at location (8.9625 0.01 0)
+    max(P) = 0.0080255644869 in cell 202230 at location (1.1525 0.01 0.5075)
+
+Time = 0.064
+
+Courant Number mean: 3.10579456909e-05 max: 9.43561340669e-05
+DICPCG:  Solving for P, Initial residual = 0.0138066204645, Final residual = 8.89886800703e-05, No Iterations 3
+DICPCG:  Solving for P, Initial residual = 9.03400024875e-05, Final residual = 9.51467450751e-07, No Iterations 656
+DICPCG:  Solving for P, Initial residual = 0.00104504597686, Final residual = 9.10785434352e-06, No Iterations 2
+DICPCG:  Solving for P, Initial residual = 8.70440188486e-06, Final residual = 5.60754280997e-07, No Iterations 2
+ExecutionTime = 79.4 s  ClockTime = 80 s
+
+fieldMinMax minMaxMagUBP write:
+    min(mag(u)) = 0 in cell 0 at location (0.0025 0.01 0)
+    max(mag(u)) = 5.30763145327e-05 in cell 174580 at location (2.9025 0.01 0.4375)
+    min(b) = -0.0329665792486 in cell 399371 at location (6.8575 0.01 0.9975)
+    max(b) = 0.0329632770697 in cell 1803 at location (9.0175 0.01 0.0025)
+    min(P) = -0.000237974981028 in cell 1792 at location (8.9625 0.01 0)
+    max(P) = 0.00802450127474 in cell 202231 at location (1.1575 0.01 0.5075)
+
+Time = 0.072
+
+Courant Number mean: 3.49155664567e-05 max: 0.0001061912592
+DICPCG:  Solving for P, Initial residual = 0.0120635008275, Final residual = 8.54718417896e-05, No Iterations 3
+DICPCG:  Solving for P, Initial residual = 8.66172430325e-05, Final residual = 9.93549340486e-07, No Iterations 699
+DICPCG:  Solving for P, Initial residual = 0.000894717271397, Final residual = 8.18364363192e-06, No Iterations 2
+DICPCG:  Solving for P, Initial residual = 7.82844685565e-06, Final residual = 5.5022238793e-07, No Iterations 2
+ExecutionTime = 90.75 s  ClockTime = 92 s
+
+fieldMinMax minMaxMagUBP write:
+    min(mag(u)) = 0 in cell 0 at location (0.0025 0.01 0)
+    max(mag(u)) = 5.85533006241e-05 in cell 174580 at location (2.9025 0.01 0.4375)
+    min(b) = -0.0329450769513 in cell 399371 at location (6.8575 0.01 0.9975)
+    max(b) = 0.0329407317301 in cell 1803 at location (9.0175 0.01 0.0025)
+    min(P) = -0.000236720515742 in cell 1792 at location (8.9625 0.01 0)
+    max(P) = 0.00802516512458 in cell 202231 at location (1.1575 0.01 0.5075)
+
+Time = 0.08
+
+Courant Number mean: 3.86172893528e-05 max: 0.000117497086069
+DICPCG:  Solving for P, Initial residual = 0.0105886660281, Final residual = 8.21397824066e-05, No Iterations 3
+DICPCG:  Solving for P, Initial residual = 8.31030118941e-05, Final residual = 9.80059949764e-07, No Iterations 714
+DICPCG:  Solving for P, Initial residual = 0.000765796202312, Final residual = 7.36487777983e-06, No Iterations 2
+DICPCG:  Solving for P, Initial residual = 7.05084954561e-06, Final residual = 5.40517560771e-07, No Iterations 2
+ExecutionTime = 102.22 s  ClockTime = 104 s
+
+fieldMinMax minMaxMagUBP write:
+    min(mag(u)) = 0 in cell 0 at location (0.0025 0.01 0)
+    max(mag(u)) = 6.41690219037e-05 in cell 177213 at location (6.0675 0.01 0.4425)
+    min(b) = -0.0329249921749 in cell 399371 at location (6.8575 0.01 0.9975)
+    max(b) = 0.0329195188602 in cell 1803 at location (9.0175 0.01 0.0025)
+    min(P) = -0.000237925235786 in cell 1792 at location (8.9625 0.01 0)
+    max(P) = 0.00802446433703 in cell 202231 at location (1.1575 0.01 0.5075)
+
+End
+

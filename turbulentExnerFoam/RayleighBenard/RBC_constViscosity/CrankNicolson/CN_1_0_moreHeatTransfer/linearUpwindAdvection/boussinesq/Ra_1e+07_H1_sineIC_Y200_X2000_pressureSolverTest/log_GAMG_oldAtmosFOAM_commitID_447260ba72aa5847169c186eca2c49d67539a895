@@ -1,0 +1,212 @@
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  7
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 7-1ff648926f77
+Exec   : boussinesqFoam
+Date   : Feb 21 2020
+Time   : 18:23:28
+Host   : "daniel-XPS-15-9560"
+PID    : 26260
+I/O    : uncollated
+Case   : /media/daniel/STORAGE/OpenFOAM-run/danRun/turbulentExnerFoam/RayleighBenard/RBC_constViscosity/CrankNicolson/CN_1_0_moreHeatTransfer/linearUpwindAdvection/boussinesq/Ra_1e+07_H1_sineIC_Y200_X2000_pressureSolverTest
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 0
+
+
+Reading environmentalProperties
+Reading field P
+
+Reading in buoyancy, b
+
+Reading in cell centre velocity, u
+
+Calculating the volume flux
+
+Storing necessary old times and rates of change
+
+
+Starting time loop
+
+Time = 0.008
+
+Courant Number mean: 0 max: 0
+GAMG:  Solving for P, Initial residual = 1, Final residual = 0.00972393360787, No Iterations 7
+GAMG:  Solving for P, Initial residual = 0.00483275942874, Final residual = 4.13332195209e-05, No Iterations 14
+GAMG:  Solving for P, Initial residual = 0.000665327031503, Final residual = 2.92976118744e-06, No Iterations 10
+GAMG:  Solving for P, Initial residual = 3.13517605704e-06, Final residual = 5.06923660021e-07, No Iterations 2
+ExecutionTime = 7.45 s  ClockTime = 8 s
+
+fieldMinMax minMaxMagUBP write:
+    min(mag(u)) = 0 in cell 0 at location (0.0025 0.01 0)
+    max(mag(u)) = 8.67277872019e-06 in cell 174580 at location (2.9025 0.01 0.4375)
+    min(b) = -0.0331713284725 in cell 399543 at location (7.7175 0.01 0.9975)
+    max(b) = 0.0331713446152 in cell 1803 at location (9.0175 0.01 0.0025)
+    min(P) = -0.000392664289404 in cell 1793 at location (8.9675 0.01 0)
+    max(P) = 0.0160525319909 in cell 202230 at location (1.1525 0.01 0.5075)
+
+Time = 0.016
+
+Courant Number mean: 5.75087460647e-06 max: 1.70633615882e-05
+GAMG:  Solving for P, Initial residual = 0.979703179342, Final residual = 0.00919747327774, No Iterations 7
+GAMG:  Solving for P, Initial residual = 0.110035297912, Final residual = 0.000939113700639, No Iterations 14
+GAMG:  Solving for P, Initial residual = 0.0290341222267, Final residual = 0.0002849556741, No Iterations 6
+GAMG:  Solving for P, Initial residual = 0.000296165319286, Final residual = 2.88951312015e-06, No Iterations 18
+ExecutionTime = 14.12 s  ClockTime = 15 s
+
+fieldMinMax minMaxMagUBP write:
+    min(mag(u)) = 0 in cell 0 at location (0.0025 0.01 0)
+    max(mag(u)) = 1.66565105011e-05 in cell 174580 at location (2.9025 0.01 0.4375)
+    min(b) = -0.0331345472402 in cell 399543 at location (7.7175 0.01 0.9975)
+    max(b) = 0.0331345786849 in cell 1803 at location (9.0175 0.01 0.0025)
+    min(P) = -8.51516609229e-05 in cell 961 at location (4.8075 0.01 0)
+    max(P) = 3.94465532046e-08 in cell 397833 at location (9.1675 0.01 0.9925)
+
+Time = 0.024
+
+Courant Number mean: 1.10380246248e-05 max: 3.29387543615e-05
+GAMG:  Solving for P, Initial residual = 0.992415622982, Final residual = 0.00972412220487, No Iterations 7
+GAMG:  Solving for P, Initial residual = 0.00503690467978, Final residual = 4.29129472965e-05, No Iterations 14
+GAMG:  Solving for P, Initial residual = 0.001050166012, Final residual = 9.23857624352e-06, No Iterations 8
+GAMG:  Solving for P, Initial residual = 9.37914775069e-06, Final residual = 6.76861009044e-07, No Iterations 14
+ExecutionTime = 20.68 s  ClockTime = 21 s
+
+fieldMinMax minMaxMagUBP write:
+    min(mag(u)) = 0 in cell 0 at location (0.0025 0.01 0)
+    max(mag(u)) = 2.39865888451e-05 in cell 191806 at location (9.0325 0.01 0.4775)
+    min(b) = -0.0331008342073 in cell 399371 at location (6.8575 0.01 0.9975)
+    max(b) = 0.0331007429931 in cell 1803 at location (9.0175 0.01 0.0025)
+    min(P) = -0.000394615199712 in cell 1793 at location (8.9675 0.01 0)
+    max(P) = 0.0160515717679 in cell 202230 at location (1.1525 0.01 0.5075)
+
+Time = 0.032
+
+Courant Number mean: 1.58433600726e-05 max: 4.75295483261e-05
+GAMG:  Solving for P, Initial residual = 0.97345739648, Final residual = 0.00918838095856, No Iterations 7
+GAMG:  Solving for P, Initial residual = 0.0571482123967, Final residual = 0.000485041383465, No Iterations 14
+GAMG:  Solving for P, Initial residual = 0.0102490589612, Final residual = 0.000102446532371, No Iterations 8
+GAMG:  Solving for P, Initial residual = 0.000105146411414, Final residual = 8.22326504053e-07, No Iterations 17
+ExecutionTime = 27.43 s  ClockTime = 28 s
+
+fieldMinMax minMaxMagUBP write:
+    min(mag(u)) = 0 in cell 0 at location (0.0025 0.01 0)
+    max(mag(u)) = 3.07788491701e-05 in cell 191806 at location (9.0325 0.01 0.4775)
+    min(b) = -0.033069767804 in cell 399371 at location (6.8575 0.01 0.9975)
+    max(b) = 0.0330693573947 in cell 1803 at location (9.0175 0.01 0.0025)
+    min(P) = -8.56514069677e-05 in cell 961 at location (4.8075 0.01 0)
+    max(P) = 2.96792207375e-06 in cell 395791 at location (8.9575 0.01 0.9875)
+
+Time = 0.04
+
+Courant Number mean: 2.02516511107e-05 max: 6.09966075888e-05
+GAMG:  Solving for P, Initial residual = 0.985750876175, Final residual = 0.00960866150273, No Iterations 7
+GAMG:  Solving for P, Initial residual = 0.00519705970104, Final residual = 4.40276271487e-05, No Iterations 14
+GAMG:  Solving for P, Initial residual = 0.000769456349021, Final residual = 4.15370472616e-06, No Iterations 10
+GAMG:  Solving for P, Initial residual = 4.29921286099e-06, Final residual = 8.55786281588e-07, No Iterations 7
+ExecutionTime = 33.77 s  ClockTime = 35 s
+
+fieldMinMax minMaxMagUBP write:
+    min(mag(u)) = 0 in cell 0 at location (0.0025 0.01 0)
+    max(mag(u)) = 3.70599179459e-05 in cell 191806 at location (9.0325 0.01 0.4775)
+    min(b) = -0.0330410350335 in cell 399371 at location (6.8575 0.01 0.9975)
+    max(b) = 0.0330401323245 in cell 1803 at location (9.0175 0.01 0.0025)
+    min(P) = -0.00039582304506 in cell 1793 at location (8.9675 0.01 0)
+    max(P) = 0.0160523900368 in cell 202230 at location (1.1525 0.01 0.5075)
+
+Time = 0.048
+
+Courant Number mean: 2.43342856392e-05 max: 7.34813731379e-05
+GAMG:  Solving for P, Initial residual = 0.969691447666, Final residual = 0.00918979040776, No Iterations 7
+GAMG:  Solving for P, Initial residual = 0.04222132413, Final residual = 0.0004201186382, No Iterations 13
+GAMG:  Solving for P, Initial residual = 0.00536215601069, Final residual = 4.45646414363e-05, No Iterations 7
+GAMG:  Solving for P, Initial residual = 4.53198090247e-05, Final residual = 7.82390858108e-07, No Iterations 26
+ExecutionTime = 40.79 s  ClockTime = 42 s
+
+fieldMinMax minMaxMagUBP write:
+    min(mag(u)) = 0 in cell 0 at location (0.0025 0.01 0)
+    max(mag(u)) = 4.28856638259e-05 in cell 191806 at location (9.0325 0.01 0.4775)
+    min(b) = -0.0330143925184 in cell 399371 at location (6.8575 0.01 0.9975)
+    max(b) = 0.0330128325836 in cell 1803 at location (9.0175 0.01 0.0025)
+    min(P) = -9.24686590735e-05 in cell 398788 at location (3.9425 0.01 1)
+    max(P) = 3.14083468066e-06 in cell 395791 at location (8.9575 0.01 0.9875)
+
+Time = 0.056
+
+Courant Number mean: 2.8151549829e-05 max: 8.51031604912e-05
+GAMG:  Solving for P, Initial residual = 0.981820715689, Final residual = 0.00953716795842, No Iterations 7
+GAMG:  Solving for P, Initial residual = 0.00532860947553, Final residual = 5.28572826784e-05, No Iterations 13
+GAMG:  Solving for P, Initial residual = 0.00056803566295, Final residual = 5.520607155e-06, No Iterations 7
+GAMG:  Solving for P, Initial residual = 5.5801741661e-06, Final residual = 9.60823613148e-07, No Iterations 12
+ExecutionTime = 47.25 s  ClockTime = 49 s
+
+fieldMinMax minMaxMagUBP write:
+    min(mag(u)) = 0 in cell 0 at location (0.0025 0.01 0)
+    max(mag(u)) = 4.84601350961e-05 in cell 177213 at location (6.0675 0.01 0.4425)
+    min(b) = -0.0329896331338 in cell 399371 at location (6.8575 0.01 0.9975)
+    max(b) = 0.0329872667545 in cell 1803 at location (9.0175 0.01 0.0025)
+    min(P) = -0.000397265649962 in cell 1793 at location (8.9675 0.01 0)
+    max(P) = 0.0160560269096 in cell 200945 at location (4.7275 0.01 0.5025)
+
+Time = 0.064
+
+Courant Number mean: 3.175364275e-05 max: 9.59735063912e-05
+GAMG:  Solving for P, Initial residual = 0.967587166548, Final residual = 0.00919711106557, No Iterations 7
+GAMG:  Solving for P, Initial residual = 0.0353763392203, Final residual = 0.000347946260325, No Iterations 13
+GAMG:  Solving for P, Initial residual = 0.00324346479181, Final residual = 2.95254289617e-05, No Iterations 8
+GAMG:  Solving for P, Initial residual = 3.04417182673e-05, Final residual = 9.01070489109e-07, No Iterations 23
+ExecutionTime = 54.19 s  ClockTime = 56 s
+
+fieldMinMax minMaxMagUBP write:
+    min(mag(u)) = 0 in cell 0 at location (0.0025 0.01 0)
+    max(mag(u)) = 5.40822976611e-05 in cell 177213 at location (6.0675 0.01 0.4425)
+    min(b) = -0.0329665791518 in cell 399371 at location (6.8575 0.01 0.9975)
+    max(b) = 0.032963277073 in cell 1803 at location (9.0175 0.01 0.0025)
+    min(P) = -9.83602910848e-05 in cell 398788 at location (3.9425 0.01 1)
+    max(P) = 5.18831224438e-06 in cell 395791 at location (8.9575 0.01 0.9875)
+
+Time = 0.072
+
+Courant Number mean: 3.51835718348e-05 max: 0.000106181728052
+GAMG:  Solving for P, Initial residual = 0.979673578341, Final residual = 0.00948993915025, No Iterations 7
+GAMG:  Solving for P, Initial residual = 0.00543366175035, Final residual = 5.32211333459e-05, No Iterations 13
+GAMG:  Solving for P, Initial residual = 0.00042226906457, Final residual = 4.01207824646e-06, No Iterations 9
+GAMG:  Solving for P, Initial residual = 4.09168988736e-06, Final residual = 9.29708092989e-07, No Iterations 10
+ExecutionTime = 60.6 s  ClockTime = 62 s
+
+fieldMinMax minMaxMagUBP write:
+    min(mag(u)) = 0 in cell 0 at location (0.0025 0.01 0)
+    max(mag(u)) = 5.94644096922e-05 in cell 177213 at location (6.0675 0.01 0.4425)
+    min(b) = -0.0329450768079 in cell 399371 at location (6.8575 0.01 0.9975)
+    max(b) = 0.0329407316962 in cell 1803 at location (9.0175 0.01 0.0025)
+    min(P) = -0.000399845097493 in cell 1792 at location (8.9625 0.01 0)
+    max(P) = 0.0160601223062 in cell 200945 at location (4.7275 0.01 0.5025)
+
+Time = 0.08
+
+Courant Number mean: 3.84757090295e-05 max: 0.000115815404094
+GAMG:  Solving for P, Initial residual = 0.966591419785, Final residual = 0.00920674687991, No Iterations 7
+GAMG:  Solving for P, Initial residual = 0.0315566768779, Final residual = 0.000306695358872, No Iterations 13
+GAMG:  Solving for P, Initial residual = 0.00211737468414, Final residual = 1.98129653699e-05, No Iterations 10
+GAMG:  Solving for P, Initial residual = 2.06140114209e-05, Final residual = 9.12882373882e-07, No Iterations 28
+ExecutionTime = 67.76 s  ClockTime = 69 s
+
+fieldMinMax minMaxMagUBP write:
+    min(mag(u)) = 0 in cell 0 at location (0.0025 0.01 0)
+    max(mag(u)) = 6.46308241776e-05 in cell 177213 at location (6.0675 0.01 0.4425)
+    min(b) = -0.0329249919805 in cell 399371 at location (6.8575 0.01 0.9975)
+    max(b) = 0.0329195187865 in cell 1803 at location (9.0175 0.01 0.0025)
+    min(P) = -0.000103268510619 in cell 398788 at location (3.9425 0.01 1)
+    max(P) = 7.81004170875e-06 in cell 395791 at location (8.9575 0.01 0.9875)
+
+End
+
