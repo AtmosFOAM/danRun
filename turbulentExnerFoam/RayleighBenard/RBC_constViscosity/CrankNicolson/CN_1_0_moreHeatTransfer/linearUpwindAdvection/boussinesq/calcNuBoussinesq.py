@@ -22,7 +22,7 @@ def main():
     os.chdir(workDir)
     
     # times to calculate Nu over
-    times = np.arange(180,191,1)
+    times = np.arange(210,224,1)
     
     # fluid and domain properties
     kappa   = 9.618e-05 # thermal diffusivity
@@ -30,8 +30,8 @@ def main():
     H       = 1         # domain height (m)
     
     # numerics
-    nx = 2000
-    nz = 200
+    nx = 4000
+    nz = 400
     
     # single- or multi-fluid?
     partitioned = False
@@ -227,6 +227,7 @@ def main():
         print("z-integrated Nusselt number: ", np.mean(heatFlux_horAv_timeAv))
         
         with open('Nu.txt', 'w') as f:
+            print("Averaged between times %lf and %lf with spacing %lf" % (times[0], times[-1], times[1]-times[0]))
             print("z-integrated Nusselt number: ", np.mean(heatFlux_horAv_timeAv),
                    file=f)
             print("Max. Nusselt number: ", heatFlux_horAv_timeAv.max(), file=f)

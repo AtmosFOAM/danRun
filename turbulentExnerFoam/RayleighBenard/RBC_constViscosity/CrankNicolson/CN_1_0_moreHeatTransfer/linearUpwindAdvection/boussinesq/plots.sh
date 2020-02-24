@@ -1,12 +1,15 @@
 #!/bin/bash -e
-TIME_START=180
-TIME_END=
+TIME_START=210
+TIME_END=224
+TIME_INC=1
 # calculate grad(b)
 postProcess -func "grad(b)" -time "$TIME_START:$TIME_END"
 
 # write data to text files
 for var in u b "grad(b)"; do
-    writeCellDataxyz $var -time "$TIME_START:$TIME_END"
+    for time in $(seq $TIME_START $TIME_INC $TIME_END); do
+        writeCellDataxyz $var -time $time
+    done
 done
 
 # Calculate Nusselt and Reynolds numbers
