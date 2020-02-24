@@ -1,0 +1,12 @@
+/home/daniel/OpenFOAM/daniel-7/AtmosFOAM
+commit 447260ba72aa5847169c186eca2c49d67539a895 Author: Hilary Weller <h.weller@reading.ac.uk> Date: Thu Feb 13 17:31:37 2020 +0000 Fixed restart error in boussinesqFoam
+/home/daniel/OpenFOAM/daniel-7/AtmosFOAM-tools
+commit dbc4d53dc4299416950afc32c6018a7d8a27cd60 Author: Hilary Weller <h.weller@reading.ac.uk> Date: Fri Nov 1 16:03:53 2019 +0000 Updated README file with more complete instructions
+/home/daniel/OpenFOAM/daniel-7/AtmosFOAM-multiFluid
+commit b3c3c44e482f12141cd3ab8c1602e7259c435aac Author: Hilary Weller <h.weller@reading.ac.uk> Date: Thu Jan 23 15:08:16 2020 +0000 Modifications to multiFluidBoussinesqFoam: The buoyancy transferred when using transferAnomaliesMeanFactor is always the right sign and bAnomalyMeanCoeff is a scalar rather than a dimensionedScalar.
+/home/daniel/OpenFOAM/daniel-7/AtmosFOAM
+commit 447260ba72aa5847169c186eca2c49d67539a895 Author: Hilary Weller <h.weller@reading.ac.uk> Date: Thu Feb 13 17:31:37 2020 +0000 Fixed restart error in boussinesqFoam
+/home/daniel/OpenFOAM/daniel-7/AtmosFOAM-tools
+commit dbc4d53dc4299416950afc32c6018a7d8a27cd60 Author: Hilary Weller <h.weller@reading.ac.uk> Date: Fri Nov 1 16:03:53 2019 +0000 Updated README file with more complete instructions
+/home/daniel/OpenFOAM/daniel-7/AtmosFOAM-multiFluid
+commit b3c3c44e482f12141cd3ab8c1602e7259c435aac Author: Hilary Weller <h.weller@reading.ac.uk> Date: Thu Jan 23 15:08:16 2020 +0000 Modifications to multiFluidBoussinesqFoam: The buoyancy transferred when using transferAnomaliesMeanFactor is always the right sign and bAnomalyMeanCoeff is a scalar rather than a dimensionedScalar.
