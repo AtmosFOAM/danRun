@@ -22,16 +22,16 @@ def main():
     os.chdir(workDir)
     
     # times to calculate Nu over
-    times = np.arange(210,224,1)
+    times = np.arange(130,200,1)
     
     # fluid and domain properties
-    kappa   = 9.618e-05 # thermal diffusivity
+    kappa   = 3.041e-05 # thermal diffusivity
     deltaB  = 0.0654    # buoyancy difference between bottom and top (m s^-2)
     H       = 1         # domain height (m)
     
     # numerics
-    nx = 4000
-    nz = 400
+    nx = 2000
+    nz = 200
     
     # single- or multi-fluid?
     partitioned = False
@@ -232,6 +232,7 @@ def main():
                    file=f)
             print("Max. Nusselt number: ", heatFlux_horAv_timeAv.max(), file=f)
             print("Min. Nusselt number: ", heatFlux_horAv_timeAv.min(), file=f)
+            print("Averaged from t = %f s to t = %f s in %f s intervals" % (times[0], times[-1], times[-2] - times[-3]), file=f)
         
     return 0
 

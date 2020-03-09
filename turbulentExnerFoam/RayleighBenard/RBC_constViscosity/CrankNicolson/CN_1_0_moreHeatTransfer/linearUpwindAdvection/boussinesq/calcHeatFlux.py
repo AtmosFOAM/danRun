@@ -17,7 +17,7 @@ plt.rcParams["font.family"] = "serif"
 plt.rcParams["figure.dpi"] = 250 
 
 def main():
-    times = np.arange(150,201,1)
+    times = np.arange(200,251,1)
     
     # working directory
     workDir = "."

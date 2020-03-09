@@ -16,25 +16,21 @@ rm -rf [0-9]* constant/polyMesh core log legends diags.dat gmt.history *.gif *.O
 # create mesh
 blockMesh
 
+# set reference directory and reference time for initialisation
+refDir=../Ra_1e+08_H1_sineIC_Y200_X2000_tStep_0_00625
+refTime=200
 # Initial conditions
 rm -rf [0-9]* core
-mkdir 0
-cp -r init_0/* 0
-# set linear buoyancy profile in both partitions
-setAnalyticTracerField -name b -tracerDict b_tracerFieldDict
-
-# add sinusoidal perturbation to buoyancy field
-cp 0/b 0/b_init
-setAnalyticTracerField -name b -tracerDict b_sineTracerFieldDict
-mv 0/b 0/b_sinePert
-sumFields 0 b 0 b_init 0 b_sinePert
+mkdir $refTime
+cp -r init_0/* $refTime
+mapFields $refDir -sourceTime $refTime -consistent
+mv $refTime/dVolFluxDt.unmapped $refTime/dVolFluxDt
 
 # add Gaussian random noise to buoyancy fields
-postProcess -func randomise -time 0
-mv 0/b 0/b_noRandom
-mv 0/bRandom 0/b
-sumFields 0 b_randomPert 0 b 0 b_noRandom -scale1 -1
-sumFields 0 b_sinePlusRandomPert 0 b_sinePert 0 b_randomPert
+#postProcess -func randomise -time $refTime
+#mv $refTime/b $refTime/b_noRandom
+#mv $refTime/bRandom $refTime/b
+#sumFields $refTime b_randomPert $refTime b $refTime b_noRandom -scale1 -1
 
 # Solve Boussinesq equations
 boussinesqFoam >& log & sleep 0.01; tail -f log

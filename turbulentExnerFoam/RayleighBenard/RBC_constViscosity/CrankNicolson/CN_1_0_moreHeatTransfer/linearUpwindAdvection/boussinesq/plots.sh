@@ -1,7 +1,7 @@
 #!/bin/bash -e
-TIME_START=210
-TIME_END=224
-TIME_INC=1
+TIME_START=100
+TIME_END=200
+TIME_INC=0.5
 # calculate grad(b)
 postProcess -func "grad(b)" -time "$TIME_START:$TIME_END"
 

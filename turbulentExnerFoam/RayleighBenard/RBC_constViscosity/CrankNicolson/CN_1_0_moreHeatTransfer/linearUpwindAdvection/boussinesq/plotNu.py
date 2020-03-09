@@ -23,7 +23,7 @@ def main():
     RaScalings = np.array(
                     [[1e+02, 1.0],
                     [1e+03, 1.00000000003],         # need to run for longer
-                    [1.6e+03, 1.00000547403],       # need to run for longer
+                    [1.6e+03, 1.00000547403],       # running to 800s
                     [1.7e+03, 1.0001127747],        # need to run for longer
                     [1.8e+03, 1.07751228697],       # need to run for longer
                     [2e+03, 1.20534814868],         # need to run for longer
@@ -33,10 +33,10 @@ def main():
                     [5e+05, 7.57727785092],         # need to rerun with new Laplacian discretisation
                     [1e+06, 9.05589877127],         # need to rerun with new Laplacian discretisation
                     [5e+06, 13.8037830193],         # need to rerun with new Laplacian discretisation
-                    [1e+07, 14.378261700535997],    # need to rerun with wavenumber 5
-                    [2e+07, np.nan],                # need to RUN!!
-                    [1e+08, 20.388628200458566],    # need to rerun with new Laplacian discretisation
-                    [1e+09, np.nan]]                # need to RUN!!
+                    [1e+07, 15.360068623892575],    # running to 250s from random ICs
+                    [2e+07, np.nan],                # running to 200s from random ICs
+                    [1e+08, 27.091036794860383],    # (130-200s)
+                    [1e+09, np.nan]]                # running to 200s from random ICs
                     )              
     print(np.shape(RaScalings))
     print(RaScalings[:,0])
