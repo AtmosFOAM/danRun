@@ -32,11 +32,4 @@ iterations
     nNonOrthogonalCorrectors 0;
 }
 
-initialisation
-{
-    maxIters 100;
-    BCiters  3;
-    BCtol    1e-10;
-}
-
 // ************************************************************************* //
