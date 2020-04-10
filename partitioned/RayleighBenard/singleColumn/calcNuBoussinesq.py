@@ -18,11 +18,11 @@ plt.rcParams["figure.dpi"] = 250
 
 def main():
     # working directory
-    workDir = "Ra_1e+05_multiFluidBoussinesqFoam_Y50_AR100_symmetricBCs_uniformSigma_gamma_1e-2_noDrag_buoyancyAnomaly_0_3"
+    workDir = "Ra_1e+05_multiFluidBoussinesqFoam_Y50_AR100_symmetricBCs_uniformSigma_sigmaConst_0_5_gamma_1e-2_noDrag_buoyancyAnomaly_meanFactor_0_6"
     os.chdir(workDir)
     
     # times to calculate Nu over
-    times = np.arange(90,101,2)
+    times = np.arange(80,101,2)
     
     # fluid and domain properties
     kappa   = 9.617e-04 # thermal diffusivity

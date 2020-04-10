@@ -1,0 +1,28 @@
+
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  dev                                   |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      b_tracerFieldDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+// Setting P(t=t0) = { \Delta B / 2 } z - { \Delta B / 2H } z^2 
+//                   - { (\Delta B * H) / 12 }
+// the constant is such that P integrated vertically is zero
+type        polynomial;
+a_const     -5.45e-03;
+a_z         0.0327;
+a_zz        -0.0327;
+polyMin     -5.5e-03;
+polyMax     2.75e-03;
+

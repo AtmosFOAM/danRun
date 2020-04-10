@@ -18,20 +18,20 @@ plt.rcParams["figure.dpi"] = 250
 
 def main():
     # working directory
-    workDir = "Ra_1e+05_multiFluidBoussinesqFoam_hiRes"
+    workDir = "Ra_1e+08_boussinesqFoam_res2000_lowB"
     os.chdir(workDir)
     
     # times to calculate Nu over
-    times = np.arange(98,101,2)
+    times = np.arange(240,251,2)
     
     # fluid and domain properties
-    kappa   = 5.267e-03 # thermal diffusivity
-    deltaB  = 1.962     # buoyancy difference between bottom and top (m s^-2)
+    kappa   = 3.041e-05 # thermal diffusivity
+    deltaB  = 0.0654     # buoyancy difference between bottom and top (m s^-2)
     H       = 1         # domain height (m)
     
     # numerics
-    nx = 500
-    nz = 50
+    nx = 2000
+    nz = 200
     
     # file names
     w_fname     = "u.xyz"

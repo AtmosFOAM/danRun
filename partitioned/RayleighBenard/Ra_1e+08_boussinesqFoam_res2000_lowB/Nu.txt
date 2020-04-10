@@ -1,0 +1,3 @@
+z-integrated Nusselt number:  42.5678434218
+Max. Nusselt number:  63.0114728896
+Min. Nusselt number:  25.7054120189

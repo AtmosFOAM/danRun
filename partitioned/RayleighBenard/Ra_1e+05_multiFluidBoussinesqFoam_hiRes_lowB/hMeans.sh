@@ -2,7 +2,7 @@
 
 # Calculate horizontal means conditioned on vertical velocity and plot
 
-time=200
+time=180
 ## Create cell sets "rising" and "falling" dependent on w
 writeuvw u -time $time
 topoSet -dict system/conditionalSamplingDict -time $time

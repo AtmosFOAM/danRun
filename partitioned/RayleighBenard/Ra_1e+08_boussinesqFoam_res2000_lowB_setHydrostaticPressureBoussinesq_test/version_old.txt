@@ -1,0 +1,6 @@
+/home/daniel/OpenFOAM/daniel-7/AtmosFOAM
+commit c3dd5809c046bf03f828ca95329b5803854c3ebc Author: d-shipley <d.shipley.1341@gmail.com> Date: Fri Apr 10 15:19:41 2020 +0100 Correct formatting of boussinesqFoam.C
+/home/daniel/OpenFOAM/daniel-7/AtmosFOAM-tools
+commit a94f1d0375f6eb14ce2953afae6081d4655726c2 Author: Hilary Weller <h.weller@reading.ac.uk> Date: Wed Apr 8 13:28:03 2020 +0100 Added usage cellVolumeWeight to mapFields.C
+/home/daniel/OpenFOAM/daniel-7/AtmosFOAM-multiFluid
+commit 45879acce93f8b3b485abb01dbdd7ddf66e500e0 Author: Will <will.a.m@hotmail.co.uk> Date: Thu Apr 9 14:42:53 2020 +0100 Added applications/utilities to compile list in Allwmake
