@@ -18,10 +18,10 @@ solvers
 {
     P
     {
-        solver PCG;
-        preconditioner   DIC;
-        tolerance        1e-6;
-        relTol           0.01;
+        solver          GAMG;
+        smoother        DIC;
+        relTol          0.01;
+        tolerance       1e-6;
     }
 }
 

@@ -21,6 +21,8 @@
 *.jpg
 *.bmp
 *.mp4
+*.xyz
+*.vtk
 
 # Build directories
 ###################
