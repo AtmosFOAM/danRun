@@ -1,0 +1,6 @@
+/home/mf828017/OpenFOAM/mf828017-7/AtmosFOAM
+commit 7ce098213a4baaef18e9398bd393cd117a4a2d75 Author: Hilary Weller <h.weller@reading.ac.uk> Date: Thu Apr 9 11:42:39 2020 +0100 Made boussinesqFoam write out the hydrostatic pressure for the first time step
+/home/mf828017/OpenFOAM/mf828017-7/AtmosFOAM-tools
+commit a94f1d0375f6eb14ce2953afae6081d4655726c2 Author: Hilary Weller <h.weller@reading.ac.uk> Date: Wed Apr 8 13:28:03 2020 +0100 Added usage cellVolumeWeight to mapFields.C
+/home/mf828017/OpenFOAM/mf828017-7/AtmosFOAM-multifluid
+commit 02c9eb400edf2e722ab22f5bc2b957938cd7a352 Author: Hilary Weller <h.weller@reading.ac.uk> Date: Fri Feb 14 14:49:44 2020 +0000 Tidied up wTransfer of multiFluidBoussinesqFoam

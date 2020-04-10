@@ -17,8 +17,8 @@ rm -rf [0-9]* constant/polyMesh core log legends diags.dat gmt.history *.gif *.O
 blockMesh
 
 # reference directory
-refDir="../Ra_1e+09_H1_randIC_Y200_X400"
-refTime=200
+refDir="../Ra_1e+09_H1_randIC_Y400_X800"
+refTime=250
 # Initial conditions
 rm -rf [0-9]* core
 mkdir $refTime

@@ -20,8 +20,8 @@ projection2D XZ;
 FieldsToPlot
 (
     [b filledContours -0.033 0.033 0.003 "$GMTU/colours/red_white_blue.cpt"]
-//    [theta rawValues 299 301 0.01 "$GMTU/colours/red_white_blue.cpt"]
-    [Uf vectors 0.1 225 "black"]
+    //[b rawValues -0.033 0.033 0.003 "$GMTU/colours/red_white_blue.cpt"]
+    //[Uf vectors 0.4 203 "black"]
 );
 
 separateLegend true;

@@ -1,0 +1,4 @@
+z-integrated Nusselt number:  17.078791038741585
+Max. Nusselt number:  17.428171656195197
+Min. Nusselt number:  16.684270064135024
+Averaged from t = 150.000000 s to t = 200.000000 s in 1.000000 s intervals

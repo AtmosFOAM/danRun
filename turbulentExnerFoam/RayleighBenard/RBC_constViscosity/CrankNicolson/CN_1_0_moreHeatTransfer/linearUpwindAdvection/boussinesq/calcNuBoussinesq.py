@@ -22,15 +22,15 @@ def main():
     os.chdir(workDir)
     
     # times to calculate Nu over
-    times = np.arange(130,200,1)
+    times = np.arange(100,201,1)
     
     # fluid and domain properties
-    kappa   = 3.041e-05 # thermal diffusivity
+    kappa   = 3.041e-06 # thermal diffusivity
     deltaB  = 0.0654    # buoyancy difference between bottom and top (m s^-2)
     H       = 1         # domain height (m)
     
     # numerics
-    nx = 2000
+    nx = 400
     nz = 200
     
     # single- or multi-fluid?

@@ -34,9 +34,10 @@ def main():
                     [1e+06, 9.05589877127],         # need to rerun with new Laplacian discretisation
                     [5e+06, 13.8037830193],         # need to rerun with new Laplacian discretisation
                     [1e+07, 15.360068623892575],    # running to 250s from random ICs
-                    [2e+07, np.nan],                # running to 200s from random ICs
+                    [2e+07, 17.078791038741585],    # running to 200s from random ICs (200x2000 res.)
                     [1e+08, 27.091036794860383],    # (130-200s)
-                    [1e+09, np.nan]]                # running to 200s from random ICs
+                    [1e+09, 49.44571981532717],     # running to 200s from random ICs
+                    [1e+10, 95.73399861751018]]
                     )              
     print(np.shape(RaScalings))
     print(RaScalings[:,0])
@@ -85,6 +86,8 @@ def main():
     ax.loglog(RaScalings[5:,0],0.2*Ra27[5:], label=r"0.2 Ra$^{2/7}$")
     #ax.loglog(Ra[5:,0],linFitNu(Ra)[5:], label="best fit, Nu $=$ %.3f Ra $^{%.3f}$" % (np.exp(bestFitCoeffsNu[1]),bestFitCoeffsNu[0]) )
     ax.loglog(RaScalings[5:,0], 0.186*np.power(RaScalings[5:,0],0.276), label="Kerr '96 best fit, Nu $=$ 0.186 Ra$^{0.276}$")
+    # grid lines 
+    plt.grid(True,which="both",ls=":")
     plt.xlabel(r"Rayleigh number, Ra")
     plt.ylabel(r"Nusselt number, Nu")
     #plt.ylim(2,5e+01)
