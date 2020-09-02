@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
 # version control
-if [ if version.txt ]; then
+if [ -f version.txt ]; then
     mv version.txt version_old.txt
 fi
 for i in $ATMOSFOAM $ATMOSFOAM_TOOLS $ATMOSFOAM_MULTIFLUID; do

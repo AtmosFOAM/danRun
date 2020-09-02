@@ -1,0 +1,13 @@
+Averaged between times 0.000000 and 2050.000000 with spacing 2.000000
+Max Re based on |vec{u}|:  82.30597075274913
+Max Re based on |ux|:  38.5048053079656
+Max Re based on |uz|:  81.66510525003395
+Max Re based on uRMS:  83.22510135372393
+Max Re based on uxRMS:  42.85880081669794
+Max Re based on uzRMS:  83.03217906792123
+Mean Re based on |vec{u}|:  67.37235847503804
+Mean Re based on |ux|:  25.604178205896584
+Mean Re based on |uz|:  51.50640655665425
+Mean Re based on uRMS:  69.075948092148
+Mean Re based on uxRMS:  28.91069459647149
+Mean Re based on uzRMS:  52.417591378974564

@@ -1,0 +1,10 @@
+Averaged between times 100.000000 and 400.000000 with spacing 1.000000
+RMS velocity x-component maximum and location in range z = [0, H/2]: 
+1483.205090 at z = 0.087500
+RMS velocity x-component maximum and location in range z = [H/2, H]: 
+1504.889976 at z = 0.912500
+RMS velocity x-component bulk minimum: 
+232.752002 at z = 0.502500
+RMS velocity z-component maximum: 
+1344.633857 at z = 0.502500
+Velocity boundary layer thickness =  0.08750000000000002

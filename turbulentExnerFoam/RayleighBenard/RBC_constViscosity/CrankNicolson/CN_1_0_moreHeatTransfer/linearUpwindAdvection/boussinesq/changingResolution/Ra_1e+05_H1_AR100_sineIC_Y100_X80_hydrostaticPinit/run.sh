@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
 # version control
-if [ if version.txt ]; then
+if [ -f version.txt ]; then
     mv version.txt version_old.txt
 fi
 for i in $ATMOSFOAM $ATMOSFOAM_TOOLS $ATMOSFOAM_MULTIFLUID; do
@@ -35,6 +35,9 @@ sumFields 0 b 0 b_init 0 b_sinePert
 #postProcess -func randomise -time 0
 #mv 0/b 0/b_init
 #mv 0/bRandom 0/b
+
+# set hydrostatically-balanced initial pressure field
+setHydroStaticPressureBoussinesq
 
 # Solve Boussinesq equations
 boussinesqFoam >& log & sleep 0.01; tail -f log

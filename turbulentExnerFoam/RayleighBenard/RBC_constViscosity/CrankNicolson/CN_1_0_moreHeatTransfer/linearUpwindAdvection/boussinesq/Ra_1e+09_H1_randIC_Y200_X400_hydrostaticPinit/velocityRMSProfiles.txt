@@ -1,0 +1,2 @@
+# Averaged between times 100.000000 and 200.000000 with spacing 0.500000
+# z		 var(ux)		 var(uz)		 var(mag(u))

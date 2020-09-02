@@ -1,0 +1,7 @@
+# Reynolds number time series
+# <Re(t)> averaged between 100.000000 and 103.000000 with sampling frequency 1.000000
+# time		 Re_uMag(t)	 <Re_uMag(t)>	 Re_uxMag(t)	 <Re_uxMag(t)>	 Re_uzMag(t)	 <Re_uzMag(t)>	  Re_uRMS(t)	 <Re_uRMS(t)>	 Re_uxRMS(t)	 <Re_uxRMS(t)>	 Re_uzRMS(t)	 <Re_uzRMS(t)>	 
+100.000000	 55665.457719	 55665.457719	 
+101.000000	 58348.044614	 57006.751167	 
+102.000000	 56288.338972	 56767.280435	 
+103.000000	 51645.339156	 54845.180622	 
