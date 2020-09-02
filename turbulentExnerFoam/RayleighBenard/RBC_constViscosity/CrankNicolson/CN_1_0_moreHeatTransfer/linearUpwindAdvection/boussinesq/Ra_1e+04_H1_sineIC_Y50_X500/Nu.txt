@@ -1,3 +1,4 @@
-z-integrated Nusselt number:  2.68954420853
-Max. Nusselt number:  2.692392212
-Min. Nusselt number:  2.68507092318
+Averaged between times 300.000000 and 400.000000 with spacing 2.000000
+z-integrated Nusselt number:  2.6895442085306898
+Max. Nusselt number:  2.692392212002375
+Min. Nusselt number:  2.6850709231799805

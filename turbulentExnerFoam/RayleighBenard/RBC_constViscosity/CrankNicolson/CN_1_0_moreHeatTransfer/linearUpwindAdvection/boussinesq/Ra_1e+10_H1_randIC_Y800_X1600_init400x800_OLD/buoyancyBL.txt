@@ -1,0 +1,8 @@
+Averaged between times 200.000000 and 250.000000 with spacing 0.500000
+Buoyancy variance maximum and location in range z = [0, H/2]: 
+0.012698 at z = 0.004375
+Buoyancy variance maximum and location in range z = [H/2, H]: 
+0.013621 at z = 0.994375
+Buoyancy variance bulk minimum: 
+0.000561 at z = 0.393125
+Buoyancy boundary layer thickness =  0.004999999999999996

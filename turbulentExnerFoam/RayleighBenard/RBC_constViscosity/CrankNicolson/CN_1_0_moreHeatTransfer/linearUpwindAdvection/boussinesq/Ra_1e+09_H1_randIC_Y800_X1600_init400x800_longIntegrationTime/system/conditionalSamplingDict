@@ -1,0 +1,73 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  dev
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      topoSetDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+// Parts for topoSet
+actions
+(
+    // All cells with rising air
+    {
+        name    rising;
+        type    cellSet;
+        action  new;
+        source fieldToCell;
+        sourceInfo
+        {
+            field       uz;
+            min         0;
+            max         1e6;
+        }
+    }
+
+    // All other cells (falling air)
+    {
+        name    falling;
+        type    cellSet;
+        action  new;
+        source  cellToCell;
+        sourceInfo
+        {
+            set rising;
+        }
+    }
+    {
+        name    falling;
+        type    cellSet;
+        action  invert;
+    }
+);
+
+// Parts for setFields
+defaultFieldValues
+(
+    volScalarFieldValue sigma.stable 1
+    volScalarFieldValue sigma.buoyant 0
+);
+
+regions
+(
+
+    cellToCell
+    {
+        set rising;
+        fieldValues
+        (
+            volScalarFieldValue sigma.stable 0
+            volScalarFieldValue sigma.buoyant 1
+        );
+    }
+);
+
+// ************************************************************************* //

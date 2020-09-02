@@ -1,11 +1,13 @@
 #!/bin/bash -e
 
 # version control
-mv version.txt version_old.txt
+if [ -f version.txt ]; then
+    mv version.txt version_old.txt
+fi
 for i in $ATMOSFOAM $ATMOSFOAM_TOOLS $ATMOSFOAM_MULTIFLUID; do
     COMMIT_ID=$(git --git-dir=$i/.git log -n1)
     echo $i >> version.txt
-    echo $COMMIT_ID >> version.txt
+    echo $COMMIT_ID >& version.txt
 done
 
 # clear out old stuff

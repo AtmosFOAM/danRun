@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
 # version control
-if [ if version.txt ]; then
+if [ -f version.txt ]; then
     mv version.txt version_old.txt
 fi
 for i in $ATMOSFOAM $ATMOSFOAM_TOOLS $ATMOSFOAM_MULTIFLUID; do
@@ -18,13 +18,14 @@ blockMesh
 
 # reference directory
 refDir="../Ra_1e+09_H1_randIC_Y400_X800"
-refTime=250
+refTime=200
 # Initial conditions
 rm -rf [0-9]* core
 mkdir $refTime
 cp init/* $refTime
 # interpolate fields onto finer mesh
 mapFields -consistent $refDir -sourceTime $refTime
+mv $refTime/dVolFluxDt.unmapped $refTime/dVolFluxDt
 
 # Solve Boussinesq equations
 boussinesqFoam >& log & sleep 0.01; tail -f log
