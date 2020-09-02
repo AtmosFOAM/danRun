@@ -1,0 +1,9 @@
+z-integrated Nusselt number in partition 'buoyant':  4.53178265179
+Max. Nusselt number in partition 'buoyant':  4.86877728084
+Min. Nusselt number in partition 'buoyant':  1.68903884353
+z-integrated Nusselt number in partition 'stable':  5.175480901
+Max. Nusselt number in partition 'stable':  7.64492194941
+Min. Nusselt number in partition 'stable':  4.6813158721
+z-integrated Nusselt number:  9.70726355279
+Max. Nusselt number:  9.82489253208
+Min. Nusselt number:  9.33396079294

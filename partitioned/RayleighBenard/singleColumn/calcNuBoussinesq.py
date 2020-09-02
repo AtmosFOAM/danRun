@@ -18,20 +18,20 @@ plt.rcParams["figure.dpi"] = 250
 
 def main():
     # working directory
-    workDir = "Ra_1e+05_multiFluidBoussinesqFoam_Y50_AR100_symmetricBCs_uniformSigma_sigmaConst_0_5_gamma_1e-2_noDrag_buoyancyAnomaly_meanFactor_0_6"
-    os.chdir(workDir)
+    #workDir = "Ra_1e+08_multiFluidBoussinesqFoam_Y200_AR100_symmetricBCs_nonUniformSigma_sigmaConst_0_5_divTransfer_gamma_1_e-3_noDrag_buoyancyAnomaly_meanFactor_0_spinUp"
+    #os.chdir(workDir)
     
     # times to calculate Nu over
-    times = np.arange(80,101,2)
+    times = np.arange(480,501,2)
     
     # fluid and domain properties
-    kappa   = 9.617e-04 # thermal diffusivity
+    kappa   = 3.041e-05 # thermal diffusivity
     deltaB  = 0.0654    # buoyancy difference between bottom and top (m s^-2)
     H       = 1         # domain height (m)
     
     # numerics
     nx = 1
-    nz = 50
+    nz = 200
     
     # single- or multi-fluid?
     partitioned = True
@@ -54,6 +54,7 @@ def main():
         dbdz_fname  = "grad(b).xyz"
     
     for time in times:
+        print("Time = %s" % str(time))
         os.chdir(str(time))
         
         if partitioned == True:

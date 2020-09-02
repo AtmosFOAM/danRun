@@ -17,18 +17,30 @@ plt.rcParams["font.family"] = "serif"
 plt.rcParams["figure.dpi"] = 250 
 
 def main():
-    times = np.arange(100,201,2)
+    times = np.arange(230,251,2)
     
     # working directory
     workDir = "."
     
     os.chdir(workDir)
     
-    os.chdir("200")
-    
+    """
+    for time in times:
+        os.chdir(str(time))
+        
+        plotBuoyancy()
+        plotVerticalVelocity()
+        plotPressure()
+        
+        os.chdir("..")
+    """
+    # time mean profiles
+    os.chdir("timeMean")
     plotBuoyancy()
     plotVerticalVelocity()
     plotPressure()
+    
+    os.chdir("..")
     
     return 0
 
@@ -103,9 +115,9 @@ def plotBuoyancy():
     files = ("horizontalMean_none_b.dat",
              "horizontalMean_falling_none_b.dat",
              "horizontalMean_rising_none_b.dat")
-    mean = np.loadtxt(files[0],usecols = (0,3,4,5,6,7))
-    mean_falling = np.loadtxt(files[1],usecols = (0,3,4,5,6,7))
-    mean_rising = np.loadtxt(files[2],usecols = (0,3,4,5,6,7))
+    mean = np.loadtxt(files[0],usecols = (0,1))#,3,4,5,6,7))
+    mean_falling = np.loadtxt(files[1],usecols = (0,1))#,3,4,5,6,7))
+    mean_rising = np.loadtxt(files[2],usecols = (0,1))#,3,4,5,6,7))
     
     # conditioned figure
     plt.figure()
@@ -117,7 +129,7 @@ def plotBuoyancy():
     # standard deviations
     """
     plt.fill_betweenx(mean[:,0],mean[:,2],x2=mean[:,3], color='k', alpha=0.1)
-    """
+    
     plt.fill_betweenx(mean_falling[:,0],mean_falling[:,2],x2=mean_falling[:,3], 
                       color='b', alpha=0.1, label="+/- 1 std. dev.")
     plt.fill_betweenx(mean_rising[:,0],mean_rising[:,2],x2=mean_rising[:,3], 
@@ -127,11 +139,11 @@ def plotBuoyancy():
     plt.plot(mean_rising[:,2],mean_rising[:,0],'r-',linewidth=0.5)
     plt.plot(mean_falling[:,3],mean_falling[:,0],'b-',linewidth=0.5)
     plt.plot(mean_rising[:,3],mean_rising[:,0],'r-',linewidth=0.5)
-    
+    """
     # min/max
     """
     plt.fill_betweenx(mean[:,0],mean[:,4],x2=mean[:,5], color='k', alpha=0.05)
-    """
+    
     plt.fill_betweenx(mean_falling[:,0],mean_falling[:,4],x2=mean_falling[:,5], 
                       color='b', alpha=0.05, label="min./max.")
     plt.fill_betweenx(mean_rising[:,0],mean_rising[:,4],x2=mean_rising[:,5], 
@@ -141,7 +153,7 @@ def plotBuoyancy():
     plt.plot(mean_rising[:,4],mean_rising[:,0],'r--',linewidth=0.1)
     plt.plot(mean_falling[:,5],mean_falling[:,0],'b--',linewidth=0.1)
     plt.plot(mean_rising[:,5],mean_rising[:,0],'r--',linewidth=0.1)
-    
+    """
     plt.xlabel(r"buoyancy, $b$ (m s$^{-2}$)")
     plt.ylabel(r"$z$ (m)")
     plt.legend(loc="best")
@@ -152,10 +164,10 @@ def plotBuoyancy():
     # just the mean
     plt.figure()
     plt.plot(mean[:,1],mean[:,0],'k',label="mean")
-    plt.fill_betweenx(mean[:,0],mean[:,2],x2=mean[:,3], color='k', alpha=0.1, 
-                      label="+/- 1 std. dev.")
-    plt.fill_betweenx(mean[:,0],mean[:,4],x2=mean[:,5], color='k', alpha=0.05,
-                      label="min./max.")
+    #plt.fill_betweenx(mean[:,0],mean[:,2],x2=mean[:,3], color='k', alpha=0.1, 
+    #                  label="+/- 1 std. dev.")
+    #plt.fill_betweenx(mean[:,0],mean[:,4],x2=mean[:,5], color='k', alpha=0.05,
+    #                  label="min./max.")
     plt.xlabel(r"buoyancy, $b$ (m s$^{-2}$)")
     plt.ylabel(r"$z$ (m)")
     plt.legend(loc="best")
@@ -169,9 +181,9 @@ def plotVerticalVelocity():
     files = ("horizontalMean_none_uz.dat",
              "horizontalMean_falling_none_uz.dat",
              "horizontalMean_rising_none_uz.dat")
-    mean = np.loadtxt(files[0],usecols = (0,3,4,5,6,7))
-    mean_falling = np.loadtxt(files[1],usecols = (0,3,4,5,6,7))
-    mean_rising = np.loadtxt(files[2],usecols = (0,3,4,5,6,7))
+    mean = np.loadtxt(files[0],usecols = (0,1))#,3,4,5,6,7))
+    mean_falling = np.loadtxt(files[1],usecols = (0,1))#,3,4,5,6,7))
+    mean_rising = np.loadtxt(files[2],usecols = (0,1))#,3,4,5,6,7))
     
     # conditioned figure
     plt.figure()
@@ -183,7 +195,7 @@ def plotVerticalVelocity():
     # standard deviations
     """
     plt.fill_betweenx(mean[:,0],mean[:,2],x2=mean[:,3], color='k', alpha=0.1)
-    """
+    
     plt.fill_betweenx(mean_falling[:,0],mean_falling[:,2],x2=mean_falling[:,3], 
                       color='b', alpha=0.1, label="+/- 1 std. dev.")
     plt.fill_betweenx(mean_rising[:,0],mean_rising[:,2],x2=mean_rising[:,3], 
@@ -193,11 +205,11 @@ def plotVerticalVelocity():
     plt.plot(mean_rising[:,2],mean_rising[:,0],'r-',linewidth=0.5)
     plt.plot(mean_falling[:,3],mean_falling[:,0],'b-',linewidth=0.5)
     plt.plot(mean_rising[:,3],mean_rising[:,0],'r-',linewidth=0.5)
-    
+    """
     # min/max
     """
     plt.fill_betweenx(mean[:,0],mean[:,4],x2=mean[:,5], color='k', alpha=0.05)
-    """
+    
     plt.fill_betweenx(mean_falling[:,0],mean_falling[:,4],x2=mean_falling[:,5], 
                       color='b', alpha=0.05, label="min./max.")
     plt.fill_betweenx(mean_rising[:,0],mean_rising[:,4],x2=mean_rising[:,5], 
@@ -207,7 +219,7 @@ def plotVerticalVelocity():
     plt.plot(mean_rising[:,4],mean_rising[:,0],'r--',linewidth=0.1)
     plt.plot(mean_falling[:,5],mean_falling[:,0],'b--',linewidth=0.1)
     plt.plot(mean_rising[:,5],mean_rising[:,0],'r--',linewidth=0.1)
-    
+    """
     plt.xlabel(r"$w$ (m s$^{-1}$)")
     plt.ylabel(r"$z$ (m)")
     plt.legend(loc="best")
@@ -218,10 +230,10 @@ def plotVerticalVelocity():
     # just the mean
     plt.figure()
     plt.plot(mean[:,1],mean[:,0],'k',label="mean")
-    plt.fill_betweenx(mean[:,0],mean[:,2],x2=mean[:,3], color='k', alpha=0.1, 
-                      label="+/- 1 std. dev.")
-    plt.fill_betweenx(mean[:,0],mean[:,4],x2=mean[:,5], color='k', alpha=0.05,
-                      label="min./max.")
+    #plt.fill_betweenx(mean[:,0],mean[:,2],x2=mean[:,3], color='k', alpha=0.1, 
+    #                  label="+/- 1 std. dev.")
+    #plt.fill_betweenx(mean[:,0],mean[:,4],x2=mean[:,5], color='k', alpha=0.05,
+    #                  label="min./max.")
     plt.xlabel(r"$w$ (m s$^{-1}$)")
     plt.ylabel(r"$z$ (m)")
     plt.legend(loc="best")
@@ -242,9 +254,9 @@ def plotPressure():
     files = ("horizontalMean_none_P.dat",
              "horizontalMean_falling_none_P.dat",
              "horizontalMean_rising_none_P.dat")
-    mean = np.loadtxt(files[0],usecols = (0,3,4,5,6,7))
-    mean_falling = np.loadtxt(files[1],usecols = (0,3,4,5,6,7))
-    mean_rising = np.loadtxt(files[2],usecols = (0,3,4,5,6,7))
+    mean = np.loadtxt(files[0],usecols = (0,1))#,3,4,5,6,7))
+    mean_falling = np.loadtxt(files[1],usecols = (0,1))#,3,4,5,6,7))
+    mean_rising = np.loadtxt(files[2],usecols = (0,1))#,3,4,5,6,7))
     
     # conditioned figure
     plt.figure()
@@ -256,7 +268,7 @@ def plotPressure():
     # standard deviations
     """
     plt.fill_betweenx(mean[:,0],mean[:,2],x2=mean[:,3], color='k', alpha=0.1)
-    """
+    
     plt.fill_betweenx(mean_falling[:,0],mean_falling[:,2],x2=mean_falling[:,3], 
                       color='b', alpha=0.1, label="+/- 1 std. dev.")
     plt.fill_betweenx(mean_rising[:,0],mean_rising[:,2],x2=mean_rising[:,3], 
@@ -266,11 +278,11 @@ def plotPressure():
     plt.plot(mean_rising[:,2],mean_rising[:,0],'r-',linewidth=0.5)
     plt.plot(mean_falling[:,3],mean_falling[:,0],'b-',linewidth=0.5)
     plt.plot(mean_rising[:,3],mean_rising[:,0],'r-',linewidth=0.5)
-    
+    """
     # min/max
     """
     plt.fill_betweenx(mean[:,0],mean[:,4],x2=mean[:,5], color='k', alpha=0.05)
-    """
+    
     plt.fill_betweenx(mean_falling[:,0],mean_falling[:,4],x2=mean_falling[:,5], 
                       color='b', alpha=0.05, label="min./max.")
     plt.fill_betweenx(mean_rising[:,0],mean_rising[:,4],x2=mean_rising[:,5], 
@@ -280,7 +292,7 @@ def plotPressure():
     plt.plot(mean_rising[:,4],mean_rising[:,0],'r--',linewidth=0.1)
     plt.plot(mean_falling[:,5],mean_falling[:,0],'b--',linewidth=0.1)
     plt.plot(mean_rising[:,5],mean_rising[:,0],'r--',linewidth=0.1)
-    
+    """
     plt.xlabel(r"$P$ (Pa)")
     plt.ylabel(r"$z$ (m)")
     plt.legend(loc="best")
@@ -291,10 +303,10 @@ def plotPressure():
     # just the mean
     plt.figure()
     plt.plot(mean[:,1],mean[:,0],'k',label="mean")
-    plt.fill_betweenx(mean[:,0],mean[:,2],x2=mean[:,3], color='k', alpha=0.1, 
-                      label="+/- 1 std. dev.")
-    plt.fill_betweenx(mean[:,0],mean[:,4],x2=mean[:,5], color='k', alpha=0.05,
-                      label="min./max.")
+    #plt.fill_betweenx(mean[:,0],mean[:,2],x2=mean[:,3], color='k', alpha=0.1, 
+    #                  label="+/- 1 std. dev.")
+    #plt.fill_betweenx(mean[:,0],mean[:,4],x2=mean[:,5], color='k', alpha=0.05,
+    #                  label="min./max.")
     plt.xlabel(r"$P$ (Pa)")
     plt.ylabel(r"$z$ (m)")
     plt.legend(loc="best")

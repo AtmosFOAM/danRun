@@ -1,9 +1,9 @@
 #!/bin/bash -e
 
 # Create ascii data files of all fields
-START=100
-END=100
-INCREMENT=2
+START=0
+END=300
+INCREMENT=10
 
 postProcess -func "grad(b)" -time "$START:$END"
 postProcess -func "grad(b.buoyant)" -time "$START:$END"
