@@ -40,18 +40,17 @@ sed -i 's/REPLACE/'"$values"'/g' 0/P
 # Solve partitioned Boussinesq equations
 multiFluidBoussinesqFoam >& log & sleep 0.01; tail -f log
 
-# calculate heat flux over last 10 secs of simulation
-postProcess -func "grad(b)" -time "60:"
-postProcess -func "grad(b.buoyant)" -time "60:"
-postProcess -func "grad(b.stable)" -time "60:"
-writeCellDataxyz u -time "60:"
-writeCellDataxyz u.buoyant -time "60:"
-writeCellDataxyz u.stable -time "60:"
-writeCellDataxyz b -time "60:"
-writeCellDataxyz b.buoyant -time "60:"
-writeCellDataxyz b.stable -time "60:"
-writeCellDataxyz "grad(b)" -time "60:"
-writeCellDataxyz "grad(b.buoyant)" -time "60:"
-writeCellDataxyz "grad(b.stable)" -time "60:"
-gedit ../calcHeatFlux.py &   # change domain geometry
-python ../calcHeatFlux.py >& heatFlux.txt & sleep 0.01; tail -f heatFlux.txt
+# calculate heat flux over last 20 secs of simulation
+START=280
+END=300
+
+for field in "grad(b)" "grad(b.buoyant)" "grad(b.stable)"; do
+    postProcess -func $field -time "$START:$END"
+done
+
+for field in u u.buoyant u.stable b b.buoyant b.stable "grad(b)" "grad(b.buoyant)" "grad(b.stable)" sigma.buoyant sigma.stable; do
+    writeCellDataxyz $field -time "$START:$END"
+done
+
+gedit ../calcNuBoussinesq.py &   # change domain geometry
+python ../calcNuBoussinesq.py >& logNu & sleep 0.01; tail -f logNu
