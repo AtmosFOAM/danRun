@@ -26,17 +26,22 @@ cp 0/b 0/b.stable
 # Solve partitioned Boussinesq equations
 multiFluidBoussinesqFoamEnergyDimPressureTerm >& log & sleep 0.01; tail -f log
 
-# calculate heat flux over last 20 secs of simulation
-START=280
-END=300
+./plots.sh
 
-for field in "grad(b)" "grad(b.buoyant)" "grad(b.stable)"; do
-    postProcess -func $field -time "$START:$END"
-done
+## calculate heat flux over last 20 secs of simulation
+#START=280
+#END=300
+#START=10
+#END=30
+#DT=2
 
-for field in u u.buoyant u.stable b b.buoyant b.stable "grad(b)" "grad(b.buoyant)" "grad(b.stable)" sigma.buoyant sigma.stable; do
-    writeCellDataxyz $field -time "$START:$END"
-done
+#for field in "grad(b)" "grad(b.buoyant)" "grad(b.stable)"; do
+#    postProcess -func $field -time "$START:$END"
+#done
 
-gedit ../calcNuBoussinesq.py &   # change domain geometry
-python ../calcNuBoussinesq.py >& logNu & sleep 0.01; tail -f logNu
+#for field in u u.buoyant u.stable b b.buoyant b.stable "grad(b)" "grad(b.buoyant)" "grad(b.stable)" sigma.buoyant sigma.stable; do
+#    writeCellDataxyz $field -time "$START:$END"
+#done
+
+##gedit ../calcNuBoussinesq.py &   # change domain geometry
+#python ../calcNuBoussinesq.py $START $END $DT >& logNu & sleep 0.01; tail -f logNu
