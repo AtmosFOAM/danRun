@@ -23,5 +23,5 @@ for time in $(seq $START $INCREMENT $END); do
 done; done
 
 # Graphs of all fields
-#python plot1Dprofile.py
+python plot1DProfile.py
 

@@ -241,7 +241,8 @@ def plotPressurePerturbation(refDir, PScale, zScale):
     mean_falling_ref[:,1:] = mean_falling_ref[:,1:] / PScale
     mean_rising_ref[:,1:] = mean_rising_ref[:,1:] / PScale
     
-    zMean = np.mean(mean[:,1:] + mean_rising[:,1] + mean_falling[:,1])
+    #zMean = np.mean(mean[:,1:] + mean_rising[:,1] + mean_falling[:,1])
+    zMean = np.average(mean[:,1:] + mean_rising[:,1] + mean_falling[:,1], weights=np.diff( np.insert( mean[:,0], 0, 0.0) ), axis=0 )
     zMean_ref = np.mean(mean_ref[:,1:])
     
     # conditioned figure

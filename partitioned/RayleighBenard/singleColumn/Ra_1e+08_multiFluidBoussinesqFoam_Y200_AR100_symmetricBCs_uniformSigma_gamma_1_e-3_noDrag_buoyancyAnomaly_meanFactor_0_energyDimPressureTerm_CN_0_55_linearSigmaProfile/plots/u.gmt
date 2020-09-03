@@ -1,0 +1,22 @@
+inputFiles=(TIME/Uf.xyz TIME/Uf.stable.xyz TIME/Uf.buoyant.xyz)
+outFile=TIME/u.eps
+col=3
+colx=6
+legends=("w, t = TIME s" "w@-0@-" "w@-1@-")
+pens=("1,black" "1,blue" "1,red")
+symbols=("c6p" "x6p" "+6p")
+spens=("1,black" "1,blue" "1,red")
+xlabel="w (m s@+-1@+)"
+#ylabel="z (m)"
+xmin=-0.1
+xmax=0.1
+dx=1
+ymin=0
+ymax=1
+dy=0
+xscale=*1
+yscale=*1
+legPos=x0/8.5
+nSkip=0
+projection=X6c/10c
+gv=0
