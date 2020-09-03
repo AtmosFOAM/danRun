@@ -9,6 +9,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 import os   # for setting working directory
 import operator
+import sys
+
+startTime = int(sys.argv[1])
+endTime = int(sys.argv[2])
+dt = int(sys.argv[3])
+print('Time from ', startTime, ' to ', endTime, ' every ', dt)
 
 # Set figure font globally to serif
 plt.rcParams["font.family"] = "serif"
@@ -22,7 +28,7 @@ def main():
     #os.chdir(workDir)
     
     # times to calculate Nu over
-    times = np.arange(480,501,2)
+    times = np.arange(startTime, endTime+dt, dt)
     
     # fluid and domain properties
     kappa   = 3.041e-05 # thermal diffusivity

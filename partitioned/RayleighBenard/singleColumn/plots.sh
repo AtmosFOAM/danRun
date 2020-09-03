@@ -1,9 +1,9 @@
 #!/bin/bash -e
 
 # Create ascii data files of all fields
-START=0
-END=300
-INCREMENT=10
+START=100
+END=130
+INCREMENT=2
 
 postProcess -func "grad(b)" -time "$START:$END"
 postProcess -func "grad(b.buoyant)" -time "$START:$END"
@@ -23,5 +23,5 @@ for time in $(seq $START $INCREMENT $END); do
 done; done
 
 # Graphs of all fields
-python plot1DProfile.py
+python plot1DProfile.py $START $END $INCREMENT
 

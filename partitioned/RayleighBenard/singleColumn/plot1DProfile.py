@@ -10,6 +10,12 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 import os   # for setting working directory
 import operator
+import sys
+
+startTime = int(sys.argv[1])
+endTime = int(sys.argv[2])
+dt = int(sys.argv[3])
+print('Time from ', startTime, ' to ', endTime, ' every ', dt)
 
 # Set figure font globally to serif
 plt.rcParams["font.family"] = "serif"
@@ -18,7 +24,7 @@ plt.rcParams["font.family"] = "serif"
 plt.rcParams["figure.dpi"] = 250
 
 def main():
-    times = np.arange(10,301,10)
+    times = np.arange(startTime,endTime,dt)
     
     # working directory
     workDir = "."
