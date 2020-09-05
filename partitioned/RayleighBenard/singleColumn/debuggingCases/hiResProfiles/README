@@ -1,0 +1,5 @@
+This directory contains reference profiles from a 2D direct numerical simulation of Rayleigh-Benard convection in a cell of aspect ratio L/H = 10 at Ra = 10^8, Pr = 0.707, with a uniform grid spacing dx=dz = H/400. The profiles are conditionally horizontally averaged based on the sign of the vertical velocity, then time averaged for 100s.
+
+OpenFOAM field files created from ASCII "*.dat" using script "process.sh".
+
+Files in "system" directory are provided in case the profiles need to be interpolated onto a different mesh. The timestep in the controlDict satisfies the Courant number restriction for the velocities in reference profiles.

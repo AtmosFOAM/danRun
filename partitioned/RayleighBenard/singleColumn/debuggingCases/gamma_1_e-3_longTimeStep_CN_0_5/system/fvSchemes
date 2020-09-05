@@ -1,0 +1,83 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  1.4                                   |
+|   \\  /    A nd           | Web:      http://www.openfoam.org               |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+
+FoamFile
+{
+    version         2.0;
+    format          ascii;
+
+    root            "";
+    case            "";
+    instance        "";
+    local           "";
+
+    class           dictionary;
+    object          fvSchemes;
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+ddtSchemes
+{
+    default Euler;
+}
+offCentre 0.5;
+
+gradSchemes
+{
+    default                   Gauss linear;
+}
+
+divSchemes
+{
+    default     none;
+    sigma       Gauss vanLeer;
+    b           Gauss vanLeer;
+    u           Gauss linearUpwind linearUpwind;
+    div(u)           Gauss linearUpwind linearUpwind;
+}
+
+laplacianSchemes
+{
+    default         Gauss linear uncorrected;
+}
+
+interpolationSchemes
+{
+    default         none;
+    
+    // for partitionedExnerFoamAdv
+    convection                      linear;
+    sigma                           linear;
+    b                               linear;
+    massTransfer                    linear;
+    interpolate(sigma.stable)       linear;
+    interpolate(sigma.buoyant)      linear;
+    interpolate(sigma.stable_0)     vanLeer volFlux.stable;
+    interpolate(sigma.buoyant_0)    vanLeer volFlux.buoyant;
+    interpolate(laplacian(u.sum))   linear;
+    interpolate(laplacian(u.stable))    linear;
+    interpolate(laplacian(u.buoyant))   linear;
+    interpolate((Pi.stable-Pi.sum))     linear;
+    interpolate((Pi.buoyant-Pi.sum))    linear;
+    transfer                        linear;
+}
+
+snGradSchemes
+{
+    default         uncorrected;
+}
+
+fluxRequired
+{
+    default         no;
+    P;
+}
+
+
+// ************************************************************************* //
