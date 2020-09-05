@@ -1,0 +1,5 @@
+This directory contains reference profiles from a direct numerical simulation of Rayleigh-Benard convection at Ra = 10^8, Pr = 0.707. The profiles are conditionally horizontally averaged based on the sign of the vertical velocity, then time averaged for 100s. They are then symmetrised by mirroring the lower half of each profile about z = H/2.
+
+ASCII "*.dat" files created using script "process.sh".
+
+Files in "system" directory are provided in case the profiles need to be interpolated onto a different mesh. The timestep in the controlDict satisfies the Courant number restriction for the velocities in reference profiles.

@@ -24,7 +24,7 @@ plt.rcParams["font.family"] = "serif"
 plt.rcParams["figure.dpi"] = 250
 
 def main():
-    times = np.arange(startTime,endTime,dt)
+    times = np.arange(startTime,endTime+dt,dt)
     
     # working directory
     workDir = "."
@@ -51,7 +51,8 @@ def main():
         plotSigma(refDir, H)
         plotBuoyancy(refDir, deltaB, H)
         plotVerticalVelocity(refDir, wScale, H)
-        plotPressurePerturbation(refDir, PScale, H)
+        if time != 0:
+            plotPressurePerturbation(refDir, PScale, H)
         #plotWhatHilaryWants(refDir, deltaB, wScale, PScale, H)
         
         os.chdir("..")
