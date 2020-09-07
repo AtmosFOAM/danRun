@@ -1,9 +1,15 @@
 #!/bin/bash -e
 
+if [ "$#" -ne 3 ]
+then
+   echo usage: plots.sh startTime endTime dt
+   exit
+fi
+
 # Create ascii data files of all fields
-START=0
-END=300
-INCREMENT=10
+START=$1
+END=$2
+INCREMENT=$3
 
 postProcess -func "grad(b)" -time "$START:$END"
 postProcess -func "grad(b.buoyant)" -time "$START:$END"
