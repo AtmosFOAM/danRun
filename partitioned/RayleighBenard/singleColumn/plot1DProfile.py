@@ -154,9 +154,9 @@ def plotBuoyancy(refDir, bScale, zScale):
 
 def plotVerticalVelocity(refDir, wScale, zScale):
     # load data
-    files = ("Uf.xyz",
-             "Uf.buoyant.xyz",
-             "Uf.stable.xyz",
+    files = ("u.xyz",
+             "u.buoyant.xyz",
+             "u.stable.xyz",
              "%s/%s" % (refDir, "horizontalMean_none_uz.dat"),
              "%s/%s" % (refDir, "horizontalMean_rising_none_uz.dat"),
              "%s/%s" % (refDir, "horizontalMean_falling_none_uz.dat")
