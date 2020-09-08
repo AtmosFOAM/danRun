@@ -1,8 +1,8 @@
 #!/bin/bash -e
 
 # Create ascii data files of all fields
-START=0
-END=300
+START=100
+END=150
 INCREMENT=10
 
 postProcess -func "grad(b)" -time "$START:$END"
