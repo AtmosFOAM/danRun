@@ -1,0 +1,51 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  1.4                                   |
+|   \\  /    A nd           | Web:      http://www.openfoam.org               |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+
+FoamFile
+{
+    version         2.0;
+    format          ascii;
+
+    root            "";
+    case            "";
+    instance        "";
+    local           "";
+
+    class           dictionary;
+    object          transferProperties;
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+cloudRadiusMax     cloudRadiusMax [0 1 0 0 0] 0.1;
+cloudRadiusMin     cloudRadiusMin [0 1 0 0 0] 1e-9;
+dragCoeff       0;//0.1;
+Ksigma Ksigma [0 2 -1 0 0] 0;
+minSigma  1e-9;
+// no transfers?
+noTransfers false;
+// Transfer between partitions based on horizontal divergence
+wTransfer false;
+transferTimeScale transferTimeScale [0 1 -1 0 0] 1e-2;
+divTransfer 1;
+// Transfer between partitions based on laplacian(buoyancy)
+buoyancyTransfer false;
+bTransferDiffusivity bTransferDiffusivity  [0 2 -1 0 0] 0;
+// Transfer buoyancy different from mean buoyancy
+noAnomalies false;
+transferAnomaliesLinComb false;
+bAnomalyLinearCoeff bAnomalyLinearCoeff [0 0 0 0 0] 0;
+transferAnomaliesMeanFactor true;
+bAnomalyMeanCoeff 0.6;
+transferAnomaliesLaplacian false;
+transferAnomaliesb0 false;
+
+uniformSigma    false;
+uniformSigma_biDirectional  false;
+
+// ************************************************************************* //

@@ -46,5 +46,6 @@ transferAnomaliesLaplacian false;
 transferAnomaliesb0 false;
 
 uniformSigma    true;
+uniformSigma_biDirectional  false;
 
 // ************************************************************************* //

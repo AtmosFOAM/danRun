@@ -1,0 +1,29 @@
+
+I have changed the plots.sh script to be able to take arguments 
+START=$1
+END=$2
+INCREMENT=$3
+
+From the directory reference_gamma_1_e-3
+However plot1DProfile.py gives the error message:
+No such file or directory: '../../hiResProfiles/350/horizontalMean_rising_none_sigma.dat
+
+If I go to directory hiResProfiles if I run process.sh I get the error message
+cp: target '350' is not a directory
+If I create the directory 350 I get the error message:
+awk: fatal: cannot open file `350/horizontalMean_rising_none_sigma.dat' for reading (No such file or directory)
+and then
+Cannot find file "points" in directory "polyMesh" in times "350" down to constant
+
+I cannot run gamma_1_e-3_initHiRes_longTimeStep_CN_0_5 because the case hiResProfiles  is not complete.
+
+I can run reference_gamma_1_e-3 and there is a restart problem. I run for 100 seconds and it settles down to a steady state. I then restart from 100 and immediately the pressure changes shape. Other variables do not change shape. It is clear from the code that multiFluidBoussinesqFoamEnergyDimPressureTerm will not restart correctly, especially for offCentre<1. However it seems to converge to a different equilibrium pressure. This shouldn't happen (I don't think). I have put in a fix so that the restart does not generate such big errors. I have put in code:
+
+    // offCentre = 1 for the first time step
+    const scalar offCentreSave = offCentre;
+    offCentre = 1;
+
+then at the end of the time loop:
+        offCentre = offCentreSave;
+so that the offCentre is that required after the first time step. This solves it. Does it solve it for the cases starting from hi res data?
+

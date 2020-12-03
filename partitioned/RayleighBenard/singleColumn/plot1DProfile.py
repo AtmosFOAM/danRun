@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#  
-
-from __future__ import print_function
-from __future__ import division
+#
 
 import numpy as np
 import matplotlib as mpl
@@ -12,9 +9,9 @@ import os   # for setting working directory
 import operator
 import sys
 
-startTime = int(sys.argv[1])
-endTime = int(sys.argv[2])
-dt = int(sys.argv[3])
+startTime = float(sys.argv[1])
+endTime = float(sys.argv[2])
+dt = float(sys.argv[3])
 print('Time from ', startTime, ' to ', endTime, ' every ', dt)
 
 # Set figure font globally to serif
@@ -30,7 +27,7 @@ def main():
     workDir = "."
     
     # reference sim. directory
-    #refDir = "/media/daniel/STORAGE/OpenFOAM-run/danRun/partitioned/RayleighBenard/Ra_1e+05_multiFluidBoussinesqFoam_hiRes_lowB/200"
+    #refDir = "/media/daniel/STORAGE/OpenFOAM-run/danRun/partitioned/RayleighBenard/Ra_1e+05_multiFluidBoussinesqFoam_hiRes_lowB/timeMean"
     refDir = "/media/daniel/STORAGE/OpenFOAM-run/danRun/partitioned/RayleighBenard/Ra_1e+08_boussinesqFoam_res4000_lowB_DNSreferenceProfiles/timeMean"
     
     # case parameters
@@ -46,7 +43,9 @@ def main():
     os.chdir(workDir)
     
     for time in times:
-        os.chdir(str(time))
+        # cast to string; remove trailing zeros/decimal points
+        os.chdir("%.12g" % time)
+        print("Time = %.12g" % time)
         
         plotSigma(refDir, H)
         plotBuoyancy(refDir, deltaB, H)
@@ -56,6 +55,8 @@ def main():
         #plotWhatHilaryWants(refDir, deltaB, wScale, PScale, H)
         
         os.chdir("..")
+    
+    print("End")
     
     return 0
     
@@ -263,6 +264,9 @@ def plotPressurePerturbation(refDir, PScale, zScale):
     plt.plot( -zMean_ref + mean_ref[:,1],mean_ref[:,0],'k--',alpha=0.5)
     plt.plot( -zMean_ref + mean_rising_ref[:,1],mean_rising_ref[:,0],'r--',alpha=0.5)
     plt.plot( -zMean_ref + mean_falling_ref[:,1],mean_falling_ref[:,0],'b--',alpha=0.5)
+    # reference mean pressure + parametrised perturbation pressure
+    plt.plot( -zMean_ref + mean_ref[:,1] + mean_rising[1:-1,1],mean_rising[1:-1,0],'r:')#,alpha=0.5)
+    plt.plot( -zMean_ref + mean_ref[:,1] + mean_falling[1:-1,1],mean_falling[1:-1,0],'b:')#,alpha=0.5)
     """
     plt.fill_betweenx(mean_rising_ref[:,0],mean_rising_ref[:,2],x2=mean_rising_ref[:,3], 
                       color='r', alpha=0.05, label="ref. +/- 1 std. dev.")

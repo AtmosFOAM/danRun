@@ -1,0 +1,1 @@
+commit b08668ca2e0d448224bf53b8c2335a4bdc2d08b8 Author: Hilary Weller <h.weller@reading.ac.uk> Date: Mon Mar 23 08:58:12 2020 +0000 Fixed PartitionedField so that summed fields are not zero gradient. This does not work for surfaceField s
